@@ -1,17 +1,43 @@
-#summary One-sentence summary of this page.
+=== Nouvelle Page d'entrée du Wiki ===
+Après je ne sais pas quoi la page de démarrage a été effacée, donc je vais en recréer une vite fait et on verra ça plus tard.
+Mais s'il vous plait essayez de ne plus l'effacer.
+Merci
 
-= Introduction =
+Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'un forum pour les membres du groupe de BE: https://www.etud.insa-toulouse.fr/~wiketudgei/forum/viewforum.php?f=10 ou http://be4ia2.forumactif.net
 
-Add your content here.
+=== ''Index'' ===
+== Documents à Rendre : SRS, PMP..... ==
+ * [SRS]
+ * [PMP]
+== Tutoriels ==
+ * [Tutoriel Trac]
+ * [Tutoriel SVN]
+ * [Tutoriel J2ME]
+ * [Tutoriel Client/Serveur]
+ * [Tests Unitaires]
+ * [Design patterns]
+ * [Terminal Mobile]
+ * [Les Librairies de log pour java]
+ * [Reconnaissance/Synthese vocale]
+== Planning ==
+ * [planning]
+== Comptes Rendu de Séances ==
+ * [CR séance du 23/11/09]
+ * [CR réunion du 30/11/09]
+ * [CR rencontre client du 03/12/09]
+ * [CR séance du 10/12/09]
 
+== Outils informatique ==
+ * [Netbeans]
+ * [Visual Paradigm]
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
+== Itération 1 ==
+=== Conception ===
+ * [Conception synthese sur mobile]
+ * [Reconnaissance vocale]
+=== Modélisation ordre coté client ===
+ * [Modélisation côté client]
+ * [Premiere analyse sequence execution]
 
 =Cookbook=
 
