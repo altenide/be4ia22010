@@ -1,5 +1,5 @@
 == PMP ==
 
- * [wiki:"Iteration1"]
- * [wiki:"Iteration2"]
+ * [Iteration1]
+ * [Iteration2]
  
