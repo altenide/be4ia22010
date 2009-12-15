@@ -21,6 +21,8 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [Reconnaissance/Synthese vocale]
 == Planning ==
  * [planning]
+== Cookbook ==
+[http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
 == Comptes Rendu de Séances ==
  * [CR séance du 23/11/09]
  * [CR réunion du 30/11/09]
@@ -38,7 +40,3 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
 === Modélisation ordre coté client ===
  * [Modélisation côté client]
  * [Premiere analyse sequence execution]
-
-=Cookbook=
-
-[http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
