@@ -1,17 +1,10 @@
-#summary One-sentence summary of this page.
+== information SRS ==
+* [Question Client/ Réponse]
 
-= Introduction =
+* [Question Réponse Pour nous]
 
-Add your content here.
+* [Specification]
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
-
-https://code.google.com/p/be4ia22010/wiki/Accueil Acc
-[Accueil]
+= Commentaire =
+Le SRS est mit a jours partiellement rempli en français/anglais.
+Le but de cette partie du wiki est d'avoir toutes les information nécessaire pour le remplir.
