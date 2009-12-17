@@ -17,6 +17,7 @@ Ici on postera les différentes fonctionnalités que notre programme effectuera 
 
 = Suggestion de fonctionnalités =
 ° [proposition] Prévoir un moyen de revenir en arrière après acquittement par exemple acquittement accidentel d’un ordre.
+
 ° [proposition] [http://fr.wikipedia.org/wiki/Moteur_de_workflow Moteur de workflow] : le traitement de certaines tâches de manière automatique par le serveur en fonction de ce qu'il reçoit.
 
 
