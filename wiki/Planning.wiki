@@ -1,0 +1,3 @@
+Vous trouverez ici le planning de travail du groupe de BE.[[BR]]
+
+[[Image(planning.png, nolink)]]
