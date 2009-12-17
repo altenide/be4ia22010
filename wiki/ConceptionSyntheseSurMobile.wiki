@@ -1,0 +1,13 @@
+L'archive en pièce jointe sera mise à jour au fur et mesure.[[BR]]
+===Liste des cas d'utilisations à traiter===
+
+ * Recevoir Mission'''''=> fini, par Arthur''''
+ * Valider Ordre'''''=> fini, par Arthur'''''
+ * Memoriser Mission Client '''''=> en cours, par Sylvain'''''
+ * Memoriser Identification '''''=> en cours, par Sylvain'''''
+ * Gestion Utilisateur '''''=> en cours, par Aurélien'''''
+ * Saisir Mission  '''''=> fini, par Edith'''''
+ * Supprimer Mission '''''=> fini, par Edith'''''
+ * Modifier Mission '''''=> fini, par Edith'''''
+ * Publier Mission '''''=> en cours, par Edith'''''
+ * Memoriser Mission Serveur '''''=> en cours, par Arthur'''''
