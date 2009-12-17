@@ -22,9 +22,12 @@ Liens : Java Speech : pdf avec exemples simples pour comprendre l'utilisation de
 
 === 2) __On passe par un serveur voice xml__ : ===
 
-[[Image(voiceXML.jpg)]] 
+https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/Reconnaissance/Synthese%20vocale/voiceXML.jpg?format=raw 
+
 http://fr.wikipedia.org/wiki/VoiceXML 
+
 http://www.voicexml.org/ 
+
 petit pdf avec exemple simples de la syntaxe vxml (hello world exemple) :http://www.philippe.prados.name/Internet/VoiceXML/VoiceXML.pdf  
 
 
