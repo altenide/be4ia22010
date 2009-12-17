@@ -1,3 +1,3 @@
-Vous trouverez ici le planning de travail du groupe de BE.[[BR]]
+Vous trouverez ici le planning de travail du groupe de BE.
 
-[[Image(planning.png, nolink)]]
+https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/planning/planning.png?format=raw
