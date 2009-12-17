@@ -45,7 +45,7 @@ L'implémentation du profil est à la charge du fabricant de l'appareil qui port
 === I. Le principe de fonctionnement d'une MIDlet ===
 a. __Le cycle de vie d'une MIDlet__
 
-https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/Tutoriel%20J2ME/MIDlet_Cycle_de_vie.PNG
+https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/Tutoriel%20J2ME/MIDlet_Cycle_de_vie.PNG?format=raw
 
 La classe javax.microedition.midlet.Midlet permet le dialogue entre le système et l'application.
 
