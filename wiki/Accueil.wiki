@@ -24,10 +24,10 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
 == Cookbook ==
 [http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
 == Comptes Rendu de Séances ==
- * [CR séance du 23/11/09]
- * [CR réunion du 30/11/09]
- * [CR rencontre client du 03/12/09]
- * [CR séance du 10/12/09]
+ * [CompteRenduI]
+ * [CompteRenduII]
+ * [CompteRenduIII]
+ * [CompteRenduIV]
 
 == Outils informatique ==
  * [Netbeans]
@@ -35,8 +35,8 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
 
 == Itération 1 ==
 === Conception ===
- * [Conceptionsynthesesurmobile]
- * [Reconnaissancevocale]
+ * [ConceptionSyntheseSurMobile]
+ * [ReconnaissanceVocale]
 === Modélisation ordre coté client ===
  * [Modelisationcoteclient]
- * [Premiereanalysesequenceexecution]
+ * [PremiereAnalyseSequenceExecution]
