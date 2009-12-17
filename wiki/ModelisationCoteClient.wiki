@@ -2,7 +2,7 @@
 
 By Arthur et Aurélien
 
-Compte tenu du fait que les "missions" seront représentées en XML, il faut mettre en place un mécanisme de sauvegarde de ces "missions". 
+Compte tenu du fait que les "missions" seront représentées en XML, il faut mettre en place un mécanisme de sauvegarde de ces "missions".
 Petit diagramme UML:
 https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/Mod%C3%A9lisation%20c%C3%B4t%C3%A9%20client/BdD%20Client%20-%20UML.PNG?format=raw
 
