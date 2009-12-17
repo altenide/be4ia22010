@@ -1,5 +1,5 @@
 == information SRS ==
-* [QuestionReponseClient]
+* [QuestionReponseClient Question Client/ Réponse]
 
 * [QuestionReponsePourNous]
 
