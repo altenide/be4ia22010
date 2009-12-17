@@ -12,10 +12,10 @@ le Java ne serait à priori pas l'idéal, il existe des modules dans d'autres la
 
 
 == Bilan de la séance : ==
- * ''Conception :''
+ * _Conception :_
 se référer aux diagrammes UML réalisés (Use Cases + diagrammes de séquence pour l'Identification, la Mise en pause et la Sortie de pause)
 
- * ''Reconnaissance Vocale :''
+ * _Reconnaissance Vocale :_
 La majorité des outils sont basés sur le principe de comparaison de l'enregistrement avec des échantillons préexistants.
 Il faudra donc prendre en compte la nécessité de stocker ces échantillons et de les comparer à l'enregistrement entrant.
 
@@ -24,12 +24,12 @@ Après recherches, il existe un outil en C faisant cette comparaison, mais il fa
 - si elle est compatible Windows Mobile 
 - sous quelle licence elle a été publiée (droit de la réutiliser en open source ou pas)
 
- * ''Synthèse vocale :''
+ * _Synthèse vocale :_
 De même que pour la reconnaissance vocale, existence d'outils en C => même problèmes/vérifications que pour l'application de reconnaissance vocale 
 
 
 
-'''Pour Dimanche soir :'''
+*Pour Dimanche soir :*
  * explorer les différentes pistes disponibles pour les technologies de reconnaissance et synthèse vocale, et publier les résultats de ces recherches
  * Continuer la conception (diagrammes de séquences)
 
