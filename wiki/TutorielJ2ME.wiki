@@ -1,4 +1,4 @@
-= Tutoriel sur le fonctionnement de J2ME (''work in progress'') = 
+= Tutoriel sur le fonctionnement de J2ME (_work in progress_) = 
 
 == Sommaire ==
 
@@ -17,14 +17,14 @@
 === Introduction ===
 
 Petite info avant de commencer:
-''J2ME ou Java 2 Mobile Edition est l'ancienne appelation pour Java ME ou Java Platform, Mobile Edition.''
+_J2ME ou Java 2 Mobile Edition est l'ancienne appelation pour Java ME ou Java Platform, Mobile Edition._
 Java ME ou Java Platform, Micro Edition est l'édition de la plateforme Java à destination de l'électronique grand public et des systèmes embarqués. La technologie Java ME fourni une machine virtuelle et un ensemble d'API répartis dans deux composants principaux : les configurations et les profiles.
  
 
-'''NB:''' Ce Tuto à pour but de faire une présentation générale de J2ME (CDC et CDLC), cependant dans le cadre de notre projet, il y a de grande chance que nous utilisions CDC. Donc la partie CDLC est en quelque sorte un ''bonus'' pour ceux et celles qui souhaite approfondir leurs connaissances. Cette mise au point faite, nous pouvons attaquer.
+*NB:* Ce Tuto à pour but de faire une présentation générale de J2ME (CDC et CDLC), cependant dans le cadre de notre projet, il y a de grande chance que nous utilisions CDC. Donc la partie CDLC est en quelque sorte un _bonus_ pour ceux et celles qui souhaite approfondir leurs connaissances. Cette mise au point faite, nous pouvons attaquer.
 
 
-La '''configuration''' représente le socle de J2ME. Elle est constituée de la machine virtuelle et des librairies bas-niveaux. Il existe actuellement deux types de configurations : CDC et CLDC.
+La *configuration* représente le socle de J2ME. Elle est constituée de la machine virtuelle et des librairies bas-niveaux. Il existe actuellement deux types de configurations : CDC et CLDC.
 __CLDC__ ou Connected Limited Device Configuration est défini par les JSR 30 (CLDC 1.0) et JSR 139 (CLDC 1.1). Cette configuration est à destination des appareils à puissance modeste tels que téléphone cellulaire, organizer bas de gamme,... Les capacités de l'appareil sont généralement :
 
     * Un processeur 16 ou 32 bits avec une horloge à 16 MHz ou plus.
@@ -33,12 +33,12 @@ __CLDC__ ou Connected Limited Device Configuration est défini par les JSR 30 (C
     * Une faible consommation d'énergie.
     * Connection à certains type de réseaux, souvent sans fil, avec connection intermittente et bande passante limitée.
 
-L'élément principal de toutes application mobile CDLC se nomme une ''MIDlet'' (cf un peu plus loin pour de plus amples informations)
+L'élément principal de toutes application mobile CDLC se nomme une _MIDlet_ (cf un peu plus loin pour de plus amples informations)
 
 
 __CDC__ ou Connected Device Configuration est défini par les JSR 36 (CDC 1.0.1) et JSR 218 (CDC 1.1 in progress). CDC est à destination d'appareil possédant des processeurs 32 bits, 2 MO de RAM et 2,5 MO de ROM pour l'environnement. Ces appareils disposent aussi d'une connection au réseau. Ce sont des appareils tels que les PDA haut de gammes, décodeur télévision, ... 
 
-Le '''profil''' est une spécification détaillant une API. Il est basé sur et utilise une configuration. Le profil est nécessaire pour fournir un environnement de fonctionnement complet pour un type d'appareil donné. Le profil fourni généralement l'interface utilisateur, les méthodes d'entrées-sorties et le mécanisme de persistance pour un groupe vertical d'appareil. Il doit se suffir à lui même et ne pas nécessiter l'ajout d'autres classes java.
+Le *profil* est une spécification détaillant une API. Il est basé sur et utilise une configuration. Le profil est nécessaire pour fournir un environnement de fonctionnement complet pour un type d'appareil donné. Le profil fourni généralement l'interface utilisateur, les méthodes d'entrées-sorties et le mécanisme de persistance pour un groupe vertical d'appareil. Il doit se suffir à lui même et ne pas nécessiter l'ajout d'autres classes java.
 Toutefois certains profils peuvent être créés pour répondre à certaines capacités ou services d'appareils (RMI, multimédia,...). Un appareil peut donc supporter plusieurs profils.
 L'implémentation du profil est à la charge du fabricant de l'appareil qui porte la JVM sur son matériel. 
 
@@ -119,7 +119,7 @@ Il doit également il y avoir une commande "Quitter", qui lorsque l'on appuie de
 
 Voici une liste d'URL à visiter si vous voulez un peu plus d'information.
 
-'''Le''' site de référence : http://java.sun.com/javame/reference/apis.jsp  
+*Le* site de référence : http://java.sun.com/javame/reference/apis.jsp  
 FAQ de Developpez : http://java.developpez.com/faq/javame/ 
 
 Création de MIDlet: http://today.java.net/article/2005/02/07/j2me-tutorial-part-1-creating-midlets 
