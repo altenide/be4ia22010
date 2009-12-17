@@ -13,7 +13,7 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [TutorielTrac]
  * [TutorielSVN]
  * [TutorielJ2ME]
- * [TutorielClient/Serveur]
+ * [TutorielClientServeur]
  * [TestsUnitaires]
  * [DesignPatterns]
  * [TerminalMobile]
