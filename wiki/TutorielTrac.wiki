@@ -13,4 +13,4 @@ NB: tant que vous n'avez pas ajouté le lien (en faisant un Submit) sur une page
 
 Amusez vous bien, les premières tentatives sont plutôt frustrantes mais ça rentre assez vite.
 
-EDIT : Pour le nouveau wiki, l'aide se trouve ici : http://code.google.com/p/support/wiki/WikiSyntax disponible également dans la colonne de droite lors d'une création ou d'une édition d'article (cliquez sur "More examples")
+EDIT : *Pour le nouveau wiki*, l'aide se trouve ici : http://code.google.com/p/support/wiki/WikiSyntax disponible également dans la colonne de droite lors d'une création ou d'une édition d'article (cliquez sur "More examples")
