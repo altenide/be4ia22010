@@ -59,7 +59,7 @@ a. __Code source__
 Pour ne pas déroger aux traditions voici le merveilleux "Hello World!" propre à tout tutoriel qui se respecte. 
 Tout d'abord, créez un nouveau projet sur l'IDE de votre choix, puis ajouter une classe HelloMIDlet dans votre projet et enfin copiez ce petit programme.
 
-
+{{{
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 
@@ -105,7 +105,7 @@ public class HelloMIDlet extends MIDlet implements !CommandListener
         }
     }
 }
-
+}}}
 
 b. __Resultat__
 
