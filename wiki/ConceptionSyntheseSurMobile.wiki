@@ -1,7 +1,7 @@
 L'archive en pièce jointe sera mise à jour au fur et mesure.
 ===Liste des cas d'utilisations à traiter===
 
- * Recevoir Mission*_=> fini, par Arthur''''
+ * Recevoir Mission*_=> fini, par Arthur*_
  * Valider Ordre*_=> fini, par Arthur*_
  * Memoriser Mission Client *_=> en cours, par Sylvain*_
  * Memoriser Identification *_=> en cours, par Sylvain*_
