@@ -4,10 +4,15 @@ Ici on postera les différentes fonctionnalités que notre programme effectuera 
 
 = Fonctionnalités validées =
 ° Saisie d'un ordre côté serveur par un préparateur d'ordre
+
 ° Envoi d'un ordre sur un terminal mobile
+
 ° Possibilité d'un terminal de se loguer afin de s'identifier
+
 ° Capacité d'un terminal à demander un ordre au serveur
+
 ° Possibilité du terminal à acquitter un ordre
+
 ° Capacité d'un terminal de travailler à la fois en mode connecté et en mode non connecté s'il y a perte de signal
 
 = Suggestion de fonctionnalités =
