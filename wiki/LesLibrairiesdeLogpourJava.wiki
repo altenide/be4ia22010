@@ -1,4 +1,3 @@
-
 == Création et utilisation de log en Java ==
 
 Un log permettra de retrouver les erreurs ou le déroulement du programme après son exécution (ou plantage).
@@ -11,4 +10,5 @@ La plus réputée est Log4J, qu'on utilisera probablement si on choisi d'implém
 Quelques liens : 
 
 http://en.wikipedia.org/wiki/Java_logging_framework
+
 http://en.wikipedia.org/wiki/Log4j
