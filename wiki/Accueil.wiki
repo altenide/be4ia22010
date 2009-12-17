@@ -10,33 +10,33 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [SRS]
  * [PMP]
 == Tutoriels ==
- * [TutorielTrac]
- * [TutorielSVN]
- * [TutorielJ2ME]
- * [TutorielClientServeur]
- * [TestsUnitaires]
- * [DesignPatterns]
- * [TerminalMobile]
- * [LesLibrairiesdeLogpourJava]
- * [ReconnaissanceSynthesevocale]
+ * [TutorielTrac Tutoriel Trac]
+ * [TutorielSVN Tutoriel SVN]
+ * [TutorielJ2ME Tutoriel J2ME]
+ * [TutorielClientServeur Tutoriel Client/Serveur]
+ * [TestsUnitaires Tests Unitaires]
+ * [DesignPatterns Design patterns]
+ * [TerminalMobile Terminal Mobile]
+ * [LesLibrairiesdeLogpourJava Les Librairies de Log pour Java]
+ * [ReconnaissanceSynthesevocale Reconnaissance/Synthese Vocale]
 == Planning ==
  * [Planning]
 == Cookbook ==
 [http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
 == Comptes Rendu de Séances ==
- * [CompteRenduI]
- * [CompteRenduII]
- * [CompteRenduIII]
- * [CompteRenduIV]
+ * [CompteRenduI CR séance du 23/11/09]
+ * [CompteRenduII CR réunion du 30/11/09]
+ * [CompteRenduIII CR rencontre client du 03/12/09]
+ * [CompteRenduIV CR séance du 10/12/09]
 
 == Outils informatique ==
  * [Netbeans]
- * [VisualParadigm]
+ * [VisualParadigm Visual Paradigm]
 
 == Itération 1 ==
 === Conception ===
- * [ConceptionSyntheseSurMobile]
- * [ReconnaissanceVocale]
+ * [ConceptionSyntheseSurMobile Conception Synthese sur Mobile]
+ * [ReconnaissanceVocale Reconnaissance Vocale?]
 === Modélisation ordre coté client ===
- * [ModelisationCoteClient]
- * [PremiereAnalyseSequenceExecution]
+ * [ModelisationCoteClient Modélisation côté client]
+ * [PremiereAnalyseSequenceExecution Premiere analyse sequence execution]
