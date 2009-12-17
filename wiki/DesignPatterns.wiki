@@ -369,12 +369,13 @@ class ProxyExample
 }
 }}}
 Le programme affiche :
+{{{
 Chargement de HiRes_10MB_Photo1
 Affichage de  HiRes_10MB_Photo1
 Chargement de HiRes_10MB_Photo2
 Affichage de  HiRes_10MB_Photo2
 Affichage de  HiRes_10MB_Photo1
-
+}}}
 
 == 2.2.2 Adaptateur ==
 
@@ -630,6 +631,7 @@ class MementoExample
 }
 }}}
 Ce programme affiche :
+{{{
 Originator : état affecté à : State1
 Originator : état affecté à : State2
 Originator : sauvegarde dans le memento.
@@ -637,5 +639,4 @@ Originator : état affecté à : State3
 Originator : sauvegarde dans le memento.
 Originator : état affecté à : State4
 Originator : État après restauration : State3
-
-
+}}}
