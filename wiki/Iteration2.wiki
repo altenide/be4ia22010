@@ -2,4 +2,4 @@ Voici une première version de l'organisation de la deuxieme Itération. Je rapp
 
 ----
 
-[[Image(Itération2.pdf,nolink)]]
+https://www.etud.insa-toulouse.fr/trac/BE4IA2/attachment/wiki/Iteration2/It%C3%A9ration2.pdf
