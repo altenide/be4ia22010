@@ -24,7 +24,7 @@ https://www.etud.insa-toulouse.fr/~wiketudgei/forum/viewforum.php?f=10 ou http:/
 == Planning ==
  * [Planning]
 == Cookbook ==
-[http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
+ * [http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
 == Comptes Rendu de Séances ==
  * [CompteRenduI CR séance du 23/11/09]
  * [CompteRenduII CR réunion du 30/11/09]
