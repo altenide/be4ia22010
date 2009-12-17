@@ -20,7 +20,7 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [LesLibrairiesdeLogpourJava]
  * [ReconnaissanceSynthesevocale]
 == Planning ==
- * [planning]
+ * [Planning]
 == Cookbook ==
 [http://docs.google.com/View?id=dfk57dk7_1d73v8sdp J2ME]
 == Comptes Rendu de Séances ==
