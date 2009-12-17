@@ -10,15 +10,15 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [SRS]
  * [PMP]
 == Tutoriels ==
- * [Tutoriel Trac]
- * [Tutoriel SVN]
- * [Tutoriel J2ME]
- * [Tutoriel Client/Serveur]
- * [Tests Unitaires]
- * [Design patterns]
- * [Terminal Mobile]
- * [Les Librairies de log pour java]
- * [Reconnaissance/Synthese vocale]
+ * [TutorielTrac]
+ * [TutorielSVN]
+ * [TutorielJ2ME]
+ * [TutorielClient/Serveur]
+ * [TestsUnitaires]
+ * [DesignPatterns]
+ * [TerminalMobile]
+ * [LesLibrairiesdelogpourjava]
+ * [Reconnaissance/Synthesevocale]
 == Planning ==
  * [planning]
 == Cookbook ==
@@ -31,12 +31,12 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
 
 == Outils informatique ==
  * [Netbeans]
- * [Visual Paradigm]
+ * [VisualParadigm]
 
 == Itération 1 ==
 === Conception ===
- * [Conception synthese sur mobile]
- * [Reconnaissance vocale]
+ * [Conceptionsynthesesurmobile]
+ * [Reconnaissancevocale]
 === Modélisation ordre coté client ===
- * [Modélisation côté client]
- * [Premiere analyse sequence execution]
+ * [Modelisationcoteclient]
+ * [Premiereanalysesequenceexecution]
