@@ -17,7 +17,7 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [TestsUnitaires]
  * [DesignPatterns]
  * [TerminalMobile]
- * [LesLibrairiesdeLogpourJava ]
+ * [LesLibrairiesdeLogpourJava]
  * [ReconnaissanceSynthesevocale]
 == Planning ==
  * [planning]
