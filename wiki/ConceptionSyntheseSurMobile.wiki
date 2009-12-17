@@ -1,4 +1,4 @@
-L'archive en pièce jointe sera mise à jour au fur et mesure.[[BR]]
+L'archive en pièce jointe sera mise à jour au fur et mesure.
 ===Liste des cas d'utilisations à traiter===
 
  * Recevoir Mission'''''=> fini, par Arthur''''
