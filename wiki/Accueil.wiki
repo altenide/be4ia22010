@@ -38,7 +38,7 @@ https://www.etud.insa-toulouse.fr/~wiketudgei/forum/viewforum.php?f=10 ou http:/
 == Itération 1 ==
 === Conception ===
  * [ConceptionSyntheseSurMobile Conception Synthese sur Mobile]
- * [ReconnaissanceVocale Reconnaissance Vocale?]
+ * [ReconnaissanceVocale Reconnaissance Vocale]
 === Modélisation ordre coté client ===
  * [ModelisationCoteClient Modélisation côté client]
  * [PremiereAnalyseSequenceExecution Premiere analyse sequence execution]
