@@ -38,5 +38,5 @@ Afin de faciliter la communication au sein du groupe de travail, voici l'URL d'u
  * [ConceptionSyntheseSurMobile]
  * [ReconnaissanceVocale]
 === Modélisation ordre coté client ===
- * [Modelisationcoteclient]
+ * [ModelisationCoteClient]
  * [PremiereAnalyseSequenceExecution]
