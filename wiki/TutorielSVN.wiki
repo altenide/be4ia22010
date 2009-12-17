@@ -46,7 +46,7 @@ Pour les inconditionnels du terminal sous linux, inutile de préciser que toutes
       # effectuer un checkout : *svn checkout* !https://svn.etud.insa-toulouse.fr/BE4IA2/   
       # ajouter un fichier : *svn add* nouveaufichier.extension 
       # supprimer un fichier : *svn remove* vieuxtruc.php 
-      # valider ses modifications et les charger sur le serveur : *svn commit* [noms des fichiers] -m "commentaire" 
+      # valider ses modifications et les charger sur le serveur : *svn commit* [ noms des fichiers ] -m "commentaire" 
       # mettre à jour sa copie locale : *svn update* 
       # signaler la résolution d'un conflit : *svn resolved*
 
