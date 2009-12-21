@@ -1,0 +1,10 @@
+#A faire pendant les vacances
+
+SOAP + Web services : Sylvain
+Capture de la voix J2ME + quantifier le cout d’enregistrement de son élémentaire en octets : Fabien
+Interface graphique J2ME : Arthur
+Synthèse vocale en français : JC
+Reconnaissance vocale coté serveur : Sakari
+Base de données xml : Edith
+J2ME partie réseau : Aurélien
+CDC : Nicolas
