@@ -3,7 +3,7 @@
 SOAP + Web services : Sylvain <br/>
 Capture de la voix J2ME + quantifier le cout d’enregistrement de son élémentaire en octets : Fabien <br/>
 Interface graphique J2ME : Arthur <br/>
-[http://groups.google.fr/group/be4ia22010/web/solutions-de-synthse-vocales-en-franais?hl=fr Synthèse vocale en français] : JC <br/>
+[http://groups.google.fr/group/be4ia22010/web/solutions-de-synthse-vocales-en-franais?hl=fr Synthèse vocale en français] : JC & Mahdi<br/>
 Reconnaissance vocale coté serveur : Sakari <br/>
 Base de données xml : Edith <br/>
 J2ME partie réseau : Aurélien <br/>
