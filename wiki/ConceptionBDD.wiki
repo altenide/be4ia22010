@@ -1,4 +1,4 @@
-= Données relatives à la conception des bases de données (client et serveur)
+= Données relatives à la conception des bases de données (client et serveur) =
 
 Ebauche UML BDD:
 http://docs.google.com/Doc?docid=0Acl9wbC4FwNEZGQ3Y21iNHZfMmNodzl6Z2Q4&hl=en
