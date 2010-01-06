@@ -4,7 +4,8 @@
 
 http://docs.google.com/Doc?docid=0Acl9wbC4FwNEZGQ3Y21iNHZfMmNodzl6Z2Q4&hl=en
 
-* *Diagrammes (complets) de conceptions des 2 BDD* :
+
+ * *Diagrammes (complets) de conceptions des 2 BDD* :
 
 http://docs.google.com/Doc?docid=0Acl9wbC4FwNEZGQ3Y21iNHZfMTFnem5kZGZkZw&hl=en
 
