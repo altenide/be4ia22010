@@ -83,61 +83,6 @@ System.out.println("//////FIN EXTRACT REPONSE////////");
 
 
 
-    /**
-     * Cherche et extrait une réponse particuliere par son contenu
-     * @param rep contenu de la reponse a trouver
-     * @return la reponse voulue si trouvée, null si non
-     */
-    public ReponsePossible findReponse(String rep){
 
-
-        ReponsePossible reponse = null;
-        boolean found = false;
-
-
-        try {
-            this.goToStartDocument();
-            reponse = this.extractReponse();
-            parser.next();
-            parser.next();
-
-            int eventType = parser.getEventType();
-
-            //tant qu'on a pas trouvé l'ordre voulu et qu'il y en a encore...
-            while (!reponse.getReponse().equals(rep)&& found == true) {
-
-                //si on est sur un tag de début d'ordre
-                if (eventType == parser.START_TAG && parser.getName().equals("reponsePossible")) {
-                    reponse = this.extractReponse(); //on extrait l'ordre
-                    found = true; //on en a trouve un
-                } else {
-                    found = false;// si on a pas trouve d'ordre, on est au bout du fichier
-                }
-
-            }
-
-            //si on n'a pas trouve l'ordre
-            if (found == false) {
-                reponse = null; // on renvoie null
-            }
-
-        } catch (XmlPullParserException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return reponse;
-    }
-    
-
-
-    /*public boolean create(ReponsePossible obj) {
-    }
-
-    public boolean update(ReponsePossible obj) {
-    }
-
-    public boolean delete(ReponsePossible obj) {
-    }*/
+   
 }

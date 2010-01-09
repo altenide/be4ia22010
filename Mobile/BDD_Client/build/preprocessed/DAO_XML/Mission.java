@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package DAO_XML;
 
 import java.util.Vector;
@@ -31,17 +30,44 @@ public class Mission {
         ordres = null;
     }
 
-    public void initOrdres(){
+    public void initOrdres() {
         ordres = new Vector();
     }
 
-    public void addOrdre(Ordre o){
+    public void addOrdre(Ordre o) {
         ordres.add(o);
     }
 
+    /**
+     * Cherche et extrait un ordre particulier
+     * @param id identifiant de l'ordre à récupérer
+     * @return l'ordre voulu si trouvé, null si non
+     */
+    public Ordre findOrdre(int id) {
 
-    public String toString(){
-        return "Mission : "+idMission+" , "+etat+" , "+idOrdreCourant+" , "+destinataire+" , "+publie+" , "+date+" , "+ordres;
+        Ordre ordre = null;
+        int cpt = 0;
+        boolean found = false;
+
+        while (cpt != ordres.size()) {
+            ordre = (Ordre) ordres.get(cpt);
+            cpt++;
+
+            if (ordre.getIdOrdre() == id) {
+                found = true;
+                break;
+            }
+
+        }
+
+        if (found == false){
+            ordre = null;
+        }
+        
+        return ordre;
     }
-    
+
+    public String toString() {
+        return "Mission : " + idMission + " , " + etat + " , " + idOrdreCourant + " , " + destinataire + " , " + publie + " , " + date + " , " + ordres;
+    }
 }
