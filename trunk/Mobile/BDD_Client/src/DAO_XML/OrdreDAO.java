@@ -29,7 +29,7 @@ public class OrdreDAO {
         String name = " ", contenuOrdre, etat, fichierAudio = null;
         int idOrdre, eventType;
         boolean ordreFinal;
-System.out.println("//////EXTRACT ORDRE////////");
+        System.out.println("//////EXTRACT ORDRE////////");
 
         eventType = parser.getEventType();
 
@@ -47,7 +47,7 @@ System.out.println("//////EXTRACT ORDRE////////");
                 name = parser.getName();
             }
         }
-System.out.println("Debut Recherche d'ordre");
+        System.out.println("Debut Recherche d'ordre");
         //On extrait :
         contenuOrdre = parser.getAttributeValue(0);//le contenu de l'ordre
         etat = parser.getAttributeValue(1);//son etat
@@ -63,14 +63,14 @@ System.out.println("Debut Recherche d'ordre");
         //creation d'un ordre avec ces propriétés
         ordre = new Ordre(idOrdre, contenuOrdre, etat, ordreFinal);
         ordre.addFichierAudio(fichierAudio);
-System.out.println("Nouvel ordre cree");
+        System.out.println("Nouvel ordre cree");
 
         //Si demande, on extrait les reponses
         if (reponses == true) {
-System.out.println("Petit passage par là");
+            System.out.println("Petit passage par là");
             //on regarde si il y a des réponses au moins !
             if (!parser.isEmptyElementTag()) {
-System.out.println("PAS LA NORMALEMENT");
+                System.out.println("PAS LA NORMALEMENT");
                 eventType = parser.next();
                 eventType = parser.next();
 
@@ -127,8 +127,7 @@ System.out.println("PAS LA NORMALEMENT");
                         System.out.println("nom de la balise de fin :" + name);
                     }
                 }
-            }
-            else{
+            } else {
                 System.out.println("Y AVAIT PAS DE REPONSES!");
                 //SECTION DE TEST /////////////////
                 System.out.println("nom prochain tag:" + name);
@@ -145,11 +144,35 @@ System.out.println("PAS LA NORMALEMENT");
                 System.out.println("ordre seul, balise fin : attribut:" + val);
                 ////////////////////////////////
             }
+        } 
+        //Si on ne voulait pas les reponses
+        else {
+            //on se place sur la balise de fin de l'ordre
+            eventType = parser.getEventType();
+            name = " ";
+
+            //si la balise est une balise de fin, on recupere son nom
+            if (eventType == parser.END_TAG) {
+                System.out.println("Reponse:nom change");
+                name = parser.getName();
+            }
+            System.out.println("nom de la balise apres recup reponse :" + name);
+            while (eventType != parser.END_TAG || !name.equals("ordre")) {    //On cherche la 1ere balise de fin d'ordre
+                System.out.println("dans le while");
+                eventType = parser.next();
+
+                //si balise de fermeture, on récupère son nom
+                if (eventType == parser.END_TAG) {
+                    name = parser.getName();
+                    System.out.println("nom de la balise de fin :" + name);
+                }
+            }
+
         }
 
 
 
-System.out.println("//////FIN EXTRACT ORDRE////////");
+        System.out.println("//////FIN EXTRACT ORDRE////////");
         return ordre;
     }
 
@@ -166,60 +189,4 @@ System.out.println("//////FIN EXTRACT ORDRE////////");
             ex.printStackTrace();
         }
     }
-
-    /**
-     * Cherche et extrait un ordre particulier
-     * @param id identifiant de l'ordre à récupérer
-     * @param reponses true si on veut egalement extraire les reponses correspondantes
-     * @return l'ordre voulu si trouvé, null si non
-     */
-    public Ordre findOrdre(int id, boolean reponses) {
-
-        Ordre ordre = null;
-        boolean found = false;
-
-
-        try {
-            this.goToStartDocument();
-            ordre = this.extractOrdre(reponses);
-            parser.next();
-            parser.next();
-
-            int eventType = parser.getEventType();
-
-            //tant qu'on a pas trouvé l'ordre voulu et qu'il y en a encore...
-            while (ordre.getIdOrdre() != id && found == true) {
-
-                //si on est sur un tag de début d'ordre
-                if (eventType == parser.START_TAG && parser.getName().equals("ordre")) {
-                    ordre = this.extractOrdre(reponses); //on extrait l'ordre
-                    found = true; //on en a trouve un
-                } else {
-                    found = false;// si on a pas trouve d'ordre, on est au bout du fichier
-                }
-
-            }
-
-            //si on n'a pas trouve l'ordre
-            if (found == false) {
-                ordre = null; // on renvoie null
-            }
-
-        } catch (XmlPullParserException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        
-        return ordre;
-    }
-    /* public boolean create(Ordre obj) {
-    }
-
-    public boolean update(Ordre obj) {
-    }
-
-    public boolean delete(Ordre obj) {
-    }*/
 }

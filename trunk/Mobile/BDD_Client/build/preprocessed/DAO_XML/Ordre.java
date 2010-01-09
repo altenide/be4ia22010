@@ -49,8 +49,6 @@ public class Ordre {
         return ordreFinal;
     }
 
-    
-
     public void addReponse(ReponsePossible rep) {
         reponses.add(rep);
     }
@@ -59,16 +57,39 @@ public class Ordre {
         this.fichierAudio = fichier;
     }
 
-    public String toString() {
-        return "Ordre : "+idOrdre+", "+contenu+", "+etat+", "+reponses+", "+ordreFinal+", "+fichierAudio+"\n";
-    }
-
-    public void initReponses()
-    {
+    public void initReponses() {
         reponses = new Vector();
     }
 
+    /**
+     * Cherche et extrait une réponse particuliere par son contenu
+     * @param rep contenu de la reponse a trouver
+     * @return la reponse voulue si trouvée, null si non
+     */
+    public ReponsePossible findReponse(String rep) {
 
+        ReponsePossible reponse = null;
+        int cpt = 0;
+        boolean found = false;
 
+        while (cpt != reponses.size()) {
+            reponse = (ReponsePossible) reponses.get(cpt);
+            cpt++;
 
+            if (reponse.getReponse().equals(rep)) {
+                found = true;
+                break;
+            }
+
+        }
+
+        if (found == false){
+            reponse = null;
+        }
+        return reponse;
+    }
+
+    public String toString() {
+        return "Ordre : " + idOrdre + ", " + contenu + ", " + etat + ", " + reponses + ", " + ordreFinal + ", " + fichierAudio + "\n";
+    }
 }

@@ -1,6 +1,9 @@
 package GestionBDD;
 
 import DAO_XML.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Classe de gestion du workflow sur le mobile
@@ -16,19 +19,24 @@ public class Workflow {
      */
     public int prochainOrdre(int id, String rep) {
 
-        XMLDAOFactory factory = new XMLDAOFactory();
-        OrdreDAO ordreDao = factory.getOrdreDAO();
-        ReponsePossibleDAO reponseDao = factory.getReponsePossibleDAO();
-        Ordre monOrdre = ordreDao.findOrdre(id, true);
+        int retour = -5;
 
-        if (monOrdre != null) {
-            return reponseDao.findReponse(rep).getIdOrdreSuivant();
-        } else {
-            return -5;
+        try {
+            XMLDAOFactory factory = new XMLDAOFactory();
+            MissionDAO mDao = factory.getMissionDAO();
+            Ordre monOrdre = mDao.extractMission(true, true).findOrdre(id);
+            if (monOrdre != null) {
+                retour = monOrdre.findReponse(rep).getIdOrdreSuivant();
+            } else {
+                retour = -5;
+            }
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-
+        return retour;
     }
-    
-    
-    
 }
