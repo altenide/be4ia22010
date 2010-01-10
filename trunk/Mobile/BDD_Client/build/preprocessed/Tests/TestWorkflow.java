@@ -4,7 +4,7 @@
  */
 package Tests;
 
-import GestionMobile.*;
+import GestionBDD.*;
 
 /**
  *
