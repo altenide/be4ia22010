@@ -5,9 +5,12 @@
 package DAO_XML;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
+import java.io.PrintWriter;
+import org.kxml2.kdom.*;
+import org.xmlpull.v1.*;
 
 /**
  *
@@ -166,6 +169,166 @@ public class MissionDAO {
         return mission;
     }
 
-    public void MiseAJourMission() {
+    //Place le parseur au début du doc XML
+    public void goToStartDocument() {
+        try {
+            parser.setInput(new FileReader("C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml"));
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void MiseAJourOrdreCourant(int id) {
+        String name = "";
+
+
+
+        try {
+
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
+            factory.setNamespaceAware(true);
+
+
+
+
+            Node node = new Node();
+
+            this.goToStartDocument();
+
+
+            //on cherche la première balise <Mission>
+            int eventType = parser.getEventType();
+
+            if (eventType == parser.START_TAG) {
+                name = parser.getName();
+            }
+
+            while (!name.equals("mission") && parser.getEventType() != parser.END_DOCUMENT) {
+                eventType = parser.next();
+                //si balise d'ouverture, on récupère son nom
+                if (eventType == parser.START_TAG) {
+                    name = parser.getName();
+                }
+            }
+
+
+            node.parse(parser);
+            Element element = new Element();
+            element = (Element) node.getElement(0);
+            element.setAttribute("", "idOrdreCoutant", String.valueOf(id));
+
+
+            //On reecrit le nouveau fichier
+            XmlSerializer serializer = factory.newSerializer();
+            FileOutputStream file = new FileOutputStream("C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml");
+            serializer.setOutput(new PrintWriter(file));
+
+
+            //<?xml version="1.0" encoding="ASCII"?>
+            //<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
+
+            serializer.startDocument("ASCII", null);
+            serializer.text("\n");
+            serializer.startTag(null, "ordre:DocumentRoot");
+            serializer.attribute(null, "xmi:version", "2.0");
+            serializer.attribute(null, "xmlns:xmi", "http://www.omg.org/XMI");
+            serializer.attribute(null, "xmlns:ordre", "http://www.example.org/Ordre");
+            serializer.text("\n");
+
+            element.write(serializer);
+            serializer.text("\n");
+
+            serializer.endTag(null, "ordre:DocumentRoot");
+
+            serializer.endDocument();
+
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void MiseAJourEtat(String etat) {
+        String name = "";
+
+
+
+        try {
+
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+            factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
+            factory.setNamespaceAware(true);
+
+
+
+
+            Node node = new Node();
+
+            this.goToStartDocument();
+
+
+            //on cherche la première balise <Mission>
+            int eventType = parser.getEventType();
+
+            if (eventType == parser.START_TAG) {
+                name = parser.getName();
+            }
+
+            while (!name.equals("mission") && parser.getEventType() != parser.END_DOCUMENT) {
+                eventType = parser.next();
+                //si balise d'ouverture, on récupère son nom
+                if (eventType == parser.START_TAG) {
+                    name = parser.getName();
+                }
+            }
+
+
+            node.parse(parser);
+            Element element = new Element();
+            element = (Element) node.getElement(0);
+            element.setAttribute("", "etat", etat);
+
+
+            //On reecrit le nouveau fichier
+            XmlSerializer serializer = factory.newSerializer();
+            FileOutputStream file = new FileOutputStream("C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml");
+            serializer.setOutput(new PrintWriter(file));
+
+
+            //<?xml version="1.0" encoding="ASCII"?>
+            //<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
+
+            serializer.startDocument("ASCII", null);
+            serializer.text("\n");
+            serializer.startTag(null, "ordre:DocumentRoot");
+            serializer.attribute(null, "xmi:version", "2.0");
+            serializer.attribute(null, "xmlns:xmi", "http://www.omg.org/XMI");
+            serializer.attribute(null, "xmlns:ordre", "http://www.example.org/Ordre");
+            serializer.text("\n");
+
+            element.write(serializer);
+            serializer.text("\n");
+
+            serializer.endTag(null, "ordre:DocumentRoot");
+
+            serializer.endDocument();
+
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        }
+
     }
 }

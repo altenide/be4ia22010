@@ -16,7 +16,7 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 public class ReponsePossibleDAO {
 
-    XmlPullParser parser;
+    private XmlPullParser parser;
 
     public ReponsePossibleDAO(XmlPullParser parser) {
         this.parser = parser;

@@ -12,7 +12,7 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 public class TestBase {
 
-    //Creation d'un parseur, d'un objet ReponsePossibleDAO, extraction des différents éléments
+    
     public static void main(String args[]) {
 
         XMLDAOFactory factory = new XMLDAOFactory();
@@ -23,7 +23,11 @@ public class TestBase {
         //test.testExtractMission(factory);
 
         //test.testFindOrdre(factory);
-        test.testFindReponse(factory);
+        //test.testFindReponse(factory);
+
+        //test.testMiseAJourOrdreCourant(factory);
+        //test.testMiseAJourEtatMission(factory);
+        test.testMiseAJourEtatOrdre(factory);
 
 
 
@@ -120,7 +124,7 @@ public class TestBase {
     private void testFindOrdre(XMLDAOFactory factory) {
 
         Ordre ordre;
-        
+
         try {
             System.out.println("test sans reponses :");
             factory.goToStartDocument();
@@ -131,6 +135,67 @@ public class TestBase {
             factory.goToStartDocument();
             ordre = factory.getMissionDAO().extractMission(true, true).findOrdre(1);
             System.out.println(ordre);
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void testMiseAJourOrdreCourant(XMLDAOFactory factory) {
+        try {
+            MissionDAO mDao = factory.getMissionDAO();
+            mDao.MiseAJourOrdreCourant(7);
+            factory.goToStartDocument();
+            Mission newMission = mDao.extractMission(false, false);
+
+            System.out.println("Valeur theorique du nouvel ordre courant de la mission : 7");
+            System.out.println("Attributs de la mission :");
+            System.out.println(newMission);
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+    }
+
+    public void testMiseAJourEtatMission(XMLDAOFactory factory) {
+        try {
+            MissionDAO mDao = factory.getMissionDAO();
+            mDao.MiseAJourEtat("MisAJour!");
+            factory.goToStartDocument();
+            Mission newMission = mDao.extractMission(false, false);
+
+            System.out.println("Valeur theorique du nouvel etat de la mission : MisAJour!");
+            System.out.println("Attributs de la mission :");
+            System.out.println(newMission);
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+    }
+
+    public void testMiseAJourEtatOrdre(XMLDAOFactory factory) {
+        try {
+            OrdreDAO oDao = factory.getOrdreDAO();
+            oDao.miseAJourEtat(1, "Modifie!!");
+            factory.goToStartDocument();
+            Mission newMission = factory.getMissionDAO().extractMission(true, false);
+
+            System.out.println("Valeur theorique du nouvel etat de l'ordre id=1 de la mission : Modifie!!");
+            System.out.println("Detailss de la mission :");
+            System.out.println(newMission);
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
