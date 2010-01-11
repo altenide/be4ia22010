@@ -5,13 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Vector;
 
 import ctrl.Controleur;
 
 public class IHM extends Frame implements ActionListener{
 
     TextField loginTextField, mdpText;
-    Label mdpLabel, lblInfo, loginLabel;
+    Label mdpLabel, lblInfo, loginLabel,ordreLabel;
     Choice ReponceChoice;
     Button ValiderButton;
 
@@ -46,8 +47,10 @@ public class IHM extends Frame implements ActionListener{
         add(connexionButton);
 		connexionButton.addActionListener(this);
         
-		lblInfo = new Label("");
-		add(lblInfo);
+		ordreLabel = new Label("ordre");
+		add(ordreLabel);
+
+
 		
 		ReponceChoice = new Choice();
         ReponceChoice.addItem("Reponses");
@@ -56,6 +59,9 @@ public class IHM extends Frame implements ActionListener{
         ValiderButton = new Button("Valider Ordre");
         add(ValiderButton);
         
+		lblInfo = new Label("");
+		add(lblInfo);
+
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -80,7 +86,11 @@ public class IHM extends Frame implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if (arg0.getSource() == connexionButton){
+			////////////////////Gestion de l'ordre////////////////
 			
+			ordreLabel.setText(ctrl.Ordre(1));
+			//AddReponses(ctrl.ReponsePossible(1), ReponceChoice);
+			////////////////////////////////////////
 			System.out.println("Clic");
 			String login = loginTextField.getText();
 			String mdp = mdpLabel.getText();
@@ -90,7 +100,18 @@ public class IHM extends Frame implements ActionListener{
 			else lblInfo.setText("Erreur de saisie");
 		}
 	}
+	
+	private void AddReponses (Vector reponse,Choice choix){
+		//Pas disponible pour cette version de java
+		//for (String R : reponse.listIterator()){
+		//}
+		for (int i =0 ; i< reponse.size();i++){
+			choix.add((String)reponse.get(i));
+		}
+	}
 }
+
+
 
 class IHMawtLayout implements LayoutManager {
 
@@ -138,7 +159,10 @@ class IHMawtLayout implements LayoutManager {
         if (c.isVisible()) {c.setBounds(insets.left+8,insets.top+112,184,80);}
         c = parent.getComponent(7);
         if (c.isVisible()) {c.setBounds(insets.left+200,insets.top+112,72,24);}
-        
+        c = parent.getComponent(8);
+        if (c.isVisible()) {c.setBounds(insets.left+88,insets.top+192,72,24);}
+        //c = parent.getComponent(9);
+        //if (c.isVisible()) {c.setBounds(insets.left+88,insets.top+192,72,24);}
 
     }
 }

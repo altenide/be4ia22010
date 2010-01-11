@@ -1,3 +1,4 @@
+import GestionMobile.FichierXML;
 import network.TCPClient;
 import ctrl.Controleur;
 import gui.IHM;
@@ -12,20 +13,21 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		int port = 4242;
-		String host = "Dell";
+		String host = "forgefeu81-PC";
 		
 		ctrl.Controleur ctrl = new Controleur();
 		IHM ihm = new IHM();
+		FichierXML fichier = new FichierXML();
 		TCPClient tcpC = new TCPClient(port, host, ctrl);
 				
 		ctrl.setIHM(ihm);
 		ctrl.setTCPClient(tcpC);
-		
+		ctrl.setXml(fichier);
 		ihm.setControleur(ctrl);
 		
 		ihm.setVisible(true);
-		tcpC.connect();
-		tcpC.start();
+		//tcpC.connect();
+		//tcpC.start();
 	}
 
 }
