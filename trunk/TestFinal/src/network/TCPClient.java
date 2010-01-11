@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import ctrl.Controleur;
+
 import gui.IHM;
 
 /**
@@ -19,7 +21,8 @@ import gui.IHM;
  */
 public class TCPClient extends Thread {
 
-    private IHM main;
+    //private IHM main;
+    private Controleur ctrl = null; 
 
     private int port;
     private String host;
@@ -28,39 +31,32 @@ public class TCPClient extends Thread {
     private InputStream is;
     private byte[] sReaded;
 
-    public TCPClient(int port, String host, IHM m) {
+    public TCPClient(int port, String host, Controleur m) {
         this.port = port;
         this.host = host;
-        main = m;
+        ctrl = m;
 
         sReaded = new byte[512];
-
-        try {
-            soc = new Socket(host, port);
-            os = new BufferedOutputStream(soc.getOutputStream());
-            is = new BufferedInputStream(soc.getInputStream());
-        } catch (IOException ex) {
-            main.showInfo("ProblÃ¨me de connexion");
-            ex.printStackTrace();
-        }
     }
 
     public TCPClient(int port, String host) {
         this.port = port;
         this.host = host;
-        main = null;
-
+        
         sReaded = new byte[512];
+    }
 
-        try {
+    public void connect(){
+    	try {
             soc = new Socket(host, port);
             os = new BufferedOutputStream(soc.getOutputStream());
             is = new BufferedInputStream(soc.getInputStream());
         } catch (IOException ex) {
+            ctrl.showInfo("Problème de connexion");
             ex.printStackTrace();
         }
     }
-
+    
     public void run() {
         String msg;
 
@@ -73,8 +69,8 @@ public class TCPClient extends Thread {
             msg = new String(sReaded).trim();
             System.out.println("Reception: sReaded = '" + new String(sReaded).trim() + "' msg = '" + msg + "'");
 
-            if (main != null)
-                main.refreshMsg(msg);
+            if (ctrl != null)
+                ctrl.refreshMsg(msg);
         }
         //System.out.println("sortie de la boucle de reception");
     }
@@ -102,4 +98,8 @@ public class TCPClient extends Thread {
 
         return msg;
     }
+    
+	public void setControleur(Controleur ctrl){
+		this.ctrl = ctrl;
+	}
 }
