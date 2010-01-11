@@ -3,6 +3,7 @@ package ctrl;
 import java.util.Vector;
 
 import GestionMobile.FichierXML;
+import GestionMobile.Workflow;
 import gui.IHM;
 import network.TCPClient;
 
@@ -11,6 +12,7 @@ public class Controleur {
 	private IHM ihm;
 	private TCPClient tcpC; 
 	private FichierXML xml;
+	private Workflow worflow;
 	
 	public Controleur(){
 		
@@ -19,7 +21,7 @@ public class Controleur {
 	public FichierXML getXml() {
 		return xml;
 	}
-
+	
 	public void setXml(FichierXML xml) {
 		this.xml = xml;
 	}
@@ -39,6 +41,13 @@ public class Controleur {
 		reponse=xml.ChoixPossible(id);
 		return reponse;
 	}
+	
+	public int OrdreSuivant ( int idCourant, String reponse){
+		int ordresuivant;
+		ordresuivant=worflow.prochainOrdre(idCourant, reponse);
+		return ordresuivant;
+		
+	}
 	/////////////////////////////////////////////////////////////////////
 	
 	public void setTCPClient(TCPClient tcpC){
@@ -55,6 +64,9 @@ public class Controleur {
 	
 	public void envoyerLog(String login, String mdp){
 		tcpC.send("login;:!"+login+";:!mdp;:!"+mdp);
+	}
+	public void setWorflow(Workflow worflow) {
+		this.worflow = worflow;
 	}
 	
 }

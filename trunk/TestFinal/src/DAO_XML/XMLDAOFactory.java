@@ -21,6 +21,7 @@ public class XMLDAOFactory {
     private MissionDAO missionDAO;
     private OrdreDAO ordreDAO;
     private ReponsePossibleDAO reponsePossibleDAO;
+    private String path= "";//"My Documents/GrpA2/";
 
     public XMLDAOFactory() {
 
@@ -33,7 +34,7 @@ public class XMLDAOFactory {
             parser = factory.newPullParser();
 
             System.out.println("ouverture fichier:");
-            parser.setInput(new FileReader("XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
             //U:/NetBeansProjects/BE_POO/src/fichier/XMLDatabase.xml
             //"C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml"
             System.out.println("opened");
