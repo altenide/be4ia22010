@@ -12,6 +12,8 @@ public class IHM extends Frame implements ActionListener{
 
     TextField loginTextField, mdpText;
     Label mdpLabel, lblInfo, loginLabel;
+    Choice ReponceChoice;
+    Button ValiderButton;
 
     Button connexionButton;
     
@@ -38,7 +40,7 @@ public class IHM extends Frame implements ActionListener{
         add(mdpLabel);
 
         mdpText = new TextField("");
-        add(mdpText);
+        add(mdpText);     
 
         connexionButton = new Button("Connexion");
         add(connexionButton);
@@ -46,6 +48,13 @@ public class IHM extends Frame implements ActionListener{
         
 		lblInfo = new Label("");
 		add(lblInfo);
+		
+		ReponceChoice = new Choice();
+        ReponceChoice.addItem("Reponses");
+        add(ReponceChoice);
+
+        ValiderButton = new Button("Valider Ordre");
+        add(ValiderButton);
         
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -125,6 +134,11 @@ class IHMawtLayout implements LayoutManager {
         if (c.isVisible()) {c.setBounds(insets.left+208,insets.top+40,72,24);}
         c = parent.getComponent(5);
         if (c.isVisible()) {c.setBounds(insets.left+8,insets.top+72, 200,24);}
+        c = parent.getComponent(6);
+        if (c.isVisible()) {c.setBounds(insets.left+8,insets.top+112,184,80);}
+        c = parent.getComponent(7);
+        if (c.isVisible()) {c.setBounds(insets.left+200,insets.top+112,72,24);}
+        
 
     }
 }
