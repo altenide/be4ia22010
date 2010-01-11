@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tests;
+package testBase;
 
 import DAO_XML.Mission;
 import DAO_XML.Ordre;
