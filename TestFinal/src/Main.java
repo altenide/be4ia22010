@@ -1,4 +1,5 @@
 import GestionMobile.FichierXML;
+import GestionMobile.Workflow;
 import network.TCPClient;
 import ctrl.Controleur;
 import gui.IHM;
@@ -19,10 +20,11 @@ public class Main {
 		IHM ihm = new IHM();
 		FichierXML fichier = new FichierXML();
 		TCPClient tcpC = new TCPClient(port, host, ctrl);
-				
+		Workflow worflow = new Workflow();		
 		ctrl.setIHM(ihm);
 		ctrl.setTCPClient(tcpC);
 		ctrl.setXml(fichier);
+		ctrl.setWorflow(worflow);
 		ihm.setControleur(ctrl);
 		
 		ihm.setVisible(true);

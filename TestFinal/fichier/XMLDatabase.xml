@@ -13,6 +13,6 @@
       <reponsePossible reponse="Y a un mur" ordreSuivant="0" idReponse="2" />
       <reponsePossible reponse="Fin" ordreSuivant="0" idReponse="3" />
     </ordre>
-    <ordre contenu="FinMission" etat="NonAtteint" ordrefinal="false" fichierAudio="./audioFinOrdre0" idOrdre="0" />
+    <ordre contenu="FinMission" etat="NonAtteint" ordrefinal="false" fichierAudio="./audioFinOrdre0" idOrdre="2" />
   </mission>
 </ordre:DocumentRoot>

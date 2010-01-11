@@ -8,11 +8,11 @@
       <reponsePossible reponse="Fin" ordreSuivant="0" idReponse="3" />
     </ordre>
     <ordre contenu="'Aller tout gauche" etat="Modifie!!" ordrefinal="false" fichierAudio="./audioOrdreid1" idOrdre="1">
-      <reponsePossible reponse="Oui" ordreSuivant="2" idReponse="0" />
-      <reponsePossible reponse="Non" ordreSuivant="2" idReponse="1" />
-      <reponsePossible reponse="Y a un mur" ordreSuivant="0" idReponse="2" />
-      <reponsePossible reponse="Fin" ordreSuivant="0" idReponse="3" />
+      <reponsePossible reponse="Oui" ordreSuivant="-2" idReponse="0" />
+      <reponsePossible reponse="Non" ordreSuivant="-2" idReponse="1" />
+      <reponsePossible reponse="Y a un mur" ordreSuivant="-2" idReponse="2" />
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="3" />
     </ordre>
-    <ordre contenu="FinMission" etat="NonAtteint" ordrefinal="false" fichierAudio="./audioFinOrdre0" idOrdre="0" />
+    <ordre contenu="FinMission" etat="NonAtteint" ordrefinal="false" fichierAudio="./audioFinOrdre0" idOrdre="-2" />
   </mission>
 </ordre:DocumentRoot>
