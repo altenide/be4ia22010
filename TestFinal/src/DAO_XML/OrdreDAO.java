@@ -18,6 +18,7 @@ import org.xmlpull.v1.XmlSerializer;
 public class OrdreDAO {
 
     private XmlPullParser parser;
+     private String path = "";
 
     protected OrdreDAO(XmlPullParser parser) {
         this.parser = parser;
@@ -34,7 +35,6 @@ public class OrdreDAO {
         String name = " ", contenuOrdre, etat, fichierAudio = null;
         int idOrdre, eventType;
         boolean ordreFinal;
-        System.out.println("//////EXTRACT ORDRE////////");
 
         eventType = parser.getEventType();
 
@@ -53,7 +53,6 @@ public class OrdreDAO {
             }
         }
 
-        System.out.println("Debut Recherche d'ordre");
         //On extrait :
         contenuOrdre = parser.getAttributeValue(0);//le contenu de l'ordre
         etat = parser.getAttributeValue(1);//son etat
@@ -69,42 +68,24 @@ public class OrdreDAO {
         //creation d'un ordre avec ces propriétés
         ordre = new Ordre(idOrdre, contenuOrdre, etat, ordreFinal);
         ordre.addFichierAudio(fichierAudio);
-        System.out.println("Nouvel ordre cree");
 
         //Si demande, on extrait les reponses
         if (reponses == true) {
-            System.out.println("Petit passage par là");
+
             //on regarde si il y a des réponses au moins !
             if (!parser.isEmptyElementTag()) {
-                System.out.println("PAS LA NORMALEMENT");
                 eventType = parser.next();
                 eventType = parser.next();
 
-                //SECTION DE TESTS PR DEBUG ////////////////////
-                if (eventType == parser.END_TAG) {
-                    System.out.println("reponse :end tag");
-                }
-                if (eventType == parser.START_TAG) {
-                    System.out.println("reponse :start tag");
-                }
-                if (eventType == parser.TEXT) {
-                    System.out.println("reponse :text");
-                    System.out.println("debut txt/" + parser.getText() + "/end txt");
-                }
-
-                ///////////////////////////////////////////////
-
-
+                
                 if (parser.getEventType() == parser.START_TAG && parser.getName().equals("reponsePossible")) {
                     name = parser.getName();
-                    System.out.println("NOM RECUPERE");
                     ordre.initReponses();
                 }
 
                 //si c'est le cas on les récupère tant qu'il y en a
                 while (name.equals("reponsePossible")) {
 
-                    System.out.println("UNE REPONSE AJOUTEE");
                     ReponsePossibleDAO reponseDAO = new ReponsePossibleDAO(parser);
                     ordre.addReponse(reponseDAO.extractReponse());
                     eventType = parser.next();
@@ -119,36 +100,19 @@ public class OrdreDAO {
                 eventType = parser.getEventType();
 
                 if (eventType == parser.END_TAG) {
-                    System.out.println("Reponse:nom change");
                     name = parser.getName();
                 }
-                System.out.println("nom de la balise apres recup reponse :" + name);
                 while (eventType != parser.END_TAG || !name.equals("ordre")) {    //On cherche la 1ere balise de fin d'ordre
-                    System.out.println("dans le while");
                     eventType = parser.next();
 
                     //si balise de fermeture, on récupère son nom
                     if (eventType == parser.END_TAG) {
                         name = parser.getName();
-                        System.out.println("nom de la balise de fin :" + name);
                     }
                 }
-            } else {
-                System.out.println("Y AVAIT PAS DE REPONSES!");
-                //SECTION DE TEST /////////////////
-                System.out.println("nom prochain tag:" + name);
-                if (eventType == parser.END_TAG) {
-                    System.out.println("ordre seul, balise fin :end tag");
-                }
-                if (eventType == parser.START_TAG) {
-                    System.out.println("ordre seul, balise fin :start tag2");
-                }
-                if (eventType == parser.TEXT) {
-                    System.out.println("ordre seul, balise fin :text2");
-                }
-                String val = parser.getAttributeValue(0);
-                System.out.println("ordre seul, balise fin : attribut:" + val);
-                ////////////////////////////////
+            }
+            else {
+                
             }
         } //Si on ne voulait pas les reponses
         else {
@@ -158,26 +122,19 @@ public class OrdreDAO {
 
             //si la balise est une balise de fin, on recupere son nom
             if (eventType == parser.END_TAG) {
-                System.out.println("Reponse:nom change");
                 name = parser.getName();
-            }
-            System.out.println("nom de la balise apres recup reponse :" + name);
+            };
             while (eventType != parser.END_TAG || !name.equals("ordre")) {    //On cherche la 1ere balise de fin d'ordre
-                System.out.println("dans le while");
                 eventType = parser.next();
 
                 //si balise de fermeture, on récupère son nom
                 if (eventType == parser.END_TAG) {
                     name = parser.getName();
-                    System.out.println("nom de la balise de fin :" + name);
                 }
             }
 
         }
 
-
-
-        System.out.println("//////FIN EXTRACT ORDRE////////");
         return ordre;
     }
 
@@ -187,7 +144,7 @@ public class OrdreDAO {
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader("XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
@@ -228,7 +185,6 @@ public class OrdreDAO {
 
                 //on teste son id
                 int valId = Integer.parseInt(parser.getAttributeValue(4));
-                System.out.println(valId);
                 if (valId == idOrdre) {
                     found = true; //si c'est le bon, on s'arrête
 
@@ -250,7 +206,6 @@ public class OrdreDAO {
                         //si balise d'ouverture, on récupère son nom
                         if (eventType == parser.START_TAG) {
                             name = parser.getName();
-                            System.out.println("Nouvelle balise d'ouverture");
                         }
                     }
                     //si on est a la fin du document, on arrete
@@ -298,7 +253,6 @@ public class OrdreDAO {
                 node.parse(parser);
                 Element mission = new Element();
                 mission = node.getElement(0);
-                System.out.println("Attribut mission = " + mission.getAttributeValue(0));
 
                 ////////////////////////////////////////////////////////
                 //on remplace l'ancien ordre par le nouveau mis a jour//
@@ -315,7 +269,7 @@ public class OrdreDAO {
                 factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
                 factory.setNamespaceAware(true);
                 XmlSerializer serializer = factory.newSerializer();
-                FileOutputStream file = new FileOutputStream("XMLDatabase.xml");
+                FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
                 serializer.setOutput(new PrintWriter(file));
 
 

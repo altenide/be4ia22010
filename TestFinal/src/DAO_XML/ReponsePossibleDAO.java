@@ -17,13 +17,12 @@ import org.xmlpull.v1.XmlPullParserException;
 public class ReponsePossibleDAO {
 
     private XmlPullParser parser;
+    private String path = "";
 
     protected ReponsePossibleDAO(XmlPullParser parser) {
         this.parser = parser;
     }
 
-
-    
     public ReponsePossible extractReponse() throws XmlPullParserException, IOException {
 
         ReponsePossible reponse;
@@ -32,7 +31,6 @@ public class ReponsePossibleDAO {
         String contenu;
 
 
-System.out.println("//////EXTRACT REPONSE////////");
         int eventType = parser.getEventType();
         //si balise d'ouverture, on récupère son nom
         if (eventType == parser.START_TAG) {
@@ -54,35 +52,28 @@ System.out.println("//////EXTRACT REPONSE////////");
         idOrdreSuivant = Integer.parseInt(parser.getAttributeValue(1));
         //on extrait l'id de la reponse
         id = Integer.parseInt(parser.getAttributeValue(2));
-        
+
 
         parser.next(); //on se place sur la balise </ReponsePossible>
 
         //on construit la reponse a partir de ces donnees
         reponse = new ReponsePossible(id, contenu, idOrdreSuivant);
-System.out.println("//////FIN EXTRACT REPONSE////////");
+
         return reponse;
 
     }
 
-
-
-     /**
+    /**
      * Place le parseur au début du doc XML
      * necessaire avant tout appel exterieur a une methode extract
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader("XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
     }
-
-
-
-
-   
 }
