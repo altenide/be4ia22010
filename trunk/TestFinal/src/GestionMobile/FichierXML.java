@@ -52,11 +52,8 @@ public class FichierXML {
 
         MissionDAO mDao = factory.getMissionDAO();
         try {
-            System.out.println("Appel a extractMission:");
             Mission mission = mDao.extractMission(true, true);
-            System.out.println("Appel a findOrdre:");
             ordre = mission.findOrdre(idOrdre);
-            System.out.println("findOrdre termine");
 
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
@@ -69,9 +66,7 @@ public class FichierXML {
         int i = 0;
         int x = 0;
 
-        System.out.println("recuperation des reponses");
         Vector tabReponses = ordre.getReponses();
-        System.out.println("Contruction du vecteur");
         if ( tabReponses != null){
         while (i < tabReponses.size()) {
             repP = (ReponsePossible) tabReponses.get(i);

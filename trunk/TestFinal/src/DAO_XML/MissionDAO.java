@@ -19,6 +19,7 @@ import org.xmlpull.v1.*;
 public class MissionDAO {
 
     private XmlPullParser parser;
+    private String path = "";
 
     protected MissionDAO(XmlPullParser parser) {
         this.parser = parser;
@@ -50,22 +51,22 @@ public class MissionDAO {
             }
         }
 
-        //SECTION DE TEST /////////////////
+        /*//SECTION DE TEST /////////////////
 
         if (eventType == parser.END_TAG) {
-            System.out.println("end tag0");
-            System.out.println("nom tag0:" + name);
+        System.out.println("end tag0");
+        System.out.println("nom tag0:" + name);
         }
         if (eventType == parser.START_TAG) {
-            System.out.println("start tag0");
-            System.out.println("nom tag0:" + name);
+        System.out.println("start tag0");
+        System.out.println("nom tag0:" + name);
         }
         if (eventType == parser.TEXT) {
-            System.out.println("text0");
+        System.out.println("text0");
         }
         String val = parser.getAttributeValue(0);
         System.out.println("attribut prochain tag :" + val);
-        ////////////////////////////////
+        ////////////////////////////////*/
 
         //On récupère les éléments de la mission
         etat = parser.getAttributeValue(0); //etat de la mission
@@ -85,19 +86,15 @@ public class MissionDAO {
         if (ordres == true) {
 
             name = parser.getName();
-            System.out.println("nomBaliseDEntree1erordre :" + name); //TEST DEBUG
 
             mission.initOrdres();
             int cpt = 0;
             //tant qu'il y a des ordres a recuperer
             while (name.equals("ordre")) {
-                cpt++;//DEBUG
-                System.out.println(cpt);//DEBUG
                 //on instantie de quoi recuperer l'ordre
                 OrdreDAO ordreDao = new OrdreDAO(parser);
                 //on extrait l'ordre, avec ou sans réponses
                 mission.addOrdre(ordreDao.extractOrdre(reponses));//on ressort sur la balise de fin d'ordre
-                System.out.println("=> ORDRE AJOUTE");
 
                 eventType = parser.getEventType();
                 if (eventType == parser.END_TAG) {
@@ -112,27 +109,7 @@ public class MissionDAO {
                 }
 
 
-
-
-                if (cpt == 3) {
-                    //SECTION DE TEST /////////////////
-                    System.out.println("nom prochain tag:" + name);
-                    if (eventType == parser.END_TAG) {
-                        System.out.println("end tag7");
-                    }
-                    if (eventType == parser.START_TAG) {
-                        System.out.println("start tag7");
-                    }
-                    if (eventType == parser.TEXT) {
-                        System.out.println("text7");
-                    }
-                    //String val = parser.getAttributeValue(0);
-                    //System.out.println("attribut prochain tag :" + val);
-                    ////////////////////////////////
-                }
-
                 if (eventType == parser.END_TAG && parser.getName().equals("mission")) {
-                    System.out.println("ON DEGAGE !!");
                     break;
                 }
 
@@ -147,21 +124,6 @@ public class MissionDAO {
                         eventType = parser.next();
                     }
                 }
-
-                //SECTION DE TEST /////////////////
-                System.out.println("nom prochain tag:" + name);
-                if (eventType == parser.END_TAG) {
-                    System.out.println("end tag2");
-                }
-                if (eventType == parser.START_TAG) {
-                    System.out.println("start tag2");
-                }
-                if (eventType == parser.TEXT) {
-                    System.out.println("text2");
-                }
-                //String val = parser.getAttributeValue(0);
-                //System.out.println("attribut prochain tag :" + val);
-                ////////////////////////////////
             }
         }
 
@@ -172,7 +134,7 @@ public class MissionDAO {
     //Place le parseur au début du doc XML
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader("XMLDatabase.xml"));
+            parser.setInput(new FileReader(path + "XMLDatabase.xml"));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
@@ -183,21 +145,15 @@ public class MissionDAO {
     public void MiseAJourOrdreCourant(int id) {
         String name = "";
 
-
-
         try {
 
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
             factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
             factory.setNamespaceAware(true);
 
-
-
-
             Node node = new Node();
 
             this.goToStartDocument();
-
 
             //on cherche la première balise <Mission>
             int eventType = parser.getEventType();
@@ -223,13 +179,12 @@ public class MissionDAO {
 
             //On reecrit le nouveau fichier
             XmlSerializer serializer = factory.newSerializer();
-            FileOutputStream file = new FileOutputStream("XMLDatabase.xml");
+            FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
             serializer.setOutput(new PrintWriter(file));
 
 
             //<?xml version="1.0" encoding="ASCII"?>
             //<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
-
             serializer.startDocument("ASCII", null);
             serializer.text("\n");
             serializer.startTag(null, "ordre:DocumentRoot");
@@ -244,9 +199,6 @@ public class MissionDAO {
             serializer.endTag(null, "ordre:DocumentRoot");
 
             serializer.endDocument();
-
-
-
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -299,7 +251,7 @@ public class MissionDAO {
 
             //On reecrit le nouveau fichier
             XmlSerializer serializer = factory.newSerializer();
-            FileOutputStream file = new FileOutputStream("XMLDatabase.xml");
+            FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
             serializer.setOutput(new PrintWriter(file));
 
 
@@ -320,9 +272,6 @@ public class MissionDAO {
             serializer.endTag(null, "ordre:DocumentRoot");
 
             serializer.endDocument();
-
-
-
 
         } catch (IOException ex) {
             ex.printStackTrace();

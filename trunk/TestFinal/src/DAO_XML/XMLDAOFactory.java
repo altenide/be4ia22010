@@ -33,11 +33,9 @@ public class XMLDAOFactory {
 
             parser = factory.newPullParser();
 
-            System.out.println("ouverture fichier:");
             parser.setInput(new FileReader(path+"XMLDatabase.xml"));
             //U:/NetBeansProjects/BE_POO/src/fichier/XMLDatabase.xml
             //"C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml"
-            System.out.println("opened");
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -70,7 +68,7 @@ public class XMLDAOFactory {
     //Place le parseur au début du doc XML - necessaire avant tout appel exterieur a une methode extract
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader("XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
