@@ -30,6 +30,11 @@ public class Mission {
         ordres = null;
     }
 
+    public int getIdOrdreCourant() {
+        return idOrdreCourant;
+    }
+
+
     public void initOrdres() {
         ordres = new Vector();
     }

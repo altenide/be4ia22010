@@ -9,7 +9,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Vector;
 
-import DAO_XML.ReponsePossible;
 
 import ctrl.Controleur;
 
@@ -100,7 +99,7 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 		if (arg0.getSource() == connexionButton){
 			////////////////////Gestion de l'ordre////////////////
 			// a implementer changer le 1 en int getMission -> getPremierOrdre
-			ordreLabel.setText(ctrl.Ordre(1));
+			ordreLabel.setText(ctrl.Ordre(ctrl.GetIdOrdreCourant()));//le 1er ordre est l'ordre courant a reception de la mission
 			AddReponses(ctrl.ReponsePossible(1), ReponceChoice);
 
 			////////////////////////////////////////
@@ -117,8 +116,8 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 			String reponseChoisi =reponseSelectionne;
 			System.out.println("------------------Reponce chois"+reponseChoisi);
 			if (!reponseChoisi.equals("reponse")){
-				//Changer par setIdcourrant a newIdcourant et changer le 2 par getIdCourant
-				int newIdCourant = ctrl.OrdreSuivant(1,reponseChoisi);
+				//Changer par setIdcourrant a newIdcourant et changer le 2 par getIdCourant =>OK
+				int newIdCourant = ctrl.OrdreSuivant(ctrl.GetIdOrdreCourant(),reponseChoisi);
 				System.out.println("----------------------Nouvel id courant"+newIdCourant);
 				ordreLabel.setText(ctrl.Ordre(newIdCourant));
 				ReponceChoice.removeAll();

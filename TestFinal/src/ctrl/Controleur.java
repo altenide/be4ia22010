@@ -17,7 +17,7 @@ public class Controleur {
 	public Controleur(){
 		
 	}
-	//////////////////////////Partie pour la base de donnée client//////////////
+	//////////////////////////Partie pour la base de donnï¿½e client//////////////
 	public FichierXML getXml() {
 		return xml;
 	}
@@ -32,22 +32,26 @@ public class Controleur {
 	
 	public String Ordre (int id){
 		String ordre;
-		ordre=xml.IntitulerOrdre(id);
+		ordre=xml.intituleOrdre(id);
 		return ordre;
 	}
 	
 	public Vector ReponsePossible (int id){
 		Vector reponse;
-		reponse=xml.ChoixPossible(id);
+		reponse=xml.choixPossible(id);
 		return reponse;
 	}
 	
 	public int OrdreSuivant ( int idCourant, String reponse){
 		int ordresuivant;
-		ordresuivant=worflow.prochainOrdre(idCourant, reponse);
+		ordresuivant=worflow.validationOrdre(idCourant, reponse);
 		return ordresuivant;
 		
 	}
+
+        public int GetIdOrdreCourant (){
+            return xml.getIdOrdreCourant();
+        }
 	/////////////////////////////////////////////////////////////////////
 	
 	public void setTCPClient(TCPClient tcpC){

@@ -40,8 +40,13 @@ public class Workflow {
         return retour;
     }
 
-    //Validation d'un ordre : maj de l'etat de l'ordre, de l'etat de la mission si necessaire, l'id de l'ordre courant, renvoie le nouvel ordre (-2 si fini)
-    //EnCours, Termine, Disponible, NonDisponible
+
+    /**
+     * Validation d'un ordre : maj de l'etat de l'ordre, de l'etat de la mission si necessaire, l'id de l'ordre courant
+     * @param ordre
+     * @param reponse
+     * @return le nouvel ordre (-2 si fini)
+     */
     public int validationOrdre(int ordre, String reponse) {
 
         XMLDAOFactory factory = new XMLDAOFactory();
@@ -53,6 +58,7 @@ public class Workflow {
         try {
 
             //maj de l'etat de l'ordre effectue
+            //rappel, etats possibles :EnCours, Termine, Disponible, NonDisponible
             oDao.miseAJourEtat(ordre, "Termine");
             MissionDAO mDao = factory.getMissionDAO();
 
@@ -81,10 +87,10 @@ public class Workflow {
 
     }
 
-   /* public int ordreCourant() {
+    /* public int ordreCourant() {
 
-        XMLDAOFactory factory = new XMLDAOFactory();
-        MissionDAO mDao = factory.getMissionDAO();
+    XMLDAOFactory factory = new XMLDAOFactory();
+    MissionDAO mDao = factory.getMissionDAO();
 
 
 

@@ -1,0 +1,4 @@
+Dans ce fichier sont regroupée les différentes conventions mises en place pour le stockage des missions, et qui doivent être respectées par le serveur lors de la saisie des missions (pour être comprises par le mobile) :
+
+- quand une mission est enregistrée, le champ "ordreCourant" de la mission est égal à l'id du 1er ordre à exécuter
+- la fin de la mission est signalée par l'insertion d'un ordre supplémentaire, d'id -2, intitulé "finMission" et ne possédant aucune réponse possible.
