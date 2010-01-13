@@ -19,10 +19,8 @@ public class TestBase {
 
         XMLDAOFactory factory = new XMLDAOFactory();
         TestBase test = new TestBase();
-        FichierXML f = new FichierXML();
 
         test.testExtractReponse(factory);
-        f.ChoixPossible(1);
         //test.testExtractOrdre(factory);
         //test.testExtractMission(factory);
 

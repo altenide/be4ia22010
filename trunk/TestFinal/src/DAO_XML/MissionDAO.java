@@ -21,8 +21,9 @@ public class MissionDAO {
     private XmlPullParser parser;
     private String path = "";
 
-    protected MissionDAO(XmlPullParser parser) {
+    protected MissionDAO(XmlPullParser parser, String path) {
         this.parser = parser;
+        this.path = path;
     }
 
     public Mission extractMission(boolean ordres, boolean reponses) throws XmlPullParserException, FileNotFoundException, IOException {
@@ -92,7 +93,7 @@ public class MissionDAO {
             //tant qu'il y a des ordres a recuperer
             while (name.equals("ordre")) {
                 //on instantie de quoi recuperer l'ordre
-                OrdreDAO ordreDao = new OrdreDAO(parser);
+                OrdreDAO ordreDao = new OrdreDAO(parser, path);
                 //on extrait l'ordre, avec ou sans réponses
                 mission.addOrdre(ordreDao.extractOrdre(reponses));//on ressort sur la balise de fin d'ordre
 

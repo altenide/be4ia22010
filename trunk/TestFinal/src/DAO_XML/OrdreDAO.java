@@ -20,8 +20,9 @@ public class OrdreDAO {
     private XmlPullParser parser;
      private String path = "";
 
-    protected OrdreDAO(XmlPullParser parser) {
+    protected OrdreDAO(XmlPullParser parser, String path) {
         this.parser = parser;
+        this.path = path;
     }
 
     /**
@@ -86,7 +87,7 @@ public class OrdreDAO {
                 //si c'est le cas on les récupère tant qu'il y en a
                 while (name.equals("reponsePossible")) {
 
-                    ReponsePossibleDAO reponseDAO = new ReponsePossibleDAO(parser);
+                    ReponsePossibleDAO reponseDAO = new ReponsePossibleDAO(parser, path);
                     ordre.addReponse(reponseDAO.extractReponse());
                     eventType = parser.next();
                     eventType = parser.next();

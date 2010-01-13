@@ -18,7 +18,7 @@ import org.xmlpull.v1.XmlPullParserException;
 public class FichierXML {
 
     //renvoie l'intule d'un ordre
-    public String IntitulerOrdre(int idOrdre) {
+    public String intituleOrdre(int idOrdre) {
 
         Ordre ordre = null;
         XMLDAOFactory factory = new XMLDAOFactory();
@@ -41,8 +41,8 @@ public class FichierXML {
     }
 
     //renvoie un vecteur (de String) avec tous les choix possibles d'un ordre
-    public Vector ChoixPossible(int idOrdre) {
-    	
+    public Vector choixPossible(int idOrdre) {
+
         Ordre ordre = null;
         ReponsePossible repP;
 
@@ -67,17 +67,37 @@ public class FichierXML {
         int x = 0;
 
         Vector tabReponses = ordre.getReponses();
-        if ( tabReponses != null){
-        while (i < tabReponses.size()) {
-            repP = (ReponsePossible) tabReponses.get(i);
-            reponses.add(repP.getReponse());
-            i++;
-        }
-        }
-        else {
-        	reponses =null;
+        if (tabReponses != null) {
+            while (i < tabReponses.size()) {
+                repP = (ReponsePossible) tabReponses.get(i);
+                reponses.add(repP.getReponse());
+                i++;
+            }
+        } else {
+            reponses = null;
         }
 
         return reponses;
+    }
+
+    public int getIdOrdreCourant() {
+
+        Mission mission = null;
+        
+        try {
+            XMLDAOFactory factory = new XMLDAOFactory();
+            MissionDAO mDao = factory.getMissionDAO();
+            mission = mDao.extractMission(false, false);
+
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return mission.getIdOrdreCourant();
+
     }
 }

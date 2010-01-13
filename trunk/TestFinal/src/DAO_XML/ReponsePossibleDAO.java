@@ -19,8 +19,9 @@ public class ReponsePossibleDAO {
     private XmlPullParser parser;
     private String path = "";
 
-    protected ReponsePossibleDAO(XmlPullParser parser) {
+    protected ReponsePossibleDAO(XmlPullParser parser, String path) {
         this.parser = parser;
+        this.path = path;
     }
 
     public ReponsePossible extractReponse() throws XmlPullParserException, IOException {

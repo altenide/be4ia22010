@@ -44,9 +44,9 @@ public class XMLDAOFactory {
         }
 
         //Créé les différentes classes DAO : 
-        missionDAO = new MissionDAO(parser);
-        ordreDAO = new OrdreDAO(parser);
-        reponsePossibleDAO = new ReponsePossibleDAO(parser);
+        missionDAO = new MissionDAO(parser, path);
+        ordreDAO = new OrdreDAO(parser, path);
+        reponsePossibleDAO = new ReponsePossibleDAO(parser, path);
 
     }
 
