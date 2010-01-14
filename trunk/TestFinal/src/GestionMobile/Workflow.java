@@ -61,8 +61,9 @@ public class Workflow {
             //rappel, etats possibles :EnCours, Termine, Disponible, NonDisponible
             oDao.miseAJourEtat(ordre, "Termine");
             MissionDAO mDao = factory.getMissionDAO();
-
+            factory.goToStartDocument();
             mission = mDao.extractMission(true, true);
+
 
             monOrdre = mission.findOrdre(ordre);
             if (monOrdre.isOrdreFinal()) {
@@ -70,6 +71,8 @@ public class Workflow {
             } else {
                 prochainOrdre = monOrdre.findReponse(reponse).getIdOrdreSuivant();
                 oDao.miseAJourEtat(prochainOrdre, "EnCours");
+                //maj de l'ordre courant
+                mDao.MiseAJourOrdreCourant(prochainOrdre);
             }
 
 
