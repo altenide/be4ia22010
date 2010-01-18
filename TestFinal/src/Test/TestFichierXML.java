@@ -15,7 +15,9 @@ public class TestFichierXML {
 
     public static void main(String args[]) {
 
-        XMLDAOFactory factory = new XMLDAOFactory();
+    	String path="", file="";
+    	
+        XMLDAOFactory factory = new XMLDAOFactory(path, file);
         TestFichierXML test = new TestFichierXML();
 
         //test.testChoixPossibles(factory);

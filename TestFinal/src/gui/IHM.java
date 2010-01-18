@@ -93,16 +93,20 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 
 	}
 
+	public void disableLogin(){
+		mdpText.setEnabled(false);
+		loginTextField.setEnabled(false);
+		connexionButton.setEnabled(false);
+	}
 
+	public void affichageOrdre(){
+		ordreLabel.setText(ctrl.Ordre(ctrl.GetIdOrdreCourant()));//le 1er ordre est l'ordre courant a reception de la mission
+		AddReponses(ctrl.ReponsePossible(1), ReponceChoice);
+	}
+	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if (arg0.getSource() == connexionButton){
-			////////////////////Gestion de l'ordre////////////////
-			// a implementer changer le 1 en int getMission -> getPremierOrdre
-			ordreLabel.setText(ctrl.Ordre(ctrl.GetIdOrdreCourant()));//le 1er ordre est l'ordre courant a reception de la mission
-			AddReponses(ctrl.ReponsePossible(1), ReponceChoice);
-
-			////////////////////////////////////////
 			String login = loginTextField.getText();
 			String mdp = mdpText.getText();
 

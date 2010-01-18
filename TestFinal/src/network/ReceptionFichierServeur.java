@@ -15,6 +15,8 @@ public class ReceptionFichierServeur extends Thread {
 
     private ServerSocket ss;
     private gui.IHM main;
+    private String path="";
+    private ctrl.Controleur ctrl;
 
     /**
      * Constructeur de la classe ReceptionFichierServeur
@@ -30,9 +32,12 @@ public class ReceptionFichierServeur extends Thread {
         }
     }
 
-    public ReceptionFichierServeur(int port) {
-        try {
+    public ReceptionFichierServeur(int port, ctrl.Controleur ctrl, String path) {
+        try {        	
             main = null;
+            this.ctrl=ctrl;
+            this.path = path;
+            
             ss = new ServerSocket(port);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -47,7 +52,7 @@ public class ReceptionFichierServeur extends Thread {
             System.out.println("Serveur de fichier en attente");
             while (true) {
                 // lorsqu'un client se connecte, on crée un objet ReceptionFichierClientThread afin de rendre le serveur MultiClient
-                ReceptionFichierClientThread tmp = new ReceptionFichierClientThread(ss.accept(), main);
+                ReceptionFichierClientThread tmp = new ReceptionFichierClientThread(ss.accept(), main, ctrl, path);
                 System.out.println("Un client est connecte au serveur de fichier");
                 tmp.start();
             }

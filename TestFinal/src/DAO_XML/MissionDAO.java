@@ -19,11 +19,12 @@ import org.xmlpull.v1.*;
 public class MissionDAO {
 
     private XmlPullParser parser;
-    private String path = "";
+    private String path = "", fichier="";
 
-    protected MissionDAO(XmlPullParser parser, String path) {
+    protected MissionDAO(XmlPullParser parser, String path, String fichier) {
         this.parser = parser;
         this.path = path;
+        this.fichier = fichier;
     }
 
     public Mission extractMission(boolean ordres, boolean reponses) throws XmlPullParserException, FileNotFoundException, IOException {
@@ -93,7 +94,7 @@ public class MissionDAO {
             //tant qu'il y a des ordres a recuperer
             while (name.equals("ordre")) {
                 //on instantie de quoi recuperer l'ordre
-                OrdreDAO ordreDao = new OrdreDAO(parser, path);
+                OrdreDAO ordreDao = new OrdreDAO(parser, path, fichier);
                 //on extrait l'ordre, avec ou sans réponses
                 mission.addOrdre(ordreDao.extractOrdre(reponses));//on ressort sur la balise de fin d'ordre
 
@@ -135,7 +136,7 @@ public class MissionDAO {
     //Place le parseur au début du doc XML
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path + "XMLDatabase.xml"));
+            parser.setInput(new FileReader(path + fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {

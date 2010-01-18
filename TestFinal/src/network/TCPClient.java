@@ -52,7 +52,7 @@ public class TCPClient extends Thread {
             os = new BufferedOutputStream(soc.getOutputStream());
             is = new BufferedInputStream(soc.getInputStream());
         } catch (IOException ex) {
-            ctrl.showInfo("Probl�me de connexion");
+            ctrl.showInfo("Probleme de connexion");
             ex.printStackTrace();
         }
     }
@@ -60,7 +60,7 @@ public class TCPClient extends Thread {
     public void run() {
         String msg;
 
-        while (true) {
+        while (true){
             try {
                 is.read(sReaded);
             } catch (IOException ex) {
@@ -73,17 +73,26 @@ public class TCPClient extends Thread {
             String []infos = msg.split(";:!");
             
             if (infos[0].equals("repLogin")){            	
-            	Boolean repLog = new Boolean(infos[1]);
-            	System.out.println("Reponse identification: "+repLog);            	
+            	Boolean repLog = Boolean.valueOf(infos[1]);
+            	System.out.println("Reponse identification: "+repLog);   
+            	if (repLog == Boolean.valueOf(true)){
+            		ctrl.loginOK();
+            		demanderMission(infos[2].trim());
+            	}
             }
             
             
             if (ctrl != null)
                 ctrl.refreshMsg(msg);
         }
-        //System.out.println("sortie de la boucle de reception");
     }
 
+    public void demanderMission(String login){
+    	System.out.println("demanderMission : "+login);
+    	String msg = "demandeMission;:!"+login;
+    	send(msg);
+    }
+    
     public void send(String msg) {
         try {
             os.write(msg.getBytes());
