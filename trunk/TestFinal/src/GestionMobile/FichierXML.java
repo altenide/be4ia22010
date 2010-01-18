@@ -15,17 +15,15 @@ import org.xmlpull.v1.XmlPullParserException;
  * @author Edith
  */
 public class FichierXML {
-	String path;
-	
-	
- 
 
-	public FichierXML(String path) {
-		super();
-		this.path = path;
-	}
+    String path;
 
-	//renvoie l'intule d'un ordre
+    public FichierXML(String path) {
+        super();
+        this.path = path;
+    }
+
+    //renvoie l'intule d'un ordre
     public String intituleOrdre(int idOrdre) {
 
         Ordre ordre = null;
@@ -35,6 +33,7 @@ public class FichierXML {
 
         MissionDAO mDao = factory.getMissionDAO();
         try {
+            mDao.goToStartDocument();
             Mission mission = mDao.extractMission(true, true);
             ordre = mission.findOrdre(idOrdre);
 
@@ -61,6 +60,7 @@ public class FichierXML {
 
         MissionDAO mDao = factory.getMissionDAO();
         try {
+            mDao.goToStartDocument();
             Mission mission = mDao.extractMission(true, true);
             ordre = mission.findOrdre(idOrdre);
 
@@ -92,11 +92,12 @@ public class FichierXML {
     public int getIdOrdreCourant() {
 
         Mission mission = null;
-        
+
         try {
             XMLDAOFactory factory = new XMLDAOFactory();
             factory.setPath(path);
             MissionDAO mDao = factory.getMissionDAO();
+            mDao.goToStartDocument();
             mission = mDao.extractMission(false, false);
 
         } catch (XmlPullParserException ex) {
@@ -109,5 +110,29 @@ public class FichierXML {
 
         return mission.getIdOrdreCourant();
 
+    }
+
+    public String getFichierAudio(int idOrdre) {
+        Mission mission;
+        Ordre ordre = null;
+
+        try {
+            XMLDAOFactory factory = new XMLDAOFactory();
+            factory.setPath(path);
+            MissionDAO mDao = factory.getMissionDAO();
+            mDao.goToStartDocument();
+            mission = mDao.extractMission(true, false);
+
+            ordre = mission.findOrdre(idOrdre);
+
+        } catch (XmlPullParserException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return ordre.getFichierAudio();
     }
 }
