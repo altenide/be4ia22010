@@ -6,7 +6,7 @@ package interfaceserveur;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
-import serveurtcp.*;
+
 /**
  * The main class of the application.
  */
@@ -16,10 +16,7 @@ public class InterfaceServeurApp extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new InterfaceServeurView(this));
-        // On lance le serveur au début
-        TCPServeur serv = new TCPServeur(4242);
-        serv.start();
+        show(new InterfaceServeurAffichage(this));
     }
 
     /**
