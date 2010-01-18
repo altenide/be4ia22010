@@ -5,7 +5,6 @@
 package GestionMobile;
 
 import DAO_XML.*;
-import DAO_XML.XMLDAOFactory;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
@@ -16,12 +15,22 @@ import org.xmlpull.v1.XmlPullParserException;
  * @author Edith
  */
 public class FichierXML {
+	String path;
+	
+	
+ 
 
-    //renvoie l'intule d'un ordre
+	public FichierXML(String path) {
+		super();
+		this.path = path;
+	}
+
+	//renvoie l'intule d'un ordre
     public String intituleOrdre(int idOrdre) {
 
         Ordre ordre = null;
         XMLDAOFactory factory = new XMLDAOFactory();
+        factory.setPath(path);
 
 
         MissionDAO mDao = factory.getMissionDAO();
@@ -48,7 +57,7 @@ public class FichierXML {
 
         Vector reponses = new Vector();
         XMLDAOFactory factory = new XMLDAOFactory();
-
+        factory.setPath(path);
 
         MissionDAO mDao = factory.getMissionDAO();
         try {
@@ -86,6 +95,7 @@ public class FichierXML {
         
         try {
             XMLDAOFactory factory = new XMLDAOFactory();
+            factory.setPath(path);
             MissionDAO mDao = factory.getMissionDAO();
             mission = mDao.extractMission(false, false);
 

@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/CDC-1.1%Foundation-1.1"/>
 	<classpathentry kind="lib" path="C:/Users/forgefeu81/Desktop/BDBclient/kxml2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/forgefeu81/Desktop/PsionTeklogix - Mobile Devices SDK v3.1/PsionTeklogixJava.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
