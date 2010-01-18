@@ -16,18 +16,22 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 public class FichierXML {
 
-    String path;
+    String path, fichier;
 
     public FichierXML(String path) {
         super();
         this.path = path;
     }
 
+    public void setFichier(String fichier){
+    	this.fichier = fichier;
+    }
+    
     //renvoie l'intule d'un ordre
     public String intituleOrdre(int idOrdre) {
 
         Ordre ordre = null;
-        XMLDAOFactory factory = new XMLDAOFactory();
+        XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
         factory.setPath(path);
 
 
@@ -57,7 +61,7 @@ public class FichierXML {
         ReponsePossible repP;
 
         Vector reponses = new Vector();
-        XMLDAOFactory factory = new XMLDAOFactory();
+        XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
         factory.setPath(path);
 
         MissionDAO mDao = factory.getMissionDAO();
@@ -96,7 +100,7 @@ public class FichierXML {
         Mission mission = null;
 
         try {
-            XMLDAOFactory factory = new XMLDAOFactory();
+            XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
             factory.setPath(path);
             MissionDAO mDao = factory.getMissionDAO();
             mDao.goToStartDocument();
@@ -119,7 +123,7 @@ public class FichierXML {
         Ordre ordre = null;
 
         try {
-            XMLDAOFactory factory = new XMLDAOFactory();
+            XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
             factory.setPath(path);
             MissionDAO mDao = factory.getMissionDAO();
             mDao.goToStartDocument();

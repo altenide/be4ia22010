@@ -18,115 +18,126 @@ import java.util.Vector;
  */
 public class ReceptionFichierClientThread extends Thread {
 
-    private Socket soc;
-    private int num, nbOctLu;
-    private gui.IHM main;
+	private Socket soc;
+	private int num, nbOctLu;
+	private gui.IHM main;
+	private ctrl.Controleur ctrl;
 
-    /**
-     * Classe permettant de recevoir un fichier par le réseau. Cette classe a
-     * son propre Thread afin de ne pas bloqué le reste de l'application pendant
-     * la réception d'un fichier
-     * @param soc La socket sur laquelle les inforamtions sont transmises
-     * @param m La fenêtre de l'application (permet d'afficher des messages)
-     */
-    public ReceptionFichierClientThread(Socket soc, gui.IHM m) {
-        main = m;
-        this.soc = soc;
-        nbOctLu = 0;
-    }
+	private String path;
 
-    /**
-     * Méthode définissant le comportement du Thread.
-     */
-    public void run() {
-        try {
-            byte[] octets = new byte[1024];
+	/**
+	 * Classe permettant de recevoir un fichier par le réseau. Cette classe a
+	 * son propre Thread afin de ne pas bloqué le reste de l'application pendant
+	 * la réception d'un fichier
+	 * @param soc La socket sur laquelle les inforamtions sont transmises
+	 * @param m La fenêtre de l'application (permet d'afficher des messages)
+	 */
+	public ReceptionFichierClientThread(Socket soc, gui.IHM m, ctrl.Controleur ctrl, String path) {
+		main = m;
+		this.ctrl = ctrl;
+		this.soc = soc;
+		nbOctLu = 0;
+		this.path = path;
+	}
 
-            // creation d'un repertoire où seront stockés les fichiers reçus
-            new File("./fichiers_recus").mkdirs();
+	/**
+	 * Méthode définissant le comportement du Thread.
+	 */
+	public void run() {
+		try {
+			byte[] octets = new byte[1024];
 
-            BufferedInputStream in = new BufferedInputStream(soc.getInputStream());
-            // choix d'un nom par défaut du fichier
-            String filename = "./fichiers_recus/tmp";
+			// creation d'un repertoire où seront stockés les fichiers reçus
+			new File("./fichiers_recus").mkdirs();
 
-            String tab[] = null;
+			BufferedInputStream in = new BufferedInputStream(soc.getInputStream());
+			// choix d'un nom par défaut du fichier
+			String filename = "tmp";
 
-            int nbOctetsAttendu = 0;
+			String tab[] = null;
 
-            if ((num = in.read(octets, 0, octets.length)) != -1) {
-                //récupération du nom du fichier
-                tab = split(new String(octets), ";:!");
-                filename = "./fichiers_recus/" + tab[0];
-                nbOctetsAttendu = Integer.parseInt(tab[1]);
-            }
+			int nbOctetsAttendu = 0;
 
-            System.out.println("nbOctetsAttendu : " + nbOctetsAttendu);
+			if ((num = in.read(octets, 0, octets.length)) != -1) {
+				//récupération du nom du fichier
+				tab = split(new String(octets), ";:!");
+				filename = tab[0];
+				nbOctetsAttendu = Integer.parseInt(tab[1]);
+			}
 
-            // création de la copie locale du fichier transmit
-            OutputStream outFichier = new BufferedOutputStream(new FileOutputStream(filename));
+			System.out.println("nbOctetsAttendu : " + nbOctetsAttendu);
 
-            // ecriture des premieres données
-            outFichier.write(tab[2].getBytes(), 0, tab[2].getBytes().length);
-            outFichier.flush();
+			// création de la copie locale du fichier transmit
+			OutputStream outFichier = new BufferedOutputStream(new FileOutputStream(path+filename));
 
-            // incrémentation de la valeur du nombre d'octets lus/reçus
-            nbOctLu += tab[2].trim().getBytes().length;
+			// ecriture des premieres données
+			outFichier.write(tab[2].getBytes(), 0, tab[2].getBytes().length);
+			outFichier.flush();
 
-            // lecture des données sur la socket puis ecriture dans le fichier
-            while ((num = in.read(octets, 0, octets.length)) != -1) {
-                System.out.println("Octets : ");
-                System.out.println(octets.toString());
-                outFichier.write(octets, 0, num);
-                outFichier.flush();
-                nbOctLu += num;
-            }
+			// incrémentation de la valeur du nombre d'octets lus/reçus
+			nbOctLu += tab[2].trim().getBytes().length;
 
-            outFichier.write(octets, 0, nbOctetsAttendu - nbOctLu);
-            outFichier.flush();
-            nbOctLu += nbOctetsAttendu - nbOctLu;
+			// lecture des données sur la socket puis ecriture dans le fichier
+			while ((num = in.read(octets, 0, octets.length)) != -1) {
+				System.out.println("Octets : ");
+				System.out.println(octets.toString());
+				outFichier.write(octets, 0, num);
+				outFichier.flush();
+				nbOctLu += num;
+			}
 
-            // Affichage d'un message dans la fenetre de l'application
-            if (main != null) {
-                main.showInfo("Fin de reception du fichier, nbOctLu : " + nbOctLu);
-            }
-            // Affichage d'un message dans la console du terminal
-            System.out.println("Fin de reception du fichier, nbOctLu : " + nbOctLu);
+			outFichier.write(octets, 0, nbOctetsAttendu - nbOctLu);
+			outFichier.flush();
+			nbOctLu += nbOctetsAttendu - nbOctLu;
 
-            outFichier.close();
+			// Affichage d'un message dans la fenetre de l'application
+			if (main != null) {
+				main.showInfo("Fin de reception du fichier, nbOctLu : " + nbOctLu);
+			}
+			// Affichage d'un message dans la console du terminal
+			System.out.println("Fin de reception du fichier, nbOctLu : " + nbOctLu);
 
-        } catch (Exception e) {
-            if (main != null) {
-                main.showInfo("Pb lors de la reception du fichier");
-            }
-            e.printStackTrace();
-        }
-    }
+			outFichier.close();
 
-    /**
-     * Méthode permettant de découper une chaine de caracteres en fonction d'un
-     * symbole donné
-     * @param original la chaine a découper
-     * @param separateur le symbole séparateur
-     * @return un tableau de chaines de caracteres
-     */
-    private String[] split(String original, String separateur) {
-        Vector nodes = new Vector();
+			// definition du nom de fichier xml a utiliser
+			if (filename.endsWith(".xml")){
+				ctrl.setFichier(filename);
+				ctrl.afficherOrdre();
+			}
 
-        int index = original.indexOf(separateur);
-        while (index >= 0) {
-            nodes.addElement(original.substring(0, index));
-            original = original.substring(index + separateur.length());
-            index = original.indexOf(separateur);
-        }
-        nodes.addElement(original);
+		} catch (Exception e) {
+			if (main != null) {
+				main.showInfo("Pb lors de la reception du fichier");
+			}
+			e.printStackTrace();
+		}
+	}
 
-        String[] result = new String[nodes.size()];
-        if (nodes.size() > 0) {
-            for (int loop = 0; loop < nodes.size(); loop++) {
-                result[loop] = (String) nodes.elementAt(loop);
-                System.out.println("split - " + loop + " : " + result[loop]);
-            }
-        }
-        return result;
-    }
+	/**
+	 * Méthode permettant de découper une chaine de caracteres en fonction d'un
+	 * symbole donné
+	 * @param original la chaine a découper
+	 * @param separateur le symbole séparateur
+	 * @return un tableau de chaines de caracteres
+	 */
+	private String[] split(String original, String separateur) {
+		Vector nodes = new Vector();
+
+		int index = original.indexOf(separateur);
+		while (index >= 0) {
+			nodes.addElement(original.substring(0, index));
+			original = original.substring(index + separateur.length());
+			index = original.indexOf(separateur);
+		}
+		nodes.addElement(original);
+
+		String[] result = new String[nodes.size()];
+		if (nodes.size() > 0) {
+			for (int loop = 0; loop < nodes.size(); loop++) {
+				result[loop] = (String) nodes.elementAt(loop);
+				//System.out.println("split - " + loop + " : " + result[loop]);
+			}
+		}
+		return result;
+	}
 }

@@ -11,6 +11,16 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 public class Workflow {
 
+	private String path, fichier;
+	
+	public Workflow(String path){
+		this.path = path;
+	}
+	
+	public void setFichier(String f){
+		fichier = f;
+	}
+	
     /**
      * Trouve le prochain ordre a executer
      * @param id identifiant de l'ordre courant
@@ -22,7 +32,7 @@ public class Workflow {
         int retour = -5;
 
         try {
-            XMLDAOFactory factory = new XMLDAOFactory();
+            XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
             MissionDAO mDao = factory.getMissionDAO();
             Ordre monOrdre = mDao.extractMission(true, true).findOrdre(id);
             if (monOrdre != null) {
@@ -49,7 +59,7 @@ public class Workflow {
      */
     public int validationOrdre(int ordre, String reponse) {
 
-        XMLDAOFactory factory = new XMLDAOFactory();
+        XMLDAOFactory factory = new XMLDAOFactory(path, fichier);
         OrdreDAO oDao = factory.getOrdreDAO();
         Ordre monOrdre;
         Mission mission;

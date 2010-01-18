@@ -14,7 +14,9 @@ public class TestWorkflow {
 
     public static void main(String args[]) {
 
-        Workflow w = new Workflow();
+    	String path="";
+    	
+        Workflow w = new Workflow(path);
 
         int ordreSuivant = w.prochainOrdre(1,"Non");
 

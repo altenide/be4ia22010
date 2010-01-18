@@ -18,11 +18,12 @@ import org.xmlpull.v1.XmlSerializer;
 public class OrdreDAO {
 
     private XmlPullParser parser;
-     private String path = "";
+     private String path = "", fichier="";
 
-    protected OrdreDAO(XmlPullParser parser, String path) {
+    protected OrdreDAO(XmlPullParser parser, String path, String file) {
         this.parser = parser;
         this.path = path;
+        fichier = file;
     }
 
     /**
@@ -145,7 +146,7 @@ public class OrdreDAO {
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
@@ -270,7 +271,7 @@ public class OrdreDAO {
                 factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
                 factory.setNamespaceAware(true);
                 XmlSerializer serializer = factory.newSerializer();
-                FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
+                FileOutputStream file = new FileOutputStream(path+fichier);
                 serializer.setOutput(new PrintWriter(file));
 
 

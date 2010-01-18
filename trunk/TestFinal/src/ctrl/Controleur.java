@@ -83,8 +83,22 @@ public class Controleur {
 	public void envoyerLog(String login, String mdp){
 		tcpC.send("login;:!"+login+";:!mdp;:!"+mdp);
 	}
+	
+	public void loginOK(){
+		ihm.disableLogin();
+	}
+	
 	public void setWorflow(Workflow worflow) {
 		this.worflow = worflow;
+	}
+	
+	public void setFichier(String fichier){
+		worflow.setFichier(fichier);
+		xml.setFichier(fichier);
+	}
+	
+	public void afficherOrdre(){
+		ihm.affichageOrdre();
 	}
 	
 }

@@ -17,7 +17,9 @@ public class TestBase {
     
     public static void main(String args[]) {
 
-        XMLDAOFactory factory = new XMLDAOFactory();
+    	String path="", file="";
+    	
+        XMLDAOFactory factory = new XMLDAOFactory(path, file);
         TestBase test = new TestBase();
 
         test.testExtractReponse(factory);
