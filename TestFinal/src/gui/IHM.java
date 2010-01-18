@@ -103,9 +103,8 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 			AddReponses(ctrl.ReponsePossible(1), ReponceChoice);
 
 			////////////////////////////////////////
-			System.out.println("Clic");
 			String login = loginTextField.getText();
-			String mdp = mdpLabel.getText();
+			String mdp = mdpText.getText();
 
 			if(!login.equals("") && !mdp.equals(""))			
 				ctrl.envoyerLog(login, mdp);
