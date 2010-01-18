@@ -52,7 +52,7 @@ public class TCPClient extends Thread {
             os = new BufferedOutputStream(soc.getOutputStream());
             is = new BufferedInputStream(soc.getInputStream());
         } catch (IOException ex) {
-            ctrl.showInfo("Problème de connexion");
+            ctrl.showInfo("Problï¿½me de connexion");
             ex.printStackTrace();
         }
     }
@@ -67,8 +67,17 @@ public class TCPClient extends Thread {
                 ex.printStackTrace();
             }
             msg = new String(sReaded).trim();
+            
             System.out.println("Reception: sReaded = '" + new String(sReaded).trim() + "' msg = '" + msg + "'");
-
+            
+            String []infos = msg.split(";:!");
+            
+            if (infos[0].equals("repLogin")){            	
+            	Boolean repLog = new Boolean(infos[1]);
+            	System.out.println("Reponse identification: "+repLog);            	
+            }
+            
+            
             if (ctrl != null)
                 ctrl.refreshMsg(msg);
         }

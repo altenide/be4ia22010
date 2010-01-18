@@ -35,8 +35,8 @@ public class Main {
 		//ctrl.lireAudio(pathDossier+"Bonjour.wav");
 		
 		ihm.setVisible(true);
-		//tcpC.connect();
-		//tcpC.start();
+		tcpC.connect();
+		tcpC.start();
 	}
 
 }
