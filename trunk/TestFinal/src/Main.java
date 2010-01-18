@@ -15,24 +15,24 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		int port = 4242;
-		String host = "forgefeu81-PC";
-		String pathDossier = "/My Documents/GrpA2/";
+		String host = "Dell-Ubuntu";
+		String pathDossier = "/home/neo/BE_POO/JAVA/SVN2/trunk/TestFinal/";
 		
 		ctrl.Controleur ctrl = new Controleur();
 		IHM ihm = new IHM();
 		FichierXML fichier = new FichierXML(pathDossier);
 		TCPClient tcpC = new TCPClient(port, host, ctrl);
 		Workflow worflow = new Workflow();		
-		LectureAudio player = new LectureAudio();
+		//LectureAudio player = new LectureAudio();
 		
 		ctrl.setIHM(ihm);
 		ctrl.setTCPClient(tcpC);
 		ctrl.setXml(fichier);
 		ctrl.setWorflow(worflow);
-		ctrl.setPlayer(player);
+		//ctrl.setPlayer(player);
 		ihm.setControleur(ctrl);
 		
-		ctrl.lireAudio(pathDossier+"Bonjour.wav");
+		//ctrl.lireAudio(pathDossier+"Bonjour.wav");
 		
 		ihm.setVisible(true);
 		//tcpC.connect();
