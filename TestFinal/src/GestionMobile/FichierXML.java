@@ -37,6 +37,8 @@ public class FichierXML {
             Mission mission = mDao.extractMission(true, true);
             ordre = mission.findOrdre(idOrdre);
 
+            if (ordre == null) System.out.println(idOrdre+" ici");
+            
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
