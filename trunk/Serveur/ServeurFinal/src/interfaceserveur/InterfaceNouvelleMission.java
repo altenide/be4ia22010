@@ -3,6 +3,7 @@
  */
 package interfaceserveur;
 
+import Synthese.son.LecteurTexte;
 import java.awt.Container;
 import java.awt.LayoutManager;
 import java.awt.Point;
@@ -26,6 +27,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
     private DefaultListModel listeOrdreInterface;
     private int pagedereponse = 0;
     private int blocage = 0;
+    private LecteurTexte testVocal;
 
     public InterfaceNouvelleMission(java.awt.Frame parent, javax.swing.JList liste) {
         super(parent);
@@ -34,7 +36,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
         comboListeOrdreModel2 = new DefaultComboBoxModel();
         comboListeOrdreModel3 = new DefaultComboBoxModel();
         comboListeOrdreModel4 = new DefaultComboBoxModel();
-
+        testVocal = new LecteurTexte("aucun texte");
 
         listeOrdreInterface = new DefaultListModel();
         initComponents();
@@ -125,13 +127,18 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
         labelReponse = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(interfaceserveur.InterfaceServeurApp.class).getContext().getResourceMap(InterfaceNouvelleMission.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(InterfaceNouvelleMission.class);
         setTitle(resourceMap.getString("title")); // NOI18N
         setModal(true);
         setName("Ajouter une nouvelle mission"); // NOI18N
 
         BoutonTestVocal.setText(resourceMap.getString("BoutonTestVocal.text")); // NOI18N
         BoutonTestVocal.setName("BoutonTestVocal"); // NOI18N
+        BoutonTestVocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoutonTestVocalActionPerformed(evt);
+            }
+        });
 
         LabelDescriptionAjouterNouvelleMission.setFont(LabelDescriptionAjouterNouvelleMission.getFont().deriveFont(LabelDescriptionAjouterNouvelleMission.getFont().getStyle() | java.awt.Font.BOLD, LabelDescriptionAjouterNouvelleMission.getFont().getSize()+4));
         LabelDescriptionAjouterNouvelleMission.setText(resourceMap.getString("LabelDescriptionAjouterNouvelleMission.text")); // NOI18N
@@ -814,6 +821,11 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
         // TODO add your handling code here:
 
     }//GEN-LAST:event_comboListeOrdreSuivantActionPerformed
+
+    private void BoutonTestVocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonTestVocalActionPerformed
+    testVocal.setTexte(champTexteOrdre.getText());
+    testVocal.playAll();
+    }//GEN-LAST:event_BoutonTestVocalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BoutonTestVocal;
