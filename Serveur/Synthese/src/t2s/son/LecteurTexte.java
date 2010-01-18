@@ -285,6 +285,10 @@ public class LecteurTexte {
         return outFile;
     }
 
+    /** AJOUT
+     * Pour supprimer un fichier en ayant son chemin
+     * @param pathName le chemin relatif à la racine du projet
+     */
     public void delete(String pathName) {
         File aSuppr = new File(pathName);
         aSuppr.delete();
