@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" resourceKey="title"/>
+    <Property name="modal" type="boolean" value="true"/>
+    <Property name="name" type="java.lang.String" value="aboutBox" noResource="true"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="labelDescriptionMission" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="494" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="PanneauListeEmployes" pref="178" max="32767" attributes="0"/>
+                  <Component id="boutonSupprimerEmploye" alignment="1" pref="178" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelListeMissionsAssignees" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="161" max="32767" attributes="0"/>
+                              <Component id="labelTerminalAssigne" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="champTerminalAssigne" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="imageLabel" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="labelMotdePasse" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelLogin" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="champLogin" alignment="1" pref="150" max="32767" attributes="0"/>
+                                          <Component id="champMotdePasseCrypte" alignment="1" pref="150" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
+                                              <Component id="boutonAjouterEmploye" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="messageVeuillezRemplirChamps" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelNouvelleMissionAssignee" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="messageAssignerMission" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="messageSelectEmploye" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boutonAssignerMission" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelDescriptionMission" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="champLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="labelMotdePasse" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champMotdePasseCrypte" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="boutonAjouterEmploye" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="messageVeuillezRemplirChamps" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="imageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelListeMissionsAssignees" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelTerminalAssigne" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="champTerminalAssigne" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="133" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelNouvelleMissionAssignee" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="messageAssignerMission" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="boutonAssignerMission" min="-2" pref="46" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="PanneauListeEmployes" pref="436" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="boutonSupprimerEmploye" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="messageSelectEmploye" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="imageLabel">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="imageLabel.icon"/>
+        <Property name="name" type="java.lang.String" value="imageLabel" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="PanneauListeEmployes">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="PanneauListeEmployes" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="listeEmployes">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="listeEmployesModel" type="code"/>
+            </Property>
+            <Property name="selectionMode" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="listeEmployes" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList()"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel listeEmployesModel = new DefaultListModel();"/>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="InterfaceEmployer_listeEmployes"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="champLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="champLogin.text"/>
+        <Property name="name" type="java.lang.String" value="champLogin" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelLogin.text"/>
+        <Property name="name" type="java.lang.String" value="labelLogin" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelMotdePasse">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelMotdePasse.text"/>
+        <Property name="name" type="java.lang.String" value="labelMotdePasse" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelTerminalAssigne">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelTerminalAssigne.text"/>
+        <Property name="name" type="java.lang.String" value="labelTerminalAssigne" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelDescriptionMission">
+      <Properties>
+        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
+          <FontInfo relative="true">
+            <Font bold="true" component="labelDescriptionMission" property="font" relativeSize="true" size="4"/>
+          </FontInfo>
+        </Property>
+        <Property name="text" type="java.lang.String" resourceKey="labelDescriptionMission.text"/>
+        <Property name="name" type="java.lang.String" value="labelDescriptionMission" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="boutonAssignerMission">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="boutonAssignerMission.text"/>
+        <Property name="name" type="java.lang.String" value="boutonAssignerMission" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonAssignerMissionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelListeMissionsAssignees">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelListeMissionsAssignees.text"/>
+        <Property name="name" type="java.lang.String" value="labelListeMissionsAssignees" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="boutonSupprimerEmploye">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="boutonSupprimerEmploye.text"/>
+        <Property name="name" type="java.lang.String" value="boutonSupprimerEmploye" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonSupprimerEmployeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="boutonAjouterEmploye">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="boutonAjouterEmploye.text"/>
+        <Property name="name" type="java.lang.String" value="boutonAjouterEmploye" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonAjouterEmployeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="champMotdePasseCrypte">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="champMotdePasseCrypte.text"/>
+        <Property name="name" type="java.lang.String" value="champMotdePasseCrypte" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="messageVeuillezRemplirChamps">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="messageVeuillezRemplirChamps.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="messageVeuillezRemplirChamps.text"/>
+        <Property name="name" type="java.lang.String" value="messageVeuillezRemplirChamps" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="messageVeuillezRemplirChamps.setVisible(false);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNouvelleMissionAssignee">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelNouvelleMissionAssignee.text"/>
+        <Property name="name" type="java.lang.String" value="labelNouvelleMissionAssignee" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="messageAssignerMission">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="messageAssignerMission.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="messageAssignerMission.text"/>
+        <Property name="name" type="java.lang.String" value="messageAssignerMission" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="champTerminalAssigne">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="champTerminalAssigne.text"/>
+        <Property name="name" type="java.lang.String" value="champTerminalAssigne" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="messageSelectEmploye">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="messageSelectEmploye.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="messageSelectEmploye.text"/>
+        <Property name="name" type="java.lang.String" value="messageSelectEmploye" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="messageSelectEmploye.setVisible(false);"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
