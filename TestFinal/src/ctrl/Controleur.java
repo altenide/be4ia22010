@@ -2,6 +2,8 @@ package ctrl;
 
 import java.util.Vector;
 
+import audio.LectureAudio;
+
 import GestionMobile.FichierXML;
 import GestionMobile.Workflow;
 import gui.IHM;
@@ -13,6 +15,8 @@ public class Controleur {
 	private TCPClient tcpC; 
 	private FichierXML xml;
 	private Workflow worflow;
+	private LectureAudio player;
+	
 	
 	public Controleur(){
 		
@@ -53,7 +57,17 @@ public class Controleur {
             return xml.getIdOrdreCourant();
         }
 	/////////////////////////////////////////////////////////////////////
-	
+	/////////////////////////////////////////lecteur fichier audio//////////////////
+        public void lireAudio ( String fichier){
+        	player.lire(fichier);
+        	
+        }
+        
+        
+	public void setPlayer(LectureAudio player) {
+			this.player = player;
+		}
+	//////////////////////////////////////////////////////////////////////
 	public void setTCPClient(TCPClient tcpC){
 		this.tcpC = tcpC;
 	}

@@ -25,14 +25,14 @@ public class TestFichierXML {
 
     public void testChoixPossibles(XMLDAOFactory factory) {
 
-        FichierXML fichier = new FichierXML();
+        FichierXML fichier = new FichierXML("/My document/GRA2/");
         fichier.choixPossible(1);
 
     }
 
     public void testGetIdOrdreCourant(XMLDAOFactory factory){
 
-        FichierXML fichier = new FichierXML();
+        FichierXML fichier = new FichierXML("/My document/GRA2/");
         int o = fichier.getIdOrdreCourant();
         System.out.println("Ordre courant : "+o+" (resultat a verifier dans le fichier)");
     }

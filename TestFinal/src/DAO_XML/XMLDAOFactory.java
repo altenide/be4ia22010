@@ -64,8 +64,14 @@ public class XMLDAOFactory {
     public ReponsePossibleDAO getReponsePossibleDAO() {
         return reponsePossibleDAO;
     }
+    
+    
 
-    //Place le parseur au début du doc XML - necessaire avant tout appel exterieur a une methode extract
+    public void setPath(String path) {
+		this.path = path;
+	}
+
+	//Place le parseur au début du doc XML - necessaire avant tout appel exterieur a une methode extract
     public void goToStartDocument() {
         try {
             parser.setInput(new FileReader(path+"XMLDatabase.xml"));
