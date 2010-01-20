@@ -88,7 +88,7 @@ public class OrdreDAO {
                 //si c'est le cas on les récupère tant qu'il y en a
                 while (name.equals("reponsePossible")) {
 
-                    ReponsePossibleDAO reponseDAO = new ReponsePossibleDAO(parser, path);
+                    ReponsePossibleDAO reponseDAO = new ReponsePossibleDAO(parser, path, fichier);
                     ordre.addReponse(reponseDAO.extractReponse());
                     eventType = parser.next();
                     eventType = parser.next();

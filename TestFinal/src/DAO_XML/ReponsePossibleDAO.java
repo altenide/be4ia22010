@@ -17,11 +17,12 @@ import org.xmlpull.v1.XmlPullParserException;
 public class ReponsePossibleDAO {
 
     private XmlPullParser parser;
-    private String path = "";
+    private String path = "", fichier="";
 
-    protected ReponsePossibleDAO(XmlPullParser parser, String path) {
+    protected ReponsePossibleDAO(XmlPullParser parser, String path, String fichier) {
         this.parser = parser;
         this.path = path;
+        this.fichier = fichier;
     }
 
     public ReponsePossible extractReponse() throws XmlPullParserException, IOException {
@@ -70,7 +71,7 @@ public class ReponsePossibleDAO {
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path+"XMLDatabase.xml"));
+            parser.setInput(new FileReader(path+fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {

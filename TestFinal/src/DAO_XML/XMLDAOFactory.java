@@ -50,7 +50,7 @@ public class XMLDAOFactory {
         //Créé les différentes classes DAO : 
         missionDAO = new MissionDAO(parser, path, fichier);
         ordreDAO = new OrdreDAO(parser, path, fichier);
-        reponsePossibleDAO = new ReponsePossibleDAO(parser, path);
+        reponsePossibleDAO = new ReponsePossibleDAO(parser, path, fichier);
 
     }
 
