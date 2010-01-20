@@ -18,7 +18,7 @@ public class TestWorkflow {
     	
         Workflow w = new Workflow(path);
 
-        int ordreSuivant = w.prochainOrdre(1,"Non");
+        int ordreSuivant = w.validationOrdre(1,"Non");
 
         System.out.println("Prochain ordre a executer :");
         System.out.println("-- Resultat attendu : 2 ");
