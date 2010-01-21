@@ -19,7 +19,7 @@ public class Main {
         lt.playAll(); // produitcvbwvb les fichiers .pho et .wav et lit le son */
         /*lt.setTexte("Un autre texte à lire"); // pour changer le texte du lecteur
         lt.muet(); // produit les fichiers .pho et .wav */
-        System.out.println(LecteurTexte.getPathWav());
+        //System.out.println(LecteurTexte.getPathWav());
 
     }
 }
