@@ -30,15 +30,15 @@ public class InterfaceServeurAffichage extends FrameView {
 
     private DAOMission acces_mission;
     private DefaultListModel listeMissionModel;
+    private DefaultListModel listeReponseModel;
 
     public InterfaceServeurAffichage(SingleFrameApplication app) throws SQLException {
         super(app);
         BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         acces_mission = (DAOMission) DAOFactory.getDAOMission();
-
         
         initComponents();
-
+        SetVisible(false);
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
@@ -157,8 +157,8 @@ public class InterfaceServeurAffichage extends FrameView {
         labelOrdre2 = new javax.swing.JLabel();
         labelOrdre1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
+        listeReponses = new javax.swing.JList();
+        labelReponseDefault = new javax.swing.JLabel();
         barreMenu = new javax.swing.JMenuBar();
         javax.swing.JMenu ongletMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem sousOngletQuitter = new javax.swing.JMenuItem();
@@ -268,21 +268,44 @@ public class InterfaceServeurAffichage extends FrameView {
 
         labelOrdre3.setText(resourceMap.getString("labelOrdre3.text")); // NOI18N
         labelOrdre3.setName("labelOrdre3"); // NOI18N
+        labelOrdre3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                labelOrdre3MouseMoved(evt);
+            }
+        });
 
         labelOrdre4.setText(resourceMap.getString("labelOrdre4.text")); // NOI18N
         labelOrdre4.setName("labelOrdre4"); // NOI18N
+        labelOrdre4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                labelOrdre4MouseMoved(evt);
+            }
+        });
 
         labelOrdre1Defaut.setText(resourceMap.getString("labelOrdre1Defaut.text")); // NOI18N
         labelOrdre1Defaut.setName("labelOrdre1Defaut"); // NOI18N
 
         labelOrdre2.setText(resourceMap.getString("labelOrdre2.text")); // NOI18N
         labelOrdre2.setName("labelOrdre2"); // NOI18N
+        labelOrdre2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                labelOrdre2MouseMoved(evt);
+            }
+        });
 
         labelOrdre1.setText(resourceMap.getString("labelOrdre1.text")); // NOI18N
         labelOrdre1.setName("labelOrdre1"); // NOI18N
         labelOrdre1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelOrdre1MouseClicked(evt);
+            }
+        });
+        labelOrdre1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                labelOrdre1MouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                labelOrdre1MouseMoved(evt);
             }
         });
         labelOrdre1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -293,16 +316,13 @@ public class InterfaceServeurAffichage extends FrameView {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setName("jList1"); // NOI18N
-        jScrollPane1.setViewportView(jList1);
+        listeReponseModel = new DefaultListModel();
+        listeReponses.setModel(listeReponseModel);
+        listeReponses.setName("listeReponses"); // NOI18N
+        jScrollPane1.setViewportView(listeReponses);
 
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
+        labelReponseDefault.setText(resourceMap.getString("labelReponseDefault.text")); // NOI18N
+        labelReponseDefault.setName("labelReponseDefault"); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -344,7 +364,7 @@ public class InterfaceServeurAffichage extends FrameView {
                                         .addComponent(labelOrdre4Defaut)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(labelOrdre4, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
-                                    .addComponent(jLabel1)
+                                    .addComponent(labelReponseDefault)
                                     .addGroup(mainPanelLayout.createSequentialGroup()
                                         .addComponent(labelOrdre2Defaut)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -414,7 +434,7 @@ public class InterfaceServeurAffichage extends FrameView {
                                     .addComponent(labelOrdre4Defaut)
                                     .addComponent(labelOrdre4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
+                                .addComponent(labelReponseDefault)
                                 .addGap(70, 70, 70))
                             .addComponent(panneauListeMission, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -511,6 +531,7 @@ public class InterfaceServeurAffichage extends FrameView {
     private void listeMissionsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeMissionsValueChanged
         // TODO add your handling code here:
             boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
+            SetVisible(true);
             int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
 
             Mission mission = acces_mission.find(id);
@@ -531,8 +552,32 @@ public class InterfaceServeurAffichage extends FrameView {
         //System.out.println("test nom mission : "+acces_mission.findListAll().get(0).getIdMission());
     }//GEN-LAST:event_listeMissionsValueChanged
 
+    private void SetVisible(boolean valeur)
+    {
+        labelEmploye.setVisible(valeur);
+        labelEmployeDefaut.setVisible(valeur);
+        labelEtat.setVisible(valeur);
+        labelEtatDefaut.setVisible(valeur);
+        labelID.setVisible(valeur);
+        labelIDdefaut.setVisible(valeur);
+        labelOrdre1.setVisible(valeur);
+        labelOrdre1Defaut.setVisible(valeur);
+        labelOrdre2.setVisible(valeur);
+        labelOrdre2Defaut.setVisible(valeur);
+        labelOrdre3.setVisible(valeur);
+        labelOrdre3Defaut.setVisible(valeur);
+        labelOrdre4.setVisible(valeur);
+        labelOrdre4Defaut.setVisible(valeur);
+        labelReponseDefault.setVisible(valeur);
+        listeReponses.setVisible(valeur);
+        labelOrdreDefaut.setVisible(valeur);
+        
+
+    }
     private void focusLabel (JLabel label,int numeroLabel)
     {
+        listeReponseModel.removeAllElements();
+        labelReponseDefault.setText("Listes des Réponses de l'ordre "+ numeroLabel+ " :");
         int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
         Mission mission = acces_mission.find(id);
         //labelListes des Réponses de l'ordre ? :
@@ -543,7 +588,13 @@ public class InterfaceServeurAffichage extends FrameView {
         else {
             label.setForeground(Color.RED);
         }
+        for (int indexReponse=0 ; indexReponse < mission.getListOrdres().get(numeroLabel).getReponsesPossibles().size();indexReponse ++)
 
+        {
+            String monString = mission.getListOrdres().get(numeroLabel).getReponsesPossibles().get(indexReponse).getReponse() + " (Ordre" + mission.getListOrdres().get(numeroLabel).getReponsesPossibles().get(indexReponse).getOrdreSuivant() +")";
+
+            listeReponseModel.addElement(monString);
+        }
     }
 
     private void labelOrdre1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_labelOrdre1FocusGained
@@ -553,10 +604,32 @@ public class InterfaceServeurAffichage extends FrameView {
     private void labelOrdre1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseClicked
         // TODO add your handling code here:
                 focusLabel(labelOrdre1, 1);
-                focusLabel(labelOrdre2, 2);
-                focusLabel(labelOrdre3, 3);
-                focusLabel(labelOrdre4, 4);
     }//GEN-LAST:event_labelOrdre1MouseClicked
+
+    private void labelOrdre1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseDragged
+        // TODO add your handling code here:
+        focusLabel(labelOrdre1, 1);
+    }//GEN-LAST:event_labelOrdre1MouseDragged
+
+    private void labelOrdre1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseMoved
+        // TODO add your handling code here:
+        focusLabel(labelOrdre1, 1);
+    }//GEN-LAST:event_labelOrdre1MouseMoved
+
+    private void labelOrdre2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre2MouseMoved
+        // TODO add your handling code here:
+        focusLabel(labelOrdre2, 2);
+    }//GEN-LAST:event_labelOrdre2MouseMoved
+
+    private void labelOrdre3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre3MouseMoved
+        // TODO add your handling code here:
+        focusLabel(labelOrdre3, 3);
+    }//GEN-LAST:event_labelOrdre3MouseMoved
+
+    private void labelOrdre4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre4MouseMoved
+        // TODO add your handling code here:
+        focusLabel(labelOrdre4, 4);
+    }//GEN-LAST:event_labelOrdre4MouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barreMenu;
@@ -564,8 +637,6 @@ public class InterfaceServeurAffichage extends FrameView {
     private javax.swing.JToggleButton boutonAjouterMission;
     private javax.swing.JComboBox choixAffichagePanneauListeMission;
     private javax.swing.JLabel descriptionPanneauListeMission;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelEmploye;
     private javax.swing.JLabel labelEmployeDefaut;
@@ -582,7 +653,9 @@ public class InterfaceServeurAffichage extends FrameView {
     private javax.swing.JLabel labelOrdre4;
     private javax.swing.JLabel labelOrdre4Defaut;
     private javax.swing.JLabel labelOrdreDefaut;
+    private javax.swing.JLabel labelReponseDefault;
     private javax.swing.JList listeMissions;
+    private javax.swing.JList listeReponses;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane panneauListeMission;
     private javax.swing.JProgressBar progressBar;
