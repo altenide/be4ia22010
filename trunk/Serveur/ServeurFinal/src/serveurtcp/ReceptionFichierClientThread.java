@@ -14,8 +14,8 @@ import java.net.Socket;
 
 
 /**
- *
- * @author Administrateur
+ * Classe permettant de recevoir un fichier
+ * @author Aurélien
  */
 public class ReceptionFichierClientThread extends Thread{
 
@@ -26,6 +26,9 @@ public class ReceptionFichierClientThread extends Thread{
         this.soc=soc;
     }
 
+    /**
+     * Methode definissant le comportement du thread. Recuperation d'un fichier envoyé par le reseau puis stockage dans le repertoire fichiers_recus.
+     */
     public void run(){
         try{
             byte[] octets = new byte[1024];

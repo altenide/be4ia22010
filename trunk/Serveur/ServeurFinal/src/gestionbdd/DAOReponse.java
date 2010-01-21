@@ -34,10 +34,10 @@ public class DAOReponse extends DAO<Reponse> {
             /* Utilisateur (ID, reponse, ordre_actuel, ordre_suivant)*/
             String sCreation = "CREATE TABLE REPONSE ( ID bigint not null,"
                                                    + "reponse varchar(50) NOT NULL ,"
-                                                   + "idmission int not null,"
+                                                   + "idmission int NOT NULL,"
                                                    + "ordre_actuel int NOT NULL,"
                                                    +" ordre_suivant int NOT NULL, "
-                                                   +" PRIMARY KEY(ID,id,mission,ordre_actuel))";
+                                                   +" PRIMARY KEY(ID,idmission,ordre_actuel))";
 
             try {
                 Statement statement = conn.createStatement();
@@ -50,7 +50,7 @@ public class DAOReponse extends DAO<Reponse> {
     }
 
     public boolean create(Reponse obj) {
-       String sInsertion = "INSERT INTO REPONSE (ID ,reponse, idmissio, ordre_actuel, ordre_suivant) VALUES ("+
+       String sInsertion = "INSERT INTO REPONSE (ID ,reponse, idmission, ordre_actuel, ordre_suivant) VALUES ("+
                             obj.getIdReponse()+","
                             +"'"+obj.getReponse()+"',"
                             +obj.getIdmission()+","
