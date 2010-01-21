@@ -33,10 +33,11 @@ public class DAOReponse extends DAO<Reponse> {
 
             /* Utilisateur (ID, reponse, ordre_actuel, ordre_suivant)*/
             String sCreation = "CREATE TABLE REPONSE ( ID bigint not null,"
-                                                   + " reponse varchar(50) NOT NULL ,"
+                                                   + "reponse varchar(50) NOT NULL ,"
+                                                   + "idmission int not null"
                                                    + "ordre_actuel int NOT NULL,"
                                                    +" ordre_suivant int NOT NULL, "
-                                                   +" PRIMARY KEY(ID,ordre_actuel))";
+                                                   +" PRIMARY KEY(ID,id,mission,ordre_actuel))";
 
             try {
                 Statement statement = conn.createStatement();
@@ -49,9 +50,10 @@ public class DAOReponse extends DAO<Reponse> {
     }
 
     public boolean create(Reponse obj) {
-       String sInsertion = "INSERT INTO REPONSE (ID ,reponse, ordre_actuel, ordre_suivant) VALUES ("+
-                            obj.getIdReponse()+","+
-                            "'"+obj.getReponse()+"',"+
+       String sInsertion = "INSERT INTO REPONSE (ID ,reponse, idmissio, ordre_actuel, ordre_suivant) VALUES ("+
+                            obj.getIdReponse()+","
+                            +"'"+obj.getReponse()+"',"
+                            +obj.getIdmission()+","
                             +obj.getOrdreActuel()+","
                             +obj.getOrdreSuivant()+")";
         try{
@@ -68,7 +70,7 @@ public class DAOReponse extends DAO<Reponse> {
     }
 
     public boolean delete(Reponse obj) {
-        String sDeletion = "DELETE FROM REPONSE WHERE ID="+obj.getIdReponse()+" AND ordre_actuel="+obj.getOrdreSuivant();
+        String sDeletion = "DELETE FROM REPONSE WHERE ID="+obj.getIdReponse()+" AND idmission="+obj.getIdmission()+" AND ordre_actuel="+obj.getOrdreSuivant();
         try{
             Statement statement = connect.createStatement();
             statement.execute(sDeletion);
@@ -97,7 +99,7 @@ public class DAOReponse extends DAO<Reponse> {
             statement.execute(sSelect);
             rs = statement.getResultSet();
             while (rs.next()) {
-                list.add(new Reponse(rs.getInt("ID"), rs.getString("reponse"),rs.getInt("ordre_actuel"), rs.getInt("ordre_suivant")));
+                list.add(new Reponse(rs.getInt("ID"), rs.getString("reponse"),rs.getInt("idmission"),rs.getInt("ordre_actuel"), rs.getInt("ordre_suivant")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -110,6 +112,7 @@ public class DAOReponse extends DAO<Reponse> {
                 "reponse='" + obj.getIdReponse() + "'," +
                 "ordre_suivant=" + obj.getOrdreSuivant() +
                 "WHERE ordre_actuel=" + obj.getOrdreActuel() +
+                "AND idmission=" + obj.getIdmission() +
                 "AND " + "ID=" + obj.getIdReponse();
 
         try {
