@@ -20,13 +20,16 @@ public class Main {
         BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         try
         {
-            DAOUtilisateur user =(DAOUtilisateur) DAOFactory.getDAOUtilisateur();
-            DAOOrdre acces_ordre =(DAOOrdre) DAOFactory.getDAOOrdre();
+            DAOUtilisateur acces_utilisateur =(DAOUtilisateur) DAOFactory.getDAOUtilisateur();
+            DAOMission acces_mission = (DAOMission) DAOFactory.getDAOMission();
 
-           // user.create(new Utilisateur("Robert", "azerty",5));
+            acces_utilisateur.create(new Utilisateur("Robert", "azerty",5));
+            Mission m1 = new Mission("Robert");
 
+            /* Création des ordres */
             Ordre o1 = new Ordre(1,1,"Aller faire les courses",false);
             Ordre o2 = new Ordre(2,1,"Aller faire le ménage",false);
+
             o1.addReponse(new Reponse(0,"Courses faites",1,2));
             o1.addReponse(new Reponse(1,"Repeter",1,1));
             o1.addReponse(new Reponse(2,"Impossible",1,0));
@@ -36,17 +39,17 @@ public class Main {
             o2.addReponse(new Reponse(1,"Repeter",2,1));
             o2.addReponse(new Reponse(2,"Impossible",2,0));
             o2.setFilename("o2.wav");
-//            reponse.create(new Reponse(0,"Ok",0,1));
-//            reponse.create(new Reponse(1,"Pas ok",0,2));
-//            reponse.create(new Reponse(2,"Repeter",0,0));
-//            Vector<Reponse> liste = reponse.findList(0);
-            System.out.println("ajout o1 dans la bdd:");
-            acces_ordre.create(o1);
-            System.out.println("ajout o2 dans la bdd:");
-            acces_ordre.create(o2);
-            
-           // System.out.println(liste.size());
 
+            /* Configuration de la mission */
+            m1.addOrdre(o1);
+            m1.addOrdre(o2);
+            m1.setEtat(Mission.etat_mission.EN_COURS);
+            m1.setIdMission(0);
+            m1.setIdOrdreCourant(1);
+            m1.setPublie(true);
+
+            /* Ajout de la mission dans la BDD */
+            acces_mission.create(m1);
 
         }
         catch(Exception Ex)

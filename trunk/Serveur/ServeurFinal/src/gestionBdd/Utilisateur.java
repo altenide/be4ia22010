@@ -57,6 +57,4 @@ public class Utilisateur {
         this.terminal = terminal;
     }
 
-
-
 }
