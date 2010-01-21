@@ -30,14 +30,14 @@ public class Main {
             Ordre o1 = new Ordre(1,1,"Aller faire les courses",false);
             Ordre o2 = new Ordre(2,1,"Aller faire le ménage",false);
 
-            o1.addReponse(new Reponse(0,"Courses faites",1,2));
-            o1.addReponse(new Reponse(1,"Repeter",1,1));
-            o1.addReponse(new Reponse(2,"Impossible",1,0));
+            o1.addReponse(new Reponse(0,"Courses faites",o1.getIdMission(),1,2));
+            o1.addReponse(new Reponse(1,"Repeter",o1.getIdMission(),1,1));
+            o1.addReponse(new Reponse(2,"Impossible",o1.getIdMission(),1,0));
             o1.setFilename("o1.wav");
 
-            o2.addReponse(new Reponse(0,"Menage fait",2,2));
-            o2.addReponse(new Reponse(1,"Repeter",2,1));
-            o2.addReponse(new Reponse(2,"Impossible",2,0));
+            o2.addReponse(new Reponse(0,"Menage fait",o1.getIdMission(),2,2));
+            o2.addReponse(new Reponse(1,"Repeter",o1.getIdMission(),2,1));
+            o2.addReponse(new Reponse(2,"Impossible",o1.getIdMission(),2,0));
             o2.setFilename("o2.wav");
 
             /* Configuration de la mission */
