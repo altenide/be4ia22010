@@ -1,22 +1,30 @@
 package Synthese;
 
-/* Synthèse vocale
-Pour la paramétrer, modifier le fichier donnees/si_vox.conf */
 import Synthese.son.LecteurTexte;
 import gestionbdd.Mission;
 import gestionbdd.Ordre;
 
+/**
+ * Classe utilisant le projet S.I. Vox pour permettre la synthèse vocale des "ordres"
+ *
+ * Pour choisir le répertoire où sont enregistrés les fichiers, modifier la valeur de path.
+ * Le dossier doit exister (le programme ne le crée pas).
+ *
+ * Pour paramétrer la synthèse (voix...) modifier le fichier donnees/si_vox.conf
+ *
+ * @author Jean-Christophe Frachet
+ */
 public class Synthese {
 
     private String pathName;
     private LecteurTexte lt;
-
+    
     // dossier où sont enregistrés les fichiers son (par rapport à la racine du projet)
-    private static String path = new String ("donnees/pho_wav/");
+    private static String path = new String("donnees/pho_wav/");
 
     /** Constructeur qui synthétise un son
      * Le fichier son est créé, mais pas joué.
-     * @param l'ordre à synthétiser
+     * @param ordre
      */
     public Synthese(Ordre ordre) {
 
