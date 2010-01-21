@@ -6,7 +6,7 @@
 package gestionbdd;
 
 /**
- *
+ * Classe représentant une réponse possible pour un ordre donné
  * @author nfloquet
  */
 public class Reponse {
@@ -21,6 +21,17 @@ public class Reponse {
     /* Ordre suivant correspondant à la réponse */
     private int ordreSuivant;
 
+    /**
+     * Constructeur de la classe Reponse
+     * @param idReponse
+     * identifiant de la réponse au sein de l'ordre
+     * @param reponse
+     * Contenu textuel de la réponse
+     * @param ordreActuel
+     * Identifiant de l'odre actuel
+     * @param ordreSuivant
+     * Identifiant de l'ordre suivant
+     */
     public Reponse(int idReponse, String reponse, int ordreActuel, int ordreSuivant) {
         this.idReponse = idReponse;
         this.reponse = reponse;
@@ -32,18 +43,36 @@ public class Reponse {
     /*
      * Getters
      */
+    /**
+     * Retourne l'identifiant de la réponse
+     * @return
+     * Identifiant de la réponse au sein de l'ordre
+     */
     public int getIdReponse() {
         return idReponse;
     }
 
+    /**
+     * Retourne l'identifiant de l'ordre actuel
+     * @return
+     */
     public int getOrdreActuel() {
         return ordreActuel;
     }
 
+    /**
+     * Retourne l'identifiant  de l'ordre suivant
+     * @return
+     */
     public int getOrdreSuivant() {
         return ordreSuivant;
     }
 
+    /**
+     * Retourne le contenu textuel de la réponse
+     * @return
+     * Contenu textuel de la réponse
+     */
     public String getReponse() {
         return reponse;
     }
@@ -51,18 +80,38 @@ public class Reponse {
     /*
      * Setters
      */
+    /**
+     * Défini l'identifiant de la réponse au sein de l'ordre
+     * @param idReponse
+     * Identifiant de la réponse au sein de l'ordre
+     */
     public void setIdReponse(int idReponse) {
         this.idReponse = idReponse;
     }
 
+    /**
+     * Défini l'identifiant de l'ordre actuel
+     * @param ordreActuel
+     * Identifiant de l'ordre actuel
+     */
     public void setOrdreActuel(int ordreActuel) {
         this.ordreActuel = ordreActuel;
     }
 
+    /**
+     * Défini l'identifiant de l'ordre suivant
+     * @param ordreSuivant
+     * Identifiant de l'ordre suivant
+     */
     public void setOrdreSuivant(int ordreSuivant) {
         this.ordreSuivant = ordreSuivant;
     }
 
+    /**
+     * Défini le contenu textuel de la réponse
+     * @param reponse
+     * Contenu textuel de la réponse
+     */
     public void setReponse(String reponse) {
         this.reponse = reponse;
     }
