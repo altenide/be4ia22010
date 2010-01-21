@@ -511,10 +511,21 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
                     for (indexReponse = 0 ; indexReponse < indexDerniereReponse ; indexReponse ++)
                     {                    
                         String t = InterfaceOrdreAux.getOrdreSuivant()[indexReponse].getNom();
+                        if (Integer.parseInt(t.substring(6,(t.length()))) == listeOrdreInterface.getSize() )
+                        {
+                            aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],aux.getIdMission(),i, -2 ));
+                        }
 
-                        aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],aux.getIdMission(),i, Integer.parseInt(t.substring(6,(t.length()))) - 1 ));
+                        else
+                        {
+                            aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],aux.getIdMission(),i, Integer.parseInt(t.substring(6,(t.length()))) - 1 ));
+                        }
                     }
-                    
+                    String monString = InterfaceOrdreAux.getNom() ;
+                    monString = "O" + monString.substring(6,(monString.length()));
+
+                    //monString = "O" + String.valueOf(Integer.parseInt(monString.substring(6,(monString.length()))) - 1);
+                    aux.setFilename(monString);
                     m1.addOrdre(aux);
                 }
 

@@ -266,7 +266,6 @@ public class InterfaceServeurAffichage extends FrameView {
         labelOrdre4Defaut.setText(resourceMap.getString("labelOrdre4Defaut.text")); // NOI18N
         labelOrdre4Defaut.setName("labelOrdre4Defaut"); // NOI18N
 
-        labelOrdre3.setText(resourceMap.getString("labelOrdre3.text")); // NOI18N
         labelOrdre3.setName("labelOrdre3"); // NOI18N
         labelOrdre3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -274,7 +273,6 @@ public class InterfaceServeurAffichage extends FrameView {
             }
         });
 
-        labelOrdre4.setText(resourceMap.getString("labelOrdre4.text")); // NOI18N
         labelOrdre4.setName("labelOrdre4"); // NOI18N
         labelOrdre4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -285,7 +283,6 @@ public class InterfaceServeurAffichage extends FrameView {
         labelOrdre1Defaut.setText(resourceMap.getString("labelOrdre1Defaut.text")); // NOI18N
         labelOrdre1Defaut.setName("labelOrdre1Defaut"); // NOI18N
 
-        labelOrdre2.setText(resourceMap.getString("labelOrdre2.text")); // NOI18N
         labelOrdre2.setName("labelOrdre2"); // NOI18N
         labelOrdre2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -325,8 +322,7 @@ public class InterfaceServeurAffichage extends FrameView {
                                 .addGap(31, 31, 31))
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(labelDescriptionMission)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(labelDescriptionMission))
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,14 +521,28 @@ public class InterfaceServeurAffichage extends FrameView {
             labelEmploye.setText(mission.getUtilisateur());
             labelID.setText(String.valueOf(mission.getIdMission()));
             labelEtat.setText(String.valueOf(mission.getEtat()));
-
+            int i=1;
             try {
                 labelOrdre1.setText(mission.getListOrdres().get(0).getContenu());
+                i++;
                 labelOrdre2.setText(mission.getListOrdres().get(1).getContenu());
+                i++;
                 labelOrdre3.setText(mission.getListOrdres().get(2).getContenu());
+                i++;
                 labelOrdre4.setText(mission.getListOrdres().get(3).getContenu());
+                i++;
             }
-            catch (Exception e) {}
+            catch (Exception e)
+            {
+                if (i<=1)
+                labelOrdre1.setText("");
+                if (i<=2)
+                labelOrdre2.setText("");
+                if (i<=3)
+                labelOrdre3.setText("");
+                if (i<=4)
+                labelOrdre4.setText("");
+            }
 
 
         
@@ -568,13 +578,15 @@ public class InterfaceServeurAffichage extends FrameView {
         int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
         Mission mission = acces_mission.find(id);
         //labelListes des Réponses de l'ordre ? :
-        for (int indexReponse=0 ; indexReponse < mission.getListOrdres().get(numeroLabel).getReponsesPossibles().size();indexReponse ++)
-
+        try
         {
-            String monString = mission.getListOrdres().get(numeroLabel).getReponsesPossibles().get(indexReponse).getReponse() + " (Ordre" + mission.getListOrdres().get(numeroLabel).getReponsesPossibles().get(indexReponse).getOrdreSuivant() +")";
+            for (int indexReponse=0 ; indexReponse <= mission.getListOrdres().get(numeroLabel).getReponsesPossibles().size();indexReponse ++)
+            {
+                String monString = mission.getListOrdres().get(numeroLabel-1).getReponsesPossibles().get(indexReponse).getReponse() + " (Ordre" + mission.getListOrdres().get(numeroLabel-1).getReponsesPossibles().get(indexReponse).getOrdreSuivant() +")";
 
-            listeReponseModel.addElement(monString);
-        }
+                listeReponseModel.addElement(monString);
+            }
+        } catch (Exception e) {}
     }
 
     private void labelOrdre1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseMoved
