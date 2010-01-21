@@ -28,6 +28,7 @@ public class TCPThread extends Thread {
     private generatorOrdre gOrdre;
 
 
+
     public TCPThread(Socket soc) {
         this.soc = soc;
         portFichier = 4343;
@@ -106,6 +107,7 @@ public class TCPThread extends Thread {
                     //envoi du nomDuFichier xml contenant la mission
                     EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
                     e.sendFile("./" + nomDuFichier);
+
                     /*
                     String listeFichiers[] = new String[4];
                     listeFichiers[0] = "audioOrdreId0";

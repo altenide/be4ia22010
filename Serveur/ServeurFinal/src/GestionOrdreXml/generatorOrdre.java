@@ -59,9 +59,10 @@ public class generatorOrdre {
             System.out.println("Nombre ordre recu:" + ord.size());
 
             /////////////////////////////////////////////////////////////////////////////////
+            
             for (Ordre or : ord) {
+                Synthese s = new Synthese(or);
                 ordre = O.AddOrdre(mission, factory, or.getContenu(), EtatType.NON_ATTEINT, false, or.getFilename(), or.getIdOrdre());
-                Synthese S = new Synthese(or);
                 for (Reponse r : or.getReponsesPossibles()) {
                     O.AddReponseTo(factory, ordre, r.getReponse(), r.getOrdreSuivant(), r.getIdReponse());
                 }
