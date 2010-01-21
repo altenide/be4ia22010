@@ -491,19 +491,30 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
 
                 Mission m1 = new Mission();
                 m1.setIdMission(Integer.parseInt(champNomNouvelleMission.getText()));
-              /*  for (int i=0; i < listeOrdreInterface.getSize();i++)
+                int indexReponse;
+                int indexDerniereReponse;
+                for (int i=0; i < listeOrdreInterface.getSize();i++)
                 {
+
                     OrdreInterface InterfaceOrdreAux = (OrdreInterface) listeOrdreInterface.getElementAt(i);
                     Ordre aux = new Ordre(i,m1.getIdMission(),InterfaceOrdreAux.getTexte(),false);
-                    //while (InterfaceOrdreAux.getReponse()[indexReponse].)
-                   
+
+                    indexDerniereReponse = 0;
+
+                   // try {
+                        indexDerniereReponse = InterfaceOrdreAux.positionDerniereReponse();
+
+                        System.out.println(indexDerniereReponse);
+                   // } catch (Exception e) {}
+
+                    for (indexReponse = 0 ; indexReponse < indexDerniereReponse ; indexReponse ++)
+                    {                    
+                        String t = InterfaceOrdreAux.getOrdreSuivant()[indexReponse].getNom();
+                        aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],i,Integer.parseInt(t.substring(6,(t.length())))));
+                    }
+                    
+                    m1.addOrdre(aux);
                 }
-
-                 //  public Reponse(int idReponse, String reponse, int ordreActuel, int ordreSuivant);
-                OrdreInterface ordre = (OrdreInterface) listeOrdreInterface.getElementAt(ListeOrdres.getSelectedIndex());
-
-                 /**/
-                 //   m1.addOrdre(aux);
 
                 accesMission.create(m1);
 

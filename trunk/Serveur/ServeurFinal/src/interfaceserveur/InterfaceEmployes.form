@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="labelDescriptionMission" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="543" max="32767" attributes="0"/>
+              <EmptySpace pref="553" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -46,7 +46,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labelListeMissionsAssignees" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="161" max="32767" attributes="0"/>
+                              <EmptySpace pref="220" max="32767" attributes="0"/>
                               <Component id="labelTerminalAssigne" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Component id="champTerminalAssigne" min="-2" max="-2" attributes="0"/>
@@ -127,7 +127,7 @@
                           <Component id="labelTerminalAssigne" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="champTerminalAssigne" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="133" max="32767" attributes="0"/>
+                      <EmptySpace pref="135" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelNouvelleMissionAssignee" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="messageAssignerMission" alignment="3" min="-2" max="-2" attributes="0"/>
