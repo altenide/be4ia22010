@@ -3,8 +3,9 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ]
+ *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ]
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
+ *
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
@@ -30,23 +31,23 @@ import java.io.*;
  */
 public class LecteurTexte {
 
-    // le path des fichiers de rï¿½gles utilisï¿½ pour transformer les mots en phonï¿½mes
+    // le path des fichiers de règles utilisé pour transformer les mots en phonèmes
     private final static String PATH_REGLE = ConfigFile.rechercher("CHEMIN_REGLES");
-    // le fichier pour ï¿½crire les wav ou pho
+    // le fichier pour écrire les wav ou pho
     private final static String PHO_WAV = ConfigFile.rechercher("FICHIER_PHO_WAV");
-    private String outFile;    //le fichier pour ï¿½crire les fichiers son
-    private String voix;        // la voix utilisï¿½e par MBROLA
-    private Arbre arbre;        // l'arbre contenant les rï¿½gles
-    private Pretraitement pt;   // le texte aprï¿½s prï¿½traitement
-    private boolean vide;       // vrai si l'on a traitï¿½ complï¿½tement le texte
+    private String outFile;    //le fichier pour écrire les fichiers son
+    private String voix;        // la voix utilisée par MBROLA
+    private Arbre arbre;        // l'arbre contenant les règles
+    private Pretraitement pt;   // le texte après prétraitement
+    private boolean vide;       // vrai si l'on a traité complètement le texte
     private BufferedReader cin; // entree standard
 
     /** Constructeur complet de Lecteur de Texte
-     * @param s le texte ï¿½ lire
-     * @param path l'emplacement des fichiers de rï¿½gles
-     * @param of le fichier ou l'on ï¿½crit les phonï¿½mes ï¿½ prononcer
-     * @param v la voix ï¿½ utiliser pour lire ces phonï¿½mes
-     * @param isFile Lit - on depuis un fichier ou depuis l'entrï¿½e standart ?
+     * @param s le texte à lire
+     * @param path l'emplacement des fichiers de règles
+     * @param of le fichier ou l'on écrit les phonèmes à prononcer
+     * @param v la voix à utiliser pour lire ces phonèmes
+     * @param isFile Lit - on depuis un fichier ou depuis l'entrée standart ?
      */
     public LecteurTexte(String s, String path, String of, String v, boolean isFile) {
         outFile = of;
@@ -71,8 +72,8 @@ public class LecteurTexte {
         }
     }
 
-    /** Mï¿½thode d'affichage standart
-     * @return une chaine de caractï¿½re ad'hoc
+    /** Méthode d'affichage standart
+     * @return une chaine de caractère ad'hoc
      */
     @Override
     public String toString() {
@@ -81,24 +82,24 @@ public class LecteurTexte {
         return s;
     }
 
-    /** Constructeur allÃ©gÃ© utilisant des valeurs par dï¿½faut
-     * @param s le texte ï¿½ lire
+    /** Constructeur allégé utilisant des valeurs par défaut
+     * @param s le texte à lire
      * @param isFile Lit-on depuis un fichier ?
      */
     public LecteurTexte(String s, boolean isFile) {
         this(s, PATH_REGLE, PHO_WAV, SynthetiseurMbrola.VOIX1, isFile);
     }
 
-    /** Construteur allÃ©gÃ© permettant de choisir le nom du fichier
-     * @param s le texte Ã  lire
+    /** Construteur allégé permettant de choisir le nom du fichier
+     * @param s le texte à lire
      * @param pathFile le chemin du fichier (sans l'extension)
      */
     public LecteurTexte(String s, String pathFile) {
         this(s, PATH_REGLE, pathFile, SynthetiseurMbrola.VOIX1, false);
     }
 
-    /** Constructeur completement allï¿½gï¿½
-     * @param s le texte ï¿½ lire
+    /** Constructeur completement allégé
+     * @param s le texte à lire
      */
     public LecteurTexte(String s) {
         this(s, PATH_REGLE, PHO_WAV, SynthetiseurMbrola.VOIX1, false);
@@ -153,8 +154,8 @@ public class LecteurTexte {
         }
     }
 
-    /** Pour mettre ï¿½ jour la voix utilisï¿½ par le synthï¿½tiseur
-     * @param v le numï¿½ro de la voix (parmis 1,2 ou 3)
+    /** Pour mettre à jour la voix utilisé par le synthétiseur
+     * @param v le numéro de la voix (parmis 1,2 ou 3)
      */
     public void setVoix(int v) {
         switch (v) {
@@ -176,29 +177,29 @@ public class LecteurTexte {
         return vide;
     }
 
-    /** Pour changer le texte ï¿½ lire
+    /** Pour changer le texte à lire
      */
     public void setTexte(String s) {
         pt = new Pretraitement(s);
         vide = false;
     }
 
-    /** Pour recharger les fichiers de rï¿½gles (reconstruction de l'arbre)
-     * @param pathRegle l'emplacement du repertoire contenant les rï¿½gles
-     * @param pathPrepo l'emplacement du repertoire contenant les prï¿½positions (DEPRECATED)
+    /** Pour recharger les fichiers de règles (reconstruction de l'arbre)
+     * @param pathRegle l'emplacement du repertoire contenant les règles
+     * @param pathPrepo l'emplacement du repertoire contenant les prépositions (DEPRECATED)
      */
     private void reloadArbre(String pathRegle, String pathPrepo) throws AnalyseException {
         arbre = new Arbre(PATH_REGLE);
     }
 
-    /** Pour metttre ï¿½ jour les rï¿½gles de prononciation
+    /** Pour mettre à jour les règles de prononciation
      */
     public void reloadArbre() throws AnalyseException {
         arbre = new Arbre(PATH_REGLE);
     }
 
     /** Pour lire le texte phrase par phrase avec Mbrola.
-     * @return la chaine de caractï¿½re reprï¿½senant la liste de phonï¿½mes ï¿½ prononcer.
+     * @return la chaine de caractère représenant la liste de phonèmes à prononcer.
      */
     public String play() {
         ListePhonemes l = new ListePhonemes();
@@ -221,8 +222,8 @@ public class LecteurTexte {
         return l.toString();
     }
 
-    /** Pour lire la totalitï¿½ d'un texte avec Mbrola
-     * @return la chaine de caractï¿½res reprï¿½sentant la liste de phonï¿½mes ï¿½ prononcer.
+    /** Pour lire la totalité d'un texte avec Mbrola
+     * @return la chaine de caractères représentant la liste de phonèmes à prononcer.
      */
     public String playAll() {
         ListePhonemes l = new ListePhonemes();
@@ -248,14 +249,14 @@ public class LecteurTexte {
     }
 
     /** Pour generer un fichier sonore en mode silencieux (ne rien prononcer).
-     * <p><b>Remarque</b> : utilisï¿½ majoritairement (uniquement ?) par le serveur web de dï¿½monstration</p>
+     * <p><b>Remarque</b> : utilisé majoritairement (uniquement ?) par le serveur web de démonstration</p>
      */
     public String muet() {
         return this.muet(SynthetiseurMbrola.MBROLAHOME);
     }
 
     /** MODIFIEE
-     * Pour generer un fichier de phonï¿½me en mode silencieux (ne rien prononcer)
+     * Pour generer un fichier de phonème en mode silencieux (ne rien prononcer)
      * @param mb l'emplacement de MBROLA.
      */
     private String muet(String mb) {
@@ -278,8 +279,8 @@ public class LecteurTexte {
     }
 
     /** AJOUT
-     * Pour retrouver le dossier oÃ¹ les fichiers gÃ©nÃ©rÃ©s sont enregistrer
-     * @return le chemin vers les fichiers gÃ©nÃ©rÃ©s (sans extension)
+     * Pour retrouver le dossier où les fichiers générés sont enregistrés
+     * @return le chemin vers les fichiers générés (sans extension)
      */
     public String getPath() {
         return outFile;
@@ -287,7 +288,7 @@ public class LecteurTexte {
 
     /** AJOUT
      * Pour supprimer un fichier en ayant son chemin
-     * @param pathName le chemin relatif Ã  la racine du projet
+     * @param pathName le chemin relatif à la racine du projet
      */
     public void delete(String pathName) {
         File aSuppr = new File(pathName);
