@@ -510,7 +510,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
                     for (indexReponse = 0 ; indexReponse < indexDerniereReponse ; indexReponse ++)
                     {                    
                         String t = InterfaceOrdreAux.getOrdreSuivant()[indexReponse].getNom();
-                        aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],i,Integer.parseInt(t.substring(6,(t.length())))));
+                        aux.addReponse(new Reponse(indexReponse,InterfaceOrdreAux.getReponse()[indexReponse],i, Integer.parseInt(t.substring(6,(t.length()))) - 1 ));
                     }
                     
                     m1.addOrdre(aux);
