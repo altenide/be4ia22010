@@ -3,6 +3,10 @@
  */
 package interfaceserveur;
 
+import gestionbdd.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import org.jdesktop.application.Action;
 
@@ -328,7 +332,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
         try {
             DefaultListModel listeEmployesModel = (DefaultListModel) listeEmployes.getModel();
             messageSelectEmploye.setVisible(false); //message d'erreur enlevé
-            //LierEmployeAMission((String) listeEmployesModel.getElementAt(indexEmployes),(String) listeMissionModel.getElementAt(indexMission));
+            LierEmployeAMission((String) listeEmployesModel.getElementAt(indexEmployes),(String) listeMissionModel.getElementAt(indexMission));
             System.out.println("Pour toi");
             fermerFenetre();
         } catch (Exception e) {
@@ -362,11 +366,21 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
     // End of variables declaration//GEN-END:variables
 
     public void AjouterEmployeBDD(String login, char[] motDePasse) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Utilisateur user = new Utilisateur(login, String.copyValueOf(motDePasse), -1);
+        try {
+            DAOFactory.getDAOUtilisateur().create(user);
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceEmployes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void RetirerEmployeBDD(String login) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Utilisateur user = new Utilisateur(login, "", -1);
+        try {
+            DAOFactory.getDAOUtilisateur().delete(user);
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceEmployes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void AjouterMissionBDD() {
@@ -377,7 +391,16 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private void LierEmployeAMission(String string, String string0) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void LierEmployeAMission(String nomUti , String idMission) {
+        int id = Integer.parseInt(idMission);
+        try {
+            DAOMission dao = (DAOMission)DAOFactory.getDAOMission();
+            Mission mission = dao.find(id);
+            mission.setUtilisateur(nomUti);
+            dao.update(mission);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceEmployes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
