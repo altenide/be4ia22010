@@ -6,6 +6,7 @@ package interfaceserveur;
 
 import gestionbdd.*;
 import java.sql.SQLException;
+import java.util.Vector;
 
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -31,7 +32,8 @@ public class InterfaceServeurAffichage extends FrameView {
         super(app);
         BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         acces_mission = (DAOMission) DAOFactory.getDAOMission();
-        //acces_mission.findListAll()[0];
+
+        
         initComponents();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
@@ -152,6 +154,10 @@ public class InterfaceServeurAffichage extends FrameView {
         panneauListeMission.setName("panneauListeMission"); // NOI18N
 
         DefaultListModel listeMissionModel = new DefaultListModel();
+        for (int i=0; i < acces_mission.findListAll().size();i++)
+        {
+            listeMissionModel.addElement(Integer.toString(acces_mission.findListAll().get(i).getIdMission()));
+        }
         listeMissions.setModel(listeMissionModel);
         listeMissions.setName("listeMissions"); // NOI18N
         listeMissions.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -161,7 +167,7 @@ public class InterfaceServeurAffichage extends FrameView {
         });
         panneauListeMission.setViewportView(listeMissions);
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(interfaceserveur.InterfaceServeurApp.class).getContext().getResourceMap(InterfaceServeurAffichage.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(InterfaceServeurAffichage.class);
         descriptionPanneauListeMission.setText(resourceMap.getString("descriptionPanneauListeMission.text")); // NOI18N
         descriptionPanneauListeMission.setName("descriptionPanneauListeMission"); // NOI18N
 
@@ -173,7 +179,7 @@ public class InterfaceServeurAffichage extends FrameView {
             }
         });
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(interfaceserveur.InterfaceServeurApp.class).getContext().getActionMap(InterfaceServeurAffichage.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(InterfaceServeurAffichage.class, this);
         boutonAffecter.setAction(actionMap.get("montrerFenetreEmployes")); // NOI18N
         boutonAffecter.setText(resourceMap.getString("boutonAffecter.text")); // NOI18N
         boutonAffecter.setName("boutonAffecter"); // NOI18N
@@ -247,9 +253,9 @@ public class InterfaceServeurAffichage extends FrameView {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(separateurDescriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
                         .addComponent(boutonAffecter, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panneauListeMission, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                    .addComponent(panneauListeMission, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boutonAjouterMission)
                 .addGap(19, 19, 19))

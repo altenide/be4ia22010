@@ -15,9 +15,11 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
     private DefaultListModel listeMissionModel;
     private javax.swing.JList listeMissions;
     private DAOMission dao;
+    private DAOUtilisateur utilisateurDAO;
 
-    public InterfaceEmployes(java.awt.Frame parent, javax.swing.JList liste, DAOMission dao) {
+    public InterfaceEmployes(java.awt.Frame parent, javax.swing.JList liste, DAOMission dao) throws SQLException {
         super(parent);
+        utilisateurDAO = (DAOUtilisateur) DAOFactory.getDAOUtilisateur();
         this.dao = dao;
         initComponents();
         listeMissions = liste;
@@ -74,7 +76,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
         messageSelectEmploye = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(interfaceserveur.InterfaceServeurApp.class).getContext().getResourceMap(InterfaceEmployes.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(InterfaceEmployes.class);
         setTitle(resourceMap.getString("title")); // NOI18N
         setModal(true);
         setName("aboutBox"); // NOI18N
@@ -90,6 +92,10 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
         PanneauListeEmployes.setName("PanneauListeEmployes"); // NOI18N
 
         DefaultListModel listeEmployesModel = new DefaultListModel();
+        for (int i=0; i < utilisateurDAO.findList().size();i++)
+        {
+            listeEmployesModel.addElement(utilisateurDAO.findList().get(i).getLogin());
+        }
         listeEmployes.setModel(listeEmployesModel);
         listeEmployes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listeEmployes.setName("listeEmployes"); // NOI18N
@@ -168,7 +174,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(labelDescriptionMission)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -181,7 +187,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelListeMissionsAssignees)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                                 .addComponent(labelTerminalAssigne)
                                 .addGap(3, 3, 3)
                                 .addComponent(champTerminalAssigne))
@@ -195,8 +201,8 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
                                             .addComponent(labelLogin))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(champLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(champMotdePasseCrypte, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(champLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                            .addComponent(champMotdePasseCrypte, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addGap(10, 10, 10)
                                                 .addComponent(boutonAjouterEmploye))))
@@ -241,13 +247,13 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
                             .addComponent(labelListeMissionsAssignees)
                             .addComponent(labelTerminalAssigne)
                             .addComponent(champTerminalAssigne))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelNouvelleMissionAssignee)
                             .addComponent(messageAssignerMission))
                         .addGap(18, 18, 18)
                         .addComponent(boutonAssignerMission, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanneauListeEmployes, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
+                    .addComponent(PanneauListeEmployes, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boutonSupprimerEmploye)
