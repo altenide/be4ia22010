@@ -4,17 +4,13 @@
 package interfaceserveur;
 
 import Synthese.son.LecteurTexte;
-import java.awt.Container;
-import java.awt.LayoutManager;
-import java.awt.Point;
+import gestionbdd.*;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.jdesktop.application.Action;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 public class InterfaceNouvelleMission extends javax.swing.JDialog implements InterfaceBDD {
 
@@ -28,10 +24,11 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
     private int pagedereponse = 0;
     private int blocage = 0;
     private LecteurTexte testVocal;
+    private DAOMission accesMission;
 
-    public InterfaceNouvelleMission(java.awt.Frame parent, javax.swing.JList liste) {
+    public InterfaceNouvelleMission(java.awt.Frame parent, javax.swing.JList liste, DAOMission acces_mission) {
         super(parent);
-
+        this.accesMission = acces_mission;
         comboListeOrdreModel = new DefaultComboBoxModel();
         comboListeOrdreModel2 = new DefaultComboBoxModel();
         comboListeOrdreModel3 = new DefaultComboBoxModel();
@@ -481,7 +478,35 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
             {
                 messageEntrerNomMission.setVisible(false); // on enlève le message d'erreur au cas où il serait affiché.
                 listeMissionModel.addElement(champNomNouvelleMission.getText());
+
+
                 // A FAIRE ajout dans la base de données
+
+                Mission m1 = new Mission();
+                m1.setNom(champNomNouvelleMission.getText());
+                for (int i=0; i < listeOrdreInterface.getSize();i++)
+                {
+                    OrdreInterface InterfaceOrdreAux = (OrdreInterface) listeOrdreInterface.getElementAt(i);
+                    Ordre aux = new Ordre(i,m1.getIdMission(),InterfaceOrdreAux.getTexte(),false);
+                    //while (InterfaceOrdreAux.getReponse()[indexReponse].)
+                   
+                }
+
+                 //  public Reponse(int idReponse, String reponse, int ordreActuel, int ordreSuivant);
+                OrdreInterface ordre = (OrdreInterface) listeOrdreInterface.getElementAt(ListeOrdres.getSelectedIndex());
+
+                 /*
+                    m1.addOrdre(aux);
+                    public Ordre(int idOrdre, int idMission, String contenu, boolean dernierOrdre);
+
+
+                m1.addOrdre(null)
+
+                accesMission.create(m1);
+
+                }
+                */
+
 
                 //Vidage des champs
                 champNomNouvelleMission.setText(null);
