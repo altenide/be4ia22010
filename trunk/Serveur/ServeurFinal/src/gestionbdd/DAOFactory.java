@@ -5,6 +5,7 @@
 
 package gestionbdd;
 
+import gestionbdd.*;
 import java.sql.*;
 
 /**

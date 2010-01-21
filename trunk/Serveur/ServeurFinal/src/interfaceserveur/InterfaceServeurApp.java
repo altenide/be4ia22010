@@ -6,6 +6,7 @@ package interfaceserveur;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
+import serveurtcp.TCPServeur;
 
 /**
  * The main class of the application.
@@ -39,6 +40,8 @@ public class InterfaceServeurApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+        TCPServeur serv = new TCPServeur(4242);
+        serv.start();
         launch(InterfaceServeurApp.class, args);
     }
 }
