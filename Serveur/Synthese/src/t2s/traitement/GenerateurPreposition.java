@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,18 +20,18 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.io.*;
 import java.util.*;
-import t2s.util.ConfigFile;
+import Synthese.util.ConfigFile;
 
-/** Classe d'analyse du fichier qui contient la liste des prépositions.
- * <p> <b> Remarque </b>: selon la préposition, on fera une pause longue ou courte. </p>
+/** Classe d'analyse du fichier qui contient la liste des prï¿½positions.
+ * <p> <b> Remarque </b>: selon la prï¿½position, on fera une pause longue ou courte. </p>
  */
 public class GenerateurPreposition {
 
-    /* constantes pour définir la durée de la pause */
+    /* constantes pour dï¿½finir la durï¿½e de la pause */
 
     /** Une pause courte */
     public static final int COURT = 1;
@@ -42,20 +42,20 @@ public class GenerateurPreposition {
     
     // le buffer qui est lu
     private BufferedReader br;
-    // le numéro de ligne courante dans le fichier
+    // le numï¿½ro de ligne courante dans le fichier
     private  int noLigne ; 
-    // pour savoir si l'on est en train d'analyser une règle longue ou courte
+    // pour savoir si l'on est en train d'analyser une rï¿½gle longue ou courte
     private int duree;
-    // pour savoir s'il reste encore des règles
+    // pour savoir s'il reste encore des rï¿½gles
     private boolean vide;
 
 
-    /** Construit un generateur de regle a partir d'un fichier de préposition (encodage <code>ISO-8859-1</code>)
-     * @param path le chemin d'accès au fichier de prépositions
+    /** Construit un generateur de regle a partir d'un fichier de prï¿½position (encodage <code>ISO-8859-1</code>)
+     * @param path le chemin d'accï¿½s au fichier de prï¿½positions
      */
     public GenerateurPreposition(String path) {
 	try {
-	    // pour avoir le jeu de caractères ISO
+	    // pour avoir le jeu de caractï¿½res ISO
 	    FileInputStream fos = new FileInputStream(path);
 	    br = new BufferedReader(new InputStreamReader(fos,ConfigFile.rechercher("ENCODAGE_FICHIER"))); 
 	    noLigne = 0;
@@ -72,14 +72,14 @@ public class GenerateurPreposition {
 	}
     }
 
-    /** Pour savoir s'il reste encore des règles à lire
-     * @return false s'il reste encore des règles à lire, true sinon.
+    /** Pour savoir s'il reste encore des rï¿½gles ï¿½ lire
+     * @return false s'il reste encore des rï¿½gles ï¿½ lire, true sinon.
      */
     public boolean vide() {
 	return vide;
     }
 
-    /** Pour fermer en lecture le fichier de préposition spécifié dans le constructeur.
+    /** Pour fermer en lecture le fichier de prï¿½position spï¿½cifiï¿½ dans le constructeur.
      */
     public void close() {
 	try {
@@ -90,9 +90,9 @@ public class GenerateurPreposition {
 	}
     }
 
-    /** Pour lire une ligne à notre manière dans un lecteur bufferisé
-     * @param br le lecteur bufferisé en question
-     * @return une instance de <code>StringTokenizer</code>, référencé par les caractères <code>'\t', '\n'</code> et <code>'\r'</code>
+    /** Pour lire une ligne ï¿½ notre maniï¿½re dans un lecteur bufferisï¿½
+     * @param br le lecteur bufferisï¿½ en question
+     * @return une instance de <code>StringTokenizer</code>, rï¿½fï¿½rencï¿½ par les caractï¿½res <code>'\t', '\n'</code> et <code>'\r'</code>
      */
     public StringTokenizer tokensLine(BufferedReader br) throws AnalyseException {
 	String linein = "";
@@ -112,13 +112,13 @@ public class GenerateurPreposition {
 
 
 
-    /** Pour analyser une ligne du fichier, et en produire une instance de Règle.
-     * <p> <b>Définition</b> : une preposition est de la forme suivante </p>
-     * <p> <center> <code>préposition -> phonème </code></center> </p>
+    /** Pour analyser une ligne du fichier, et en produire une instance de Rï¿½gle.
+     * <p> <b>Dï¿½finition</b> : une preposition est de la forme suivante </p>
+     * <p> <center> <code>prï¿½position -> phonï¿½me </code></center> </p>
      * <p>
      * <ul> 
-     *   <li> <code>'préposition'</code> et <code>'phonème'</code> sont des chaines de caractères.</li>
-     *   <li> <code>'préposition'</code> est en minuscules et les <code>' '</code> ont été remplacés par <code>'_'</code>.</li>
+     *   <li> <code>'prï¿½position'</code> et <code>'phonï¿½me'</code> sont des chaines de caractï¿½res.</li>
+     *   <li> <code>'prï¿½position'</code> est en minuscules et les <code>' '</code> ont ï¿½tï¿½ remplacï¿½s par <code>'_'</code>.</li>
      * </ul>
      * </p>
      * @return une nouvelle Regle sur une preposition
@@ -137,7 +137,7 @@ public class GenerateurPreposition {
 	}
 	else {
 	    if (pause(courant)) {
-		// on est sur un mot clef pour indiquer la durée de la pause
+		// on est sur un mot clef pour indiquer la durï¿½e de la pause
 		line = tokensLine(br);
 		if (!line.hasMoreTokens()) 
 		    erreur(6);
@@ -149,8 +149,8 @@ public class GenerateurPreposition {
 	    }
 	    else if (duree == VIDE) 
 		erreur(2);
-	    // on est en début de règle de préposition
-	    // analyse de la préposition
+	    // on est en dï¿½but de rï¿½gle de prï¿½position
+	    // analyse de la prï¿½position
 	    if (!minuscules(courant)) 
 		erreur(3);
 	    String preposition = courant;
@@ -159,7 +159,7 @@ public class GenerateurPreposition {
 	    courant = line.nextToken();
 	    if (!fleche(courant)) 
 		erreur(5);
-	    // analyse du phonème
+	    // analyse du phonï¿½me
 	    String phoneme = analysePhoneme(line);
 	    if (phoneme.equals("")) 
 		erreur(7);
@@ -173,13 +173,13 @@ public class GenerateurPreposition {
     }
 
 
-    /** Analyse et renvoie le phoneme associé à la ligne courante
-     * Précondition : 
+    /** Analyse et renvoie le phoneme associï¿½ ï¿½ la ligne courante
+     * Prï¿½condition : 
      *        on vient de lire la chaine '->'
      * Postcondition : 
      *        Si la chaine est correcte, line est vide
      * @param line le StringTokenizer de la ligne courante
-     * @return une String contenant la liste des phonème de la préposition
+     * @return une String contenant la liste des phonï¿½me de la prï¿½position
      */
     private String analysePhoneme(StringTokenizer line) throws AnalyseException {
 	String pho = "";
@@ -194,18 +194,18 @@ public class GenerateurPreposition {
 
 
     /**
-     * Méthodes pour identifier les unités lexicales
+     * Mï¿½thodes pour identifier les unitï¿½s lexicales
      */
 
-    /** Teste si une chaine est  acceptée comme préposition
-     * Définition : 
-     *       Chaine acceptée = contient des lettres minuscules, ' ou _
+    /** Teste si une chaine est  acceptï¿½e comme prï¿½position
+     * Dï¿½finition : 
+     *       Chaine acceptï¿½e = contient des lettres minuscules, ' ou _
      * @return true si c'est bon, false sinon
      */
     private static boolean minuscules(String s) {
 	for (int i = 0; i < s.length();i++) {
 	    char c = s.charAt(i);
-	    if (c != '\'' && c !='_' && c != '~' && c != 'æ'  )
+	    if (c != '\'' && c !='_' && c != '~' && c != 'ï¿½'  )
 		if (!Character.isLowerCase(c)) 
 		    return false;
 	}
@@ -214,9 +214,9 @@ public class GenerateurPreposition {
 
  
     /** Teste si une chaine est un commentaire
-     * Définition : 
-     *       commentaire = ligne commençant par #
-     * @param s la chaine de caractère représentant la ligne à analyser
+     * Dï¿½finition : 
+     *       commentaire = ligne commenï¿½ant par #
+     * @param s la chaine de caractï¿½re reprï¿½sentant la ligne ï¿½ analyser
      */
     private boolean comment(String s) {
 	if (s.length() != 0) {
@@ -229,8 +229,8 @@ public class GenerateurPreposition {
     }
 
     /** Teste si une chaine est le tag de fin de fichier
-     * Définition : 
-     *       tag de fin de fichier = moté clé END
+     * Dï¿½finition : 
+     *       tag de fin de fichier = motï¿½ clï¿½ END
      * @return true si on est la fin, false sinon
      */
     private boolean fin(String s) {
@@ -239,9 +239,9 @@ public class GenerateurPreposition {
 
  
     /** Teste si une chaine est le tag de transition.
-     * Définition : 
-     *       tag de transition : La flèche '->'
-     * @param s la chaine à analyser
+     * Dï¿½finition : 
+     *       tag de transition : La flï¿½che '->'
+     * @param s la chaine ï¿½ analyser
      * @return true si c'est le bon tag, false sinon
      */
     private boolean fleche(String s) {
@@ -250,9 +250,9 @@ public class GenerateurPreposition {
 
 
     /** Teste si une chaine est le tag de pause courte.
-     * Définition : 
-     *       tag de pause courte = mot clé "PAUSE_COURTE"
-     * @param s la chaine à analyser
+     * Dï¿½finition : 
+     *       tag de pause courte = mot clï¿½ "PAUSE_COURTE"
+     * @param s la chaine ï¿½ analyser
      * @return true si c'est le bon tag, false sinon
      */
     private boolean pauseCourte(String s) {
@@ -260,9 +260,9 @@ public class GenerateurPreposition {
     }
 
     /** Teste si une chaine est le tag de pause longue
-     * Définition : 
-     *       tag de pause longue = mot clé "PAUSE_LONGUE"
-     * @param s la chaine à analyser
+     * Dï¿½finition : 
+     *       tag de pause longue = mot clï¿½ "PAUSE_LONGUE"
+     * @param s la chaine ï¿½ analyser
      * @return true si c'est le bon tag, false sinon
      */
     private boolean pauseLongue(String s) {
@@ -270,14 +270,14 @@ public class GenerateurPreposition {
     }
 
     /** teste si une chaine est un tag de pause (courte ou longue)
-     * @param s la chaine à analyser
+     * @param s la chaine ï¿½ analyser
      * @return true si c'est un tag de pause, false sinon
      */
     private boolean pause(String s) {
 	return pauseCourte(s) || pauseLongue(s);
     }
 
-    /** Méthode pour transmettre les exceptions
+    /** Mï¿½thode pour transmettre les exceptions
      */
     private void erreur(int i) throws AnalyseException {
 	switch (i) {
@@ -286,19 +286,19 @@ public class GenerateurPreposition {
 	case 2 : 
 	    throw new AnalyseException("Manque mot clef PAUSE_COURTE ou PAUSE_LONGUE", noLigne);
 	case 3 : 
-	    throw new AnalyseException("Les prépositions doivent etre en minuscules, les espaces doivent etre remplacés par des _", noLigne);
+	    throw new AnalyseException("Les prï¿½positions doivent etre en minuscules, les espaces doivent etre remplacï¿½s par des _", noLigne);
 	case 4 : 
 	    throw new AnalyseException("tag END attendu",noLigne);
 	case 5 : 
 	    throw new AnalyseException("tag '->' attendu",noLigne);
 	case 6 : 
-	    throw new AnalyseException("Préposition attendue",noLigne);
+	    throw new AnalyseException("Prï¿½position attendue",noLigne);
 	case 7 : 
-	    throw new AnalyseException("Phonèmes de la préposition attendue",noLigne);
+	    throw new AnalyseException("Phonï¿½mes de la prï¿½position attendue",noLigne);
 	}
     }
 
-    /** Une méthode éxécutable pour les tests directs de cette classe.
+    /** Une mï¿½thode ï¿½xï¿½cutable pour les tests directs de cette classe.
      */
 
     public static void main(String[] s) {

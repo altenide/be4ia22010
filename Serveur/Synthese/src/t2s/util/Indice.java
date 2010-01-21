@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,73 +20,73 @@
  *
  */
 
-package t2s.util;
+package Synthese.util;
 
 
-/** Une classe permettant la gestion des indices dans les chaines de caractères
+/** Une classe permettant la gestion des indices dans les chaines de caractï¿½res
  */
 public class Indice {
     // L'indice courant
     private int indice;
 
-    /** Construit une instance d'Indice suivant le paramètre fourni
-     * @param i le numéro de l'indice voulu
+    /** Construit une instance d'Indice suivant le paramï¿½tre fourni
+     * @param i le numï¿½ro de l'indice voulu
      */
     public Indice(int i) {
 	indice = i;
     }
 
-    /** Construit une instance d'indice initialisé à 0
+    /** Construit une instance d'indice initialisï¿½ ï¿½ 0
      */
     public Indice() {
 	this(0);
     }
 
-    /** Incrémente l'indice d'un facteur donné
+    /** Incrï¿½mente l'indice d'un facteur donnï¿½
      * @param i le facteur en question
      */
     public void inc(int i) {
 	indice+=i;
     }
 
-    /** Incrémente l'indice d'un facteur 1
+    /** Incrï¿½mente l'indice d'un facteur 1
      */
     public void inc() {
 	indice++;
     }
 
     /** Pour avoir la valeur courante de l'indice
-     * @return la valeur courante stocké dans l'instance
+     * @return la valeur courante stockï¿½ dans l'instance
      */
     public int val() {
 	return indice;
     }
     
-    /** Pour mettre à jour la valeur stockée dans l'Indice
+    /** Pour mettre ï¿½ jour la valeur stockï¿½e dans l'Indice
      * @param i la nouvelle valeur
      */
     public void val(int i) {
 	indice = i;
     }
 
-    /** Teste l'égalité entre l'indice courant et le paramètre
-     * @param i la valeur à tester
-     * @return true si égalité, false sinon
+    /** Teste l'ï¿½galitï¿½ entre l'indice courant et le paramï¿½tre
+     * @param i la valeur ï¿½ tester
+     * @return true si ï¿½galitï¿½, false sinon
      */
     public boolean egal(int i) {
 	return indice == i;
     }
 
-    /** Teste la supériorité stricte pour l'indice courant et le paramètre
-     * @param i le paramètree à tester
+    /** Teste la supï¿½rioritï¿½ stricte pour l'indice courant et le paramï¿½tre
+     * @param i le paramï¿½tree ï¿½ tester
      * @return true si <code>courant > i</code>, false sinon
      */
     public boolean plusGrand(int i) {
 	return indice > i;
     }
 
-    /** Teste la supériorité au sens large pour l'indice courant et le paramètre
-     * @param i le paramètree à tester
+    /** Teste la supï¿½rioritï¿½ au sens large pour l'indice courant et le paramï¿½tre
+     * @param i le paramï¿½tree ï¿½ tester
      * @return true si <code>courant >= i</code>, false sinon
      */
     public boolean grandOuEgal(int i) {
@@ -94,7 +94,7 @@ public class Indice {
     }
 
     /** Pour afficher une instance d'indice
-     * @return une chaine de caractères représentant l'indice
+     * @return une chaine de caractï¿½res reprï¿½sentant l'indice
      */
     public String toString() {
 	return " " + indice + " ";

@@ -19,12 +19,12 @@
  * Licenses  { http://tcts.fpms.ac.be/synthesis/mbrola.html }.
  *
  */
-package t2s.son;
+package Synthese.son;
 
 import java.io.*;
-import t2s.prosodie.*;
-import t2s.traitement.*;
-import t2s.util.*;
+import Synthese.prosodie.*;
+import Synthese.traitement.*;
+import Synthese.util.*;
 
 /** Classe de lecture d'un texte
  */

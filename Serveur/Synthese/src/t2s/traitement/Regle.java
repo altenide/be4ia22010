@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,50 +20,50 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.io.*;
-import t2s.util.*;
+import Synthese.util.*;
 
-/** Règle de la langue francaise et des exceptions sur les phonemes.
- * <p> Une instance de Regle est composée  : <p>
+/** Rï¿½gle de la langue francaise et des exceptions sur les phonemes.
+ * <p> Une instance de Regle est composï¿½e  : <p>
  * <ul>
- *  <li> D'un préfixe (expression régulière) </li>
- *  <li> D'un suffixe (expression régulière) </li>
+ *  <li> D'un prï¿½fixe (expression rï¿½guliï¿½re) </li>
+ *  <li> D'un suffixe (expression rï¿½guliï¿½re) </li>
  *  <li> D'une racine </li>
- *  <li> D'une chaine courante contenant les phonèmes de la règle </li>
+ *  <li> D'une chaine courante contenant les phonï¿½mes de la rï¿½gle </li>
  * </ul
- * <p> A toute règle, on associe automatiquement une priorité, calculé par le poid de chacune des expréssions régulières présente en suffixe et en préfixe.</p>
+ * <p> A toute rï¿½gle, on associe automatiquement une prioritï¿½, calculï¿½ par le poid de chacune des exprï¿½ssions rï¿½guliï¿½res prï¿½sente en suffixe et en prï¿½fixe.</p>
  */
 public class Regle{
 
-    private String prefix;  // le préfixe
+    private String prefix;  // le prï¿½fixe
     private String suffix;  // le suffixe
     private String racine;  // la racine du mot
-    private String phoneme; // la String contenant les phonèmes
-    private int priorite;   // la priorité de la règle
+    private String phoneme; // la String contenant les phonï¿½mes
+    private int priorite;   // la prioritï¿½ de la rï¿½gle
 
-    /** Pour construire une Règle vide.
-     * <p> Tous les paramètres sont initialisé à la chaine vide.
+    /** Pour construire une Rï¿½gle vide.
+     * <p> Tous les paramï¿½tres sont initialisï¿½ ï¿½ la chaine vide.
      */
     public Regle() {
 	this("","","","");
     }
 
-    /** Pour construire une Règle sans suffixe ni prefixe.
-     * <p> <b> Remarque </b> : utilisé pour les règles sur les prépositions </p>
-     * @param r la racine de la règle
-     * @param ph la chaine contenant les phonèmes
+    /** Pour construire une Rï¿½gle sans suffixe ni prefixe.
+     * <p> <b> Remarque </b> : utilisï¿½ pour les rï¿½gles sur les prï¿½positions </p>
+     * @param r la racine de la rï¿½gle
+     * @param ph la chaine contenant les phonï¿½mes
      */
     public Regle(String r,String ph) {
 	this("",r, "", ph);
     }
 
-    /** Pour construire une Règle complète.
-     * @param p le préfixe
+    /** Pour construire une Rï¿½gle complï¿½te.
+     * @param p le prï¿½fixe
      * @param r la racine
      * @param s le suffixe
-     * @param ph la chaine contenant les phonèmes
+     * @param ph la chaine contenant les phonï¿½mes
      */
     public Regle(String p, String r, String s, String ph) {
 	prefix = p;
@@ -73,54 +73,54 @@ public class Regle{
 	priorite = poids(p) + poids(s);
     }
 
-    /** Pour récuperer le préfixe de la règle
-     * @return l'expression reguliere de l'élément prefix.
+    /** Pour rï¿½cuperer le prï¿½fixe de la rï¿½gle
+     * @return l'expression reguliere de l'ï¿½lï¿½ment prefix.
      */
     public String getPrefix() {
 	return prefix;
     }
 
-    /** Pour récuperer le suffixe de la règle
-     * @return l'expression reguliere de l'élément suffix.
+    /** Pour rï¿½cuperer le suffixe de la rï¿½gle
+     * @return l'expression reguliere de l'ï¿½lï¿½ment suffix.
      */
     public String getSuffix() {
 	return suffix;
     }
 
-    /** Pour récuperer la racine de la règle
-     * @return  la racine de la règle.
+    /** Pour rï¿½cuperer la racine de la rï¿½gle
+     * @return  la racine de la rï¿½gle.
      */
     public String getRacine() {
 	return racine;
     }
 
-    /** Pour récuperer le phonème de la règle
-     * @return le phoneme associé a l'élément courant.
+    /** Pour rï¿½cuperer le phonï¿½me de la rï¿½gle
+     * @return le phoneme associï¿½ a l'ï¿½lï¿½ment courant.
      */
     public String getPhoneme() {
 	return phoneme;
     }
 
-    /** Pour récuperer la priorité de la règle.
-     * <p> <b>Remarque</b> : La priorité est la somme du poid de chacune des E.R. présente dans la règle </p>
-     * <p> <center> { <code>priorité <-- poid(prefixe) + poid(suffixe)</code> } </center> </p>
-     * <p> <b> Calcul du poid </b> : Il s'agit de la longueur maximale de la chaine définie par l'E.R. <br>En cas de choix (<code>'|'</code>),
+    /** Pour rï¿½cuperer la prioritï¿½ de la rï¿½gle.
+     * <p> <b>Remarque</b> : La prioritï¿½ est la somme du poid de chacune des E.R. prï¿½sente dans la rï¿½gle </p>
+     * <p> <center> { <code>prioritï¿½ <-- poid(prefixe) + poid(suffixe)</code> } </center> </p>
+     * <p> <b> Calcul du poid </b> : Il s'agit de la longueur maximale de la chaine dï¿½finie par l'E.R. <br>En cas de choix (<code>'|'</code>),
      *     on prend la longueur de la plus grande chaine.</p>
-     * @return la priorité associée a l'élément courant.
+     * @return la prioritï¿½ associï¿½e a l'ï¿½lï¿½ment courant.
      */
     public int priorite() {
 	return priorite;
     }
 
-    /** Pour modifier la chaine de phonèmes
-     * @param ph la nouvelle chaine à mettre dans la Règle
+    /** Pour modifier la chaine de phonï¿½mes
+     * @param ph la nouvelle chaine ï¿½ mettre dans la Rï¿½gle
      */
     public void setPhoneme(String ph) {
 	phoneme = ph;
     }
 
     /* 
-     * Méthodes pour calculer la priorité de la règle
+     * Mï¿½thodes pour calculer la prioritï¿½ de la rï¿½gle
      */
 
     /* Pour calculer le poid d'une E.R.
@@ -130,13 +130,13 @@ public class Regle{
 	return poids(s,new Indice());
     }
 
-    /** Renvoie le poids de l'expression régulière s
-     * Définition : 
-     *       poids = longueur max de la chaine définie par l'expression régulière s.
+    /** Renvoie le poids de l'expression rï¿½guliï¿½re s
+     * Dï¿½finition : 
+     *       poids = longueur max de la chaine dï¿½finie par l'expression rï¿½guliï¿½re s.
      *               { Quand il  y a un choix '|', on prend la longueur de la plus grande chaine. }
-     * Précondition : 
-     *       1. s est une expression régulière syntaxiquement correcte 
-     *       2. On a calculé le poids jusqu'à l'indice ind
+     * Prï¿½condition : 
+     *       1. s est une expression rï¿½guliï¿½re syntaxiquement correcte 
+     *       2. On a calculï¿½ le poids jusqu'ï¿½ l'indice ind
      */
     private static int poids(String s, Indice ind) {
 	if (fin(s,ind)) 
@@ -156,20 +156,20 @@ public class Regle{
     }
 
     /** Renvoie le poids d'un sous-terme.
-     * Définition : 
-     *       les sous-termes sont séparés pas des '|'
-     * Précondition : 
-     *       1. s est une expression régulière syntaxiquement correcte 
-     *       2. on a calculé le poids jusqu'à l'indice ind
+     * Dï¿½finition : 
+     *       les sous-termes sont sï¿½parï¿½s pas des '|'
+     * Prï¿½condition : 
+     *       1. s est une expression rï¿½guliï¿½re syntaxiquement correcte 
+     *       2. on a calculï¿½ le poids jusqu'ï¿½ l'indice ind
      * Postcondition : 
-     *       1. ind désigne  '|', ')' ou la fin de s
+     *       1. ind dï¿½signe  '|', ')' ou la fin de s
      */
     private static int poidsTerme(String s, Indice ind) {
 	if (finTerme(s,ind)) return 0;
 	else {
 	    char cour = s.charAt(ind.val());
 	    if (cour == '[') {
-		// on ajoute un caractère à la chaine
+		// on ajoute un caractï¿½re ï¿½ la chaine
 		// on continue l'analyse sur ']'
 		ind.val(s.indexOf("]", ind.val()));
 		//System.out.println("ind : " + ind);
@@ -192,9 +192,9 @@ public class Regle{
 	}
     }	    
 
-    /** Détermine si s[ind] est la fin d'un terme de s
-     * Définition : 
-     *       fin d'un terme = vide ou égal à ')' ou '|'
+    /** Dï¿½termine si s[ind] est la fin d'un terme de s
+     * Dï¿½finition : 
+     *       fin d'un terme = vide ou ï¿½gal ï¿½ ')' ou '|'
      */ 
     private static boolean finTerme(String s, Indice ind) {
 	if (ind.egal(s.length())) 
@@ -205,9 +205,9 @@ public class Regle{
 	}
     }
 
-    /** Détermine si ind est la fin de s
-     * Définition : 
-     *       fin de la chaine = s[ind] est vide ou égal à ')'
+    /** Dï¿½termine si ind est la fin de s
+     * Dï¿½finition : 
+     *       fin de la chaine = s[ind] est vide ou ï¿½gal ï¿½ ')'
      */
     private static boolean fin(String s, Indice ind) {
 	if( ind.egal(s.length())) 
@@ -219,15 +219,15 @@ public class Regle{
     }
 
 
-    /**Pour afficher une Règle de manière lisible
-     * @return la chaine de caractères qui va bien ^_^.
+    /**Pour afficher une Rï¿½gle de maniï¿½re lisible
+     * @return la chaine de caractï¿½res qui va bien ^_^.
      */
     public String toString() {
 	return ("pref : " + prefix + " racine : " + racine 
 		+ " suff :  " + suffix + " pho :  " + phoneme + "\n");
     }
 
-    /** Une méthode éxécutable pour faire des tests
+    /** Une mï¿½thode ï¿½xï¿½cutable pour faire des tests
      */
     public static void main(String[] s) {
 	System.out.println(poids("(a|[ab][ef])(a|b)|ab[cbfe]a|a[ab](de|abc)dfe", new Indice(0)));

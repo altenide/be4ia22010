@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -19,11 +19,11 @@
  * Licenses  { http://tcts.fpms.ac.be/synthesis/mbrola.html }.
  *
  */
-package t2s.util;
+package Synthese.util;
 
 import java.io.*;
 
-/** Une classe pour utiliser un fichier de configuration aisément.
+/** Une classe pour utiliser un fichier de configuration aisï¿½ment.
  * <p><b>Remarque</b> : Le fichier de configuration utilise la syntaxe suivante (pas d'espace !) : </p>
  * <p><center><code> MOT_CLE=VALEUR</code></center></p>
  */
@@ -33,7 +33,7 @@ public class ConfigFile {
     // Constantes
     private static final String DEFAULT_FILE = "donnees/si_vox.conf";
 
-    // Variables privées : 
+    // Variables privï¿½es : 
     private File f;
 
     // Le constructeur
@@ -55,19 +55,19 @@ public class ConfigFile {
 	    return null;
 	}
 	catch(IOException ioe){
-	    System.out.println("Erreur d'entrée sortie pour le fichier de configuration !");
+	    System.out.println("Erreur d'entrï¿½e sortie pour le fichier de configuration !");
 	    return null;
 	}
     }
 
-    // Pour analyser une chaine de caractère enb fonction d'une clé : 
+    // Pour analyser une chaine de caractï¿½re enb fonction d'une clï¿½ : 
     private String analyser(String line, String key){
 	int size = line.length();
 	int i = 0;
 	while (i < size && line.charAt(i) != '=')
 	    i++;
 
-	if (i == size) // Arrivé en bout de chaine sans rencontrer le signe égal
+	if (i == size) // Arrivï¿½ en bout de chaine sans rencontrer le signe ï¿½gal
 	    return null;
 
 	String keyword = line.substring(0,i);
@@ -78,14 +78,14 @@ public class ConfigFile {
 	return null;
     }
 
-    // Pour analyser une chaine de caractère, et la séparer en fonction du signe égal
+    // Pour analyser une chaine de caractï¿½re, et la sï¿½parer en fonction du signe ï¿½gal
     private void analyser(String line){
 	int size = line.length();
 	int i = 0;
 	while (i < size && line.charAt(i) != '=')
 	    i++;
 
-	if (i == size) // Arrivé en bout de chaine sans rencontrer le signe égal
+	if (i == size) // Arrivï¿½ en bout de chaine sans rencontrer le signe ï¿½gal
 	    return;
 	String keyword = line.substring(0,i);
 	String value = line.substring(i+1);
@@ -121,7 +121,7 @@ public class ConfigFile {
 	    System.out.println();
 	}
 	catch(IOException ioe){
-	    System.out.println("Erreur d'entrée sortie pour le fichier de configuration !");
+	    System.out.println("Erreur d'entrï¿½e sortie pour le fichier de configuration !");
 	}
     }
 
@@ -133,7 +133,7 @@ public class ConfigFile {
 	cf.toutLister();
     }
     
-    /** Pour afficher n fois le caractère '*'
+    /** Pour afficher n fois le caractï¿½re '*'
      */
     private static void afficherLigne(){
 	System.out.print("+");
@@ -146,15 +146,15 @@ public class ConfigFile {
     }
 
     /** Pour effectuer une recherche dans le fichier de configuration
-     * @param key la clé recherchée
-     * @return <code> null </code> si on n'a rien trouvé, la chaine de caractère contenue dans le fichier de configuration sinon.
+     * @param key la clï¿½ recherchï¿½e
+     * @return <code> null </code> si on n'a rien trouvï¿½, la chaine de caractï¿½re contenue dans le fichier de configuration sinon.
      */
     public static String rechercher(String key){
 	ConfigFile cf = new ConfigFile(new File(DEFAULT_FILE));
 	return cf.search(key);
     }
 
-    /** Une méthode de tests */
+    /** Une mï¿½thode de tests */
     public static void main(String[] args){
 	System.out.println(rechercher(args[0]));
     }

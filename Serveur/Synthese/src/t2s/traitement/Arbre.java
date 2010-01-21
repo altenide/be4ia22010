@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,42 +20,42 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.io.*;
 import java.util.*;
-import t2s.util.*;
+import Synthese.util.*;
 
 
 
-/** Un arbre <i>(préfixe)</i> des règles pour retrouver les phonèmes correspondant à des groupes de lettres.
+/** Un arbre <i>(prï¿½fixe)</i> des rï¿½gles pour retrouver les phonï¿½mes correspondant ï¿½ des groupes de lettres.
  */
 public class Arbre {
 
     private Arbre frere;        // le frere de l'arbre
     private Arbre fils;         // le fils de l'arbre
     private String lettre;      // la lettre
-    private ListeRegles regles; // la liste des règles de l'arbre
+    private ListeRegles regles; // la liste des rï¿½gles de l'arbre
 
     /**
      * Constructeurs
      */
     
-    /** Constructeur d'arbre à partir d'un repertoire contenant des fichiers de règles.
-     * <p> <b>Organisation du repertoire de règles</b> : </p>
+    /** Constructeur d'arbre ï¿½ partir d'un repertoire contenant des fichiers de rï¿½gles.
+     * <p> <b>Organisation du repertoire de rï¿½gles</b> : </p>
      * <p>
      *   <ul>
-     *     <li> fichier <code>preposition.txt</code> contenant les prépositions (pour couper les phrases)</li>
-     *     <li> fichier <code>regle.txt</code> contenant les règles de prononciation </li>
+     *     <li> fichier <code>preposition.txt</code> contenant les prï¿½positions (pour couper les phrases)</li>
+     *     <li> fichier <code>regle.txt</code> contenant les rï¿½gles de prononciation </li>
      *     <li> fichier <code>exception.txt</code> contenant les exceptions de prononciations </li>
-     *     <li> fichier <code>acronymes.txt</code> contenant les acronymes de la langue française </li>
+     *     <li> fichier <code>acronymes.txt</code> contenant les acronymes de la langue franï¿½aise </li>
      *   </ul>
      * </p>
-     * @param path le chemin d'accès au fichiers de règles
+     * @param path le chemin d'accï¿½s au fichiers de rï¿½gles
      */
     public Arbre(String path) throws AnalyseException {
 	this();
-	// charge les prépositions qui permettent de couper les phrases
+	// charge les prï¿½positions qui permettent de couper les phrases
 	GenerateurPreposition prop = new GenerateurPreposition(path + ConfigFile.rechercher("PREPOSITIONS"));
 	Regle p = prop.nouvellePreposition();
 
@@ -65,14 +65,14 @@ public class Arbre {
 	}
 	prop.close();
 
-	// charge les règles de traduction, les exceptions et les abbréviations
+	// charge les rï¿½gles de traduction, les exceptions et les abbrï¿½viations
 	creerLexique(path + ConfigFile.rechercher("REGLES"));
 	creerLexique(path + ConfigFile.rechercher("EXCEPTIONS"));
 	creerLexique(path + ConfigFile.rechercher("ACCRONYMES"));
     }
     
     /** Constructeur d'arbre vide.
-     * <p><b>Définition</b> : Un arbre vide contient uniquement la lettre 'a'</p>
+     * <p><b>Dï¿½finition</b> : Un arbre vide contient uniquement la lettre 'a'</p>
      */
     private Arbre() {
 	frere = null;
@@ -82,7 +82,7 @@ public class Arbre {
     }
 
     /** Construction d'arbre par copie
-     * @param a l'arbre poréfixe que l'on souhaite copier dans this.
+     * @param a l'arbre porï¿½fixe que l'on souhaite copier dans this.
      */
     private Arbre(Arbre a) {
 	this.frere = a.frere;
@@ -92,11 +92,11 @@ public class Arbre {
     }
     
     /**
-     * Méthodes publiques 
+     * Mï¿½thodes publiques 
      */
     
-    /** Pour trouver les phonèmes associé à une phrase
-     * @param phrase la phrase que l'on veut transformer en phonèmes
+    /** Pour trouver les phonï¿½mes associï¿½ ï¿½ une phrase
+     * @param phrase la phrase que l'on veut transformer en phonï¿½mes
      * @return la liste des phonemes qui va bien ^_^.
      */
     public String trouverPhoneme(String phrase) {
@@ -116,9 +116,9 @@ public class Arbre {
 	return res;
     }
 
-    /** Méthode d'affichage standart (affichage en largeur).
-     * <p><b>Précondition</b> : L'arbre n'est pas vide.</p>
-     * @return une chaine de caractère représentant l'arbre
+    /** Mï¿½thode d'affichage standart (affichage en largeur).
+     * <p><b>Prï¿½condition</b> : L'arbre n'est pas vide.</p>
+     * @return une chaine de caractï¿½re reprï¿½sentant l'arbre
      */ 
     public String toString() {
 	// affichage en largeur
@@ -139,11 +139,11 @@ public class Arbre {
     }
 
     /**
-     * Méthodes privées 
+     * Mï¿½thodes privï¿½es 
      */
 
-    /** Méthode de remplissage de l'arbre
-     * @param s le fichier à analyser
+    /** Mï¿½thode de remplissage de l'arbre
+     * @param s le fichier ï¿½ analyser
      */
     private void creerLexique(String s) throws AnalyseException {
 	GenerateurRegle ana = new GenerateurRegle(s);
@@ -155,8 +155,8 @@ public class Arbre {
 	ana.close();
     }
 
-    /** Pour obtenir le frêre de l'arbre
-     * @return l'arbre frêre
+    /** Pour obtenir le frï¿½re de l'arbre
+     * @return l'arbre frï¿½re
      */
     private Arbre getFrere() {
 	return this.frere;
@@ -169,22 +169,22 @@ public class Arbre {
 	return this.fils;
     }
 
-    /** Pour obtenir la lettre présente à la racine
+    /** Pour obtenir la lettre prï¿½sente ï¿½ la racine
      * @return la lettre en question
      */
     private String getLettre() {
 	return this.lettre;
     }
 
-    /** Pour obtenir la liste de règles de l'arbre
+    /** Pour obtenir la liste de rï¿½gles de l'arbre
      * @return une instance de <code>ListeRegles</code> ad'hoc.
      */
     private ListeRegles getRegles() {
 	return this.regles;
     }
 
-    /** Pour modifier le frêre d'un arbre
-     * @param l la lettre présente à la racine de nouveau frêre
+    /** Pour modifier le frï¿½re d'un arbre
+     * @param l la lettre prï¿½sente ï¿½ la racine de nouveau frï¿½re
      */
     private void ajouterFrere(String l) {
 	Arbre ar = new Arbre();
@@ -193,7 +193,7 @@ public class Arbre {
     }
 
     /** Pour modifier le fils d'un arbre
-     * @param l la lettre présente à la racine de nouveau fils
+     * @param l la lettre prï¿½sente ï¿½ la racine de nouveau fils
      */
     private void ajouterFils(String l) {
 	Arbre ar = new Arbre();
@@ -201,7 +201,7 @@ public class Arbre {
 	this.fils = ar;
     }
 
-    /** Pour ajouter en tête de l'arbre
+    /** Pour ajouter en tï¿½te de l'arbre
      * @param l la 
      */
     private void ajouterDebut(String l) {
@@ -220,15 +220,15 @@ public class Arbre {
     }
 
     /** Ajouter une regle a la liste de regles de <code>this</code>.
-     * @param regle la règle que l'on veut ajouter
+     * @param regle la rï¿½gle que l'on veut ajouter
      */
     private void ajouter(Regle regle) {
 	ajouter(regle.getRacine(), regle);
     }
 
-    /** ajoute une regle a la liste de regles, par rapport à une chaine de caractère.
-     * @param mot la chaine de caractère 'racine'.
-     * @param regle la règle a ajouter.
+    /** ajoute une regle a la liste de regles, par rapport ï¿½ une chaine de caractï¿½re.
+     * @param mot la chaine de caractï¿½re 'racine'.
+     * @param regle la rï¿½gle a ajouter.
      */
     private void ajouter(String mot, Regle regle) {
 	String lettre = mot.substring(0, 1);
@@ -259,15 +259,15 @@ public class Arbre {
 	}
     }  
 
-    /** Pour trouver la liste de phonème correspondant à un mot à partir d'un indice
-     * <p><b>Remarque</b> : on choisit la règle qui permet d'unifier  la plus grande chaine commençant à l'indice i.</p> 
-     * <p><b>Postcondition</b> : i désigne la prochaine lettre à analyser</p>
-     * @param mot le mot à analyser
-     * @param i l'indice à partir duquel on analyse
-     * @return la liste des phoneme qui va bien(à partir de l'indice i)
+    /** Pour trouver la liste de phonï¿½me correspondant ï¿½ un mot ï¿½ partir d'un indice
+     * <p><b>Remarque</b> : on choisit la rï¿½gle qui permet d'unifier  la plus grande chaine commenï¿½ant ï¿½ l'indice i.</p> 
+     * <p><b>Postcondition</b> : i dï¿½signe la prochaine lettre ï¿½ analyser</p>
+     * @param mot le mot ï¿½ analyser
+     * @param i l'indice ï¿½ partir duquel on analyse
+     * @return la liste des phoneme qui va bien(ï¿½ partir de l'indice i)
      */
     private String trouverPhoneme(String mot, Indice i) {
-	// la chaine résultat
+	// la chaine rï¿½sultat
 	String res = ListeRegles.PAS_DE_REGLE; 
 	// la lettre courante
 	String lettre = mot.substring(i.val(), i.val() + 1);
@@ -275,14 +275,14 @@ public class Arbre {
 	if (lettre.equals(getLettre())) {
 	    //la lettre existe
 	    i.inc();
-	    // on applique les règles de plus grande racine d'abord
+	    // on applique les rï¿½gles de plus grande racine d'abord
 	    // s'il y a un fils et qu'on a encore des lettres
-	    // on cherche à appliquer une règle sur le fils
+	    // on cherche ï¿½ appliquer une rï¿½gle sur le fils
 	    if (!i.egal(mot.length()) && getFils()!=null) {
 		int saveInd = i.val();
 		String resFils = getFils().trouverPhoneme(mot, i);
 		if (!vide(resFils)) {
-		    // on a trouvé un plus grand unificateur
+		    // on a trouvï¿½ un plus grand unificateur
 		    res = resFils;
 		}
 		else { // pas d'unification avec le fils, 
@@ -292,7 +292,7 @@ public class Arbre {
 		}
 	    }
 	    // pas de fils ou plus d'autres lettres : on applique
-	    // la règle courante
+	    // la rï¿½gle courante
 	    else  res = getRegles().trouverPhoneme(mot, i.val());
 	}
 	else 
@@ -311,7 +311,7 @@ public class Arbre {
 	return res;
     }
     
-    /** Pour savoir si une chaine de caractère est égale au tag "PAS DE REGLES".
+    /** Pour savoir si une chaine de caractï¿½re est ï¿½gale au tag "PAS DE REGLES".
      * @param s la chaine a tester
      * @return true si c'est le cas, false sinon
      */
@@ -320,7 +320,7 @@ public class Arbre {
     }
 
     /**
-     * Classes privée, utilisée pour l'affichage de l'arbre (débuggage)
+     * Classes privï¿½e, utilisï¿½e pour l'affichage de l'arbre (dï¿½buggage)
      */
 
     private class FileArbre{
@@ -364,7 +364,7 @@ public class Arbre {
   
 	/**
 	 * Retire un objet de la file et retourne cet objet.
-	 * Précondition : la file n'est pas vide.
+	 * Prï¿½condition : la file n'est pas vide.
 	 */
 	public Arbre retirer() {
 	    Arbre x = sortie.a;
@@ -376,8 +376,8 @@ public class Arbre {
 	}
 
 	/**
-	 * Retourne l'objet situé en tête de la file.
-	 * Précondition : la file n'est pas vide.
+	 * Retourne l'objet situï¿½ en tï¿½te de la file.
+	 * Prï¿½condition : la file n'est pas vide.
 	 */
 	public Arbre suivant() {
 	    return sortie.a;

@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,21 +20,21 @@
  *
  */
 
-package t2s.prosodie;
+package Synthese.prosodie;
 
-import t2s.traitement.*;
-import t2s.util.*;
+import Synthese.traitement.*;
+import Synthese.util.*;
 
-/** Classe représentant les différentes catégories de syntagme.
- * <p><b>Définition</b> : [ cf. <code><a href="http://fr.wikipedia.org/wiki/Syntagme">WikiPédia</a></code> ]<p>
- * <p> Un syntagme est un ensemble de mots formant une seule unité catégorielle et fonctionnelle, mais dont chaque constituant, parce que dissociable (contrairement au mot composé), conserve sa signification et sa syntaxe propres. Un syntagme constitue donc une association occasionnelle, libre, alors que le mot composé est une association permanente (lorsqu'un syntagme se fige, il devient bien sûr un composé détaché, soit une locution).
+/** Classe reprï¿½sentant les diffï¿½rentes catï¿½gories de syntagme.
+ * <p><b>Dï¿½finition</b> : [ cf. <code><a href="http://fr.wikipedia.org/wiki/Syntagme">WikiPï¿½dia</a></code> ]<p>
+ * <p> Un syntagme est un ensemble de mots formant une seule unitï¿½ catï¿½gorielle et fonctionnelle, mais dont chaque constituant, parce que dissociable (contrairement au mot composï¿½), conserve sa signification et sa syntaxe propres. Un syntagme constitue donc une association occasionnelle, libre, alors que le mot composï¿½ est une association permanente (lorsqu'un syntagme se fige, il devient bien sï¿½r un composï¿½ dï¿½tachï¿½, soit une locution).
  * <ul>
- * <li>Les éléments constitutifs d'un syntagme donné peuvent être de nouveaux syntagmes de niveau inférieur (des sous-syntagmes), structurés à l'instar du syntagme qui les englobe. À son tour, chacun de ces sous-syntagmes pourra le cas échéant, contenir d'autres syntagmes hiérarchiquement subalternes (des sous-sous-syntagmes, en somme), et ainsi de suite.</li>
- * <li>En conséquence, quel que soit le niveau d'un syntagme donné, celui-ci peut virtuellement être inclus dans un syntagme de niveau supérieur (principe de regroupement), mais peut aussi bien inclure un syntagme de niveau inférieur (principe de division) :</li>
- * <ul><li><i>Il a acheté une modeste maison de briques rouges.</i></li>
- * <li>Le syntagme « une modeste maison de briques rouges » est englobé dans le syntagme supérieur, c'est-à-dire, la phrase complète. Mais ce même syntagme « une modeste maison de briques rouges » inclut parmi ses éléments, le syntagme inférieur « de briques rouges », complément du nom « maison ».</li></ul>
- * <li> Ce double principe de regroupement et de division (soit, le principe d'inclusion) et cette identité de structure font du syntagme le véritable constituant syntaxique de la phrase.</li>
- * <li>Le syntagme possède l'unité catégorielle et fonctionnelle du mot indivisible.</li>
+ * <li>Les ï¿½lï¿½ments constitutifs d'un syntagme donnï¿½ peuvent ï¿½tre de nouveaux syntagmes de niveau infï¿½rieur (des sous-syntagmes), structurï¿½s ï¿½ l'instar du syntagme qui les englobe. ï¿½ son tour, chacun de ces sous-syntagmes pourra le cas ï¿½chï¿½ant, contenir d'autres syntagmes hiï¿½rarchiquement subalternes (des sous-sous-syntagmes, en somme), et ainsi de suite.</li>
+ * <li>En consï¿½quence, quel que soit le niveau d'un syntagme donnï¿½, celui-ci peut virtuellement ï¿½tre inclus dans un syntagme de niveau supï¿½rieur (principe de regroupement), mais peut aussi bien inclure un syntagme de niveau infï¿½rieur (principe de division) :</li>
+ * <ul><li><i>Il a achetï¿½ une modeste maison de briques rouges.</i></li>
+ * <li>Le syntagme ï¿½ une modeste maison de briques rouges ï¿½ est englobï¿½ dans le syntagme supï¿½rieur, c'est-ï¿½-dire, la phrase complï¿½te. Mais ce mï¿½me syntagme ï¿½ une modeste maison de briques rouges ï¿½ inclut parmi ses ï¿½lï¿½ments, le syntagme infï¿½rieur ï¿½ de briques rouges ï¿½, complï¿½ment du nom ï¿½ maison ï¿½.</li></ul>
+ * <li> Ce double principe de regroupement et de division (soit, le principe d'inclusion) et cette identitï¿½ de structure font du syntagme le vï¿½ritable constituant syntaxique de la phrase.</li>
+ * <li>Le syntagme possï¿½de l'unitï¿½ catï¿½gorielle et fonctionnelle du mot indivisible.</li>
  * </ul></p>
  * <p> <b>En clair</b> : un syntagme est une 'partie de phrase'</p>
  */
@@ -42,14 +42,14 @@ import t2s.util.*;
 public class Syntagme {
 
     /**
-     * Les différents types de syntagmes  
+     * Les diffï¿½rents types de syntagmes  
      */
 
-    /** Syntagme mineur : début ou milieu de phrase mineure */
+    /** Syntagme mineur : dï¿½but ou milieu de phrase mineure */
     protected static final int MINEUR = 1;      // <==> courbe A
-    /** Syntagme majeur : début ou milieu de phrase majeure*/
+    /** Syntagme majeur : dï¿½but ou milieu de phrase majeure*/
     protected static final int MAJEUR = 2;      // <==> courbe B
-    /** Syntagme intérogatif : fin de phrase interrogative */
+    /** Syntagme intï¿½rogatif : fin de phrase interrogative */
     protected static final int FIN_INTERRO = 3; // <==> courbe C
     /** Syntagme final : fin de phrase */
     protected static final int FIN = 4;         // <==> courbe D
@@ -57,7 +57,7 @@ public class Syntagme {
     protected static final int FIN_EXCLAM = 5;  // <==> courbe E
 
     /**
-     * Les durées des pauses a effectuer
+     * Les durï¿½es des pauses a effectuer
      */
     /** Une pause courte : conjonction de coordination */
     protected static final int PAUSE_COURTE = Integer.parseInt(ConfigFile.rechercher("PAUSE_COURTE")); 
@@ -67,35 +67,35 @@ public class Syntagme {
     protected static final int PAUSE_FIN = Integer.parseInt(ConfigFile.rechercher("PAUSE_FIN"));
 
     /**
-     * Variables privées à l'objet
+     * Variables privï¿½es ï¿½ l'objet
      */
     private int synt;            // le type de la phrase
-    private int pause;           // la durée de la pause associée
+    private int pause;           // la durï¿½e de la pause associï¿½e
 
     /** Constructeur de syntagme
-     * @param s le type de syntagme que l'on souhaite créer (a choisir parmis les constantes)
-     * @param d la durée de la pause associée (a choisir parmis les constantes)
+     * @param s le type de syntagme que l'on souhaite crï¿½er (a choisir parmis les constantes)
+     * @param d la durï¿½e de la pause associï¿½e (a choisir parmis les constantes)
      */
     public Syntagme(int s, int d) {
 	synt =  s;
 	pause = d;
     }
 
-    /** Constructeur de Syntagme par défaut.
-     * <p><b>Remarque</b> : cré un <code>Syntagme</code> au sens de <code>this(0,0)</code></p>
+    /** Constructeur de Syntagme par dï¿½faut.
+     * <p><b>Remarque</b> : crï¿½ un <code>Syntagme</code> au sens de <code>this(0,0)</code></p>
      */
     protected Syntagme() {
 	this(0,0);
     }
 
-    /** Pour récuperer le code représentant la durée de la pause
+    /** Pour rï¿½cuperer le code reprï¿½sentant la durï¿½e de la pause
      * @return l'entier ad'hoc
      */
     protected int dureePause() {
 	return pause;
     }
 
-    /** Pour déterminer le type de syntagme final d'une phrase
+    /** Pour dï¿½terminer le type de syntagme final d'une phrase
      * @param ponctuation la ponctuation de cette phrase
      * @return le Syntagme qui va bien ^_^.
      */
@@ -124,8 +124,8 @@ public class Syntagme {
 	return synt;
     }
 
-    /** Pour déterminer le type de syntagme de coupure en fonction du type de coupure % ou %%.
-     * <p><b>Précondition</b> : ph contient au moins un % </p>
+    /** Pour dï¿½terminer le type de syntagme de coupure en fonction du type de coupure % ou %%.
+     * <p><b>Prï¿½condition</b> : ph contient au moins un % </p>
      * @param ph : une phrase 
      * @param coupure : l'indice dans ph du premier %
      * @return le Syntagme qui va bien ^_^.
@@ -139,7 +139,7 @@ public class Syntagme {
 
 
     /**
-     * Méthode protégées (aucune raison d'être à l'exterieur du package de prosodie) pour déterminer les types de syntagme
+     * Mï¿½thode protï¿½gï¿½es (aucune raison d'ï¿½tre ï¿½ l'exterieur du package de prosodie) pour dï¿½terminer les types de syntagme
      */
     
     /** Est-ce un syntagme final ?

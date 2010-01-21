@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,24 +20,24 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.util.regex.*;
 
 
-/** Une implémentation d'une liste simplement chainée pour des instances de <code>Regle</code>.
- * <p><b>Remarque</b> : les règles sont classées par taille de <code>(suffixe + prefixe)</code>.On applique ainsi la règle la plus grande possible en premier</p>
+/** Une implï¿½mentation d'une liste simplement chainï¿½e pour des instances de <code>Regle</code>.
+ * <p><b>Remarque</b> : les rï¿½gles sont classï¿½es par taille de <code>(suffixe + prefixe)</code>.On applique ainsi la rï¿½gle la plus grande possible en premier</p>
  */
 public class ListeRegles {
 
-    /** Le tag correpsondant à la situation où il n'y a pas de règles */
+    /** Le tag correpsondant ï¿½ la situation oï¿½ il n'y a pas de rï¿½gles */
     public static final String PAS_DE_REGLE = "vide";
 
     ListeRegles suivant;
     Regle tete;
 
     /** Constructeur de liste vide.
-     * <p><b>Remarque</b> : Une liste de règles vide n'a ni suivant ni tête (mis à <code>null</code>).</p>
+     * <p><b>Remarque</b> : Une liste de rï¿½gles vide n'a ni suivant ni tï¿½te (mis ï¿½ <code>null</code>).</p>
      */
     public ListeRegles() {
 	suivant = null;
@@ -45,30 +45,30 @@ public class ListeRegles {
     }
 
     /** Construit une liste de Regle.
-     * @param regle la regle a rajouter en tête dans la liste
-     * @param suivant la liste de règles qui suivra <code>regle</code>
+     * @param regle la regle a rajouter en tï¿½te dans la liste
+     * @param suivant la liste de rï¿½gles qui suivra <code>regle</code>
      */
     private ListeRegles(Regle regle, ListeRegles suivant) {
 	this.suivant = suivant;
 	this.tete = regle;
     }
 
-    /** Pour récuperer l'élément suivant dans la liste (une liste de règles, privé de la tête de <code>this<code>)
-     * @return l'élément suivant.
+    /** Pour rï¿½cuperer l'ï¿½lï¿½ment suivant dans la liste (une liste de rï¿½gles, privï¿½ de la tï¿½te de <code>this<code>)
+     * @return l'ï¿½lï¿½ment suivant.
      */
     public ListeRegles getListeSuivante() {
 	return suivant;
     }
 
-    /** Pour recuperer la regle présente en tête de liste
-     * @return l'élément présent en tête.
+    /** Pour recuperer la regle prï¿½sente en tï¿½te de liste
+     * @return l'ï¿½lï¿½ment prï¿½sent en tï¿½te.
      */
     public Regle getRegle() {
 	return  tete;
     }
 
-    /** Pour ajouter une règle à la liste.
-     * <p><b>Remarque</b> : On respecte un ordre décroissant sur la taille du suffixe et du préfixe</p>
+    /** Pour ajouter une rï¿½gle ï¿½ la liste.
+     * <p><b>Remarque</b> : On respecte un ordre dï¿½croissant sur la taille du suffixe et du prï¿½fixe</p>
      * @param t la regle que l'on veut ajouter dans la liste courante
      */
     public void ajouter(Regle t) {
@@ -87,11 +87,11 @@ public class ListeRegles {
 	return tete == null;
     }
 
-    /** Pour trouver les phonèmes associé à un mot.
-     * <p><b>Remarque</b> : On applique la première règle qui s'unifie à la sous-chaine du <code>mot</code> se terminant sur <code>indice</code></p>
+    /** Pour trouver les phonï¿½mes associï¿½ ï¿½ un mot.
+     * <p><b>Remarque</b> : On applique la premiï¿½re rï¿½gle qui s'unifie ï¿½ la sous-chaine du <code>mot</code> se terminant sur <code>indice</code></p>
      * @param mot le mot que l'on veut transformer
-     * @param indice l'entier représentant l'indice sur lequel on finit l'analyse.
-     * @return  le phonème correspondant à la partie du mot unifiée
+     * @param indice l'entier reprï¿½sentant l'indice sur lequel on finit l'analyse.
+     * @return  le phonï¿½me correspondant ï¿½ la partie du mot unifiï¿½e
      */
     public String trouverPhoneme(String mot, int indice) {
 	//System.out.println("finit sur : " + mot.charAt(indice-1));
@@ -109,7 +109,7 @@ public class ListeRegles {
 	    Pattern p = Pattern.compile(corps + suffixe);
 	    Matcher m = p.matcher(mot);
 	    if (m.find(debutRacine) && m.start() == debutRacine ) {
-		// on regarde si un préfixe s'unifie
+		// on regarde si un prï¿½fixe s'unifie
 		// il faut que l'unification se termine sur indice
 		p = Pattern.compile(prefixe + corps);
 		m = p.matcher(mot);
@@ -122,14 +122,14 @@ public class ListeRegles {
 		    return getRegle().getPhoneme();
 		}
 	    }
-	    // cette règle ne s'applique pas, 
-	    // on cherche une autre règle
+	    // cette rï¿½gle ne s'applique pas, 
+	    // on cherche une autre rï¿½gle
 	    return getListeSuivante().trouverPhoneme(mot,indice);
 	}
     }
 
-    /** Méthode d'affichage standart d'une liste de règles.
-     * @return la chaine de caractères qui va bien ^_^.
+    /** Mï¿½thode d'affichage standart d'une liste de rï¿½gles.
+     * @return la chaine de caractï¿½res qui va bien ^_^.
      */
     public String toString()  {
 	if (estVide()) 

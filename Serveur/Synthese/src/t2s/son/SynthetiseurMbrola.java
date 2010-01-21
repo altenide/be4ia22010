@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,38 +20,38 @@
  *
  */
 
-package t2s.son;
+package Synthese.son;
 import java.io.*;
-import t2s.util.ConfigFile;
+import Synthese.util.ConfigFile;
 
-/** Class permetant de synthétiser un fichier sonore a partir d'un fichier de phonème
+/** Class permetant de synthï¿½tiser un fichier sonore a partir d'un fichier de phonï¿½me
  */
 public class SynthetiseurMbrola{
 
-    /** Le chemin vers l'exécutable <code>MBROLA<code>*/
+    /** Le chemin vers l'exï¿½cutable <code>MBROLA<code>*/
     protected final static String MBROLAHOME = ConfigFile.rechercher("MBROLA_HOME"); 
     /**
-     * Les base vocales utilisée par MBROLA
+     * Les base vocales utilisï¿½e par MBROLA
      */
-    /** La voix par défaut */
+    /** La voix par dï¿½faut */
     protected final static String VOIX1 = ConfigFile.rechercher("VOIX_1");
     /** La seconde voix utilisable  */
     protected final static String VOIX2 = ConfigFile.rechercher("VOIX_1");
-    /** La troisième voix utilisable */
+    /** La troisiï¿½me voix utilisable */
     protected final static String VOIX3 = ConfigFile.rechercher("VOIX_1");
 
-    private String exe;         // l'exécutable
+    private String exe;         // l'exï¿½cutable
     private String home;        // l'home de mbrola
     private String voix;        // la librairie de voix
-    private String pathFichier; // le répertoire des fichiers
+    private String pathFichier; // le rï¿½pertoire des fichiers
     private String fichier;     // le nom de fichier de phoneme (sans extension)
     private int taille; 
 
     /** Constructeur complet
      * @param mb le repertoire ou se trouve MBROLA (racine des 2 versions)
-     * @param v la voix à utiliser pour synthétiser le fichier sonore
-     * @param pf le chemin d'accès au repertoire contenant les fichiers a traiter
-     * @param f Le nom du fichier de phonème à traiter, sans l'extension '.pho'
+     * @param v la voix ï¿½ utiliser pour synthï¿½tiser le fichier sonore
+     * @param pf le chemin d'accï¿½s au repertoire contenant les fichiers a traiter
+     * @param f Le nom du fichier de phonï¿½me ï¿½ traiter, sans l'extension '.pho'
      * @param n la taille
      */
     public SynthetiseurMbrola(String mb, String v, String pf, String f, int n) {
@@ -68,33 +68,33 @@ public class SynthetiseurMbrola{
 	taille = n;
     }
 
-    /** Constructeur un peu allégé (utilisation des valeur par défaut)
-     * @param v la voix à utiliser pour synthétiser le fichier sonore
-     * @param pf le chemin d'accès au repertoire contenant les fichiers a traiter
-     * @param f Le nom du fichier de phonème à traiter, sans l'extension '.pho'
+    /** Constructeur un peu allï¿½gï¿½ (utilisation des valeur par dï¿½faut)
+     * @param v la voix ï¿½ utiliser pour synthï¿½tiser le fichier sonore
+     * @param pf le chemin d'accï¿½s au repertoire contenant les fichiers a traiter
+     * @param f Le nom du fichier de phonï¿½me ï¿½ traiter, sans l'extension '.pho'
      * @param n la taille
      */
     public SynthetiseurMbrola(String v, String pf, String f, int n) {
 	this(MBROLAHOME,v,pf,f,n);
     }
 
-    /** Constructeur completement allégé
-     * @param pf le chemin d'accès au repertoire contenant les fichiers a traiter
-     * @param f Le nom du fichier de phonème à traiter, sans l'extension '.pho'
+    /** Constructeur completement allï¿½gï¿½
+     * @param pf le chemin d'accï¿½s au repertoire contenant les fichiers a traiter
+     * @param f Le nom du fichier de phonï¿½me ï¿½ traiter, sans l'extension '.pho'
      * @param n la taille
      */
     public SynthetiseurMbrola(String pf, String f, int n) {
 	this(MBROLAHOME,VOIX1,pf,f,n);
     }
 
-    /** Pour créer le fichier wav et le lire dans un JuxeBox
+    /** Pour crï¿½er le fichier wav et le lire dans un JuxeBox
      */
     public void play(){
 	Runtime r = Runtime.getRuntime();
 	String cmd = home + exe + " " + home + voix + " " + pathFichier + fichier + ".pho "  + pathFichier + fichier + ".wav";
 	try {
 	    r.exec(cmd);
-	    // on laisse le temps au process r de transformer tous les phonèmes
+	    // on laisse le temps au process r de transformer tous les phonï¿½mes
 	    int zzz = (taille > 10) ? 10*taille : 100;
 	    Thread.sleep(zzz);
 	}
@@ -106,14 +106,14 @@ public class SynthetiseurMbrola{
 	j.playSound();
     }
 
-    /** Pour seulement créer le fichier wav, mais sans le lire.
+    /** Pour seulement crï¿½er le fichier wav, mais sans le lire.
      */
     public void muet(){
 	Runtime r = Runtime.getRuntime();
 	String cmd = home + exe + " " + home + voix + " " + pathFichier + fichier + ".pho "  + pathFichier + fichier + ".wav";
 	try {
 	    r.exec(cmd);
-	    // on laisse le temps au process r de transformer tous les phonèmes
+	    // on laisse le temps au process r de transformer tous les phonï¿½mes
 	    int zzz = (taille > 10) ? 10*taille : 100;
 	    Thread.sleep(zzz);
 	}
