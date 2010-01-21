@@ -295,22 +295,9 @@ public class InterfaceServeurAffichage extends FrameView {
 
         labelOrdre1.setText(resourceMap.getString("labelOrdre1.text")); // NOI18N
         labelOrdre1.setName("labelOrdre1"); // NOI18N
-        labelOrdre1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelOrdre1MouseClicked(evt);
-            }
-        });
         labelOrdre1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                labelOrdre1MouseDragged(evt);
-            }
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 labelOrdre1MouseMoved(evt);
-            }
-        });
-        labelOrdre1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                labelOrdre1FocusGained(evt);
             }
         });
 
@@ -581,13 +568,6 @@ public class InterfaceServeurAffichage extends FrameView {
         int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
         Mission mission = acces_mission.find(id);
         //labelListes des Réponses de l'ordre ? :
-        if (mission.getIdOrdreCourant() % 4 == 0)
-        {
-            label.setForeground(Color.GREEN);
-        }
-        else {
-            label.setForeground(Color.RED);
-        }
         for (int indexReponse=0 ; indexReponse < mission.getListOrdres().get(numeroLabel).getReponsesPossibles().size();indexReponse ++)
 
         {
@@ -596,20 +576,6 @@ public class InterfaceServeurAffichage extends FrameView {
             listeReponseModel.addElement(monString);
         }
     }
-
-    private void labelOrdre1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_labelOrdre1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_labelOrdre1FocusGained
-
-    private void labelOrdre1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseClicked
-        // TODO add your handling code here:
-                focusLabel(labelOrdre1, 1);
-    }//GEN-LAST:event_labelOrdre1MouseClicked
-
-    private void labelOrdre1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseDragged
-        // TODO add your handling code here:
-        focusLabel(labelOrdre1, 1);
-    }//GEN-LAST:event_labelOrdre1MouseDragged
 
     private void labelOrdre1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseMoved
         // TODO add your handling code here:
