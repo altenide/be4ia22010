@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,21 +20,21 @@
  *
  */
 
-package t2s.util;
+package Synthese.util;
 
-/** Une classe pour générer des nombres aléatoires à notre manière
+/** Une classe pour gï¿½nï¿½rer des nombres alï¿½atoires ï¿½ notre maniï¿½re
  */
 
 public class Random{
 
-    /** Pour décider aléatoirement si un nombre est négatif
+    /** Pour dï¿½cider alï¿½atoirement si un nombre est nï¿½gatif
      * @return true dans 50% des cas, false sinon
      */
     public static boolean negatif() {
 	return Math.random() > 0.5;
     }
 
-    /** Pour obtenir des nombres flottants aléatoires non signés
+    /** Pour obtenir des nombres flottants alï¿½atoires non signï¿½s
      * @param n la borne superieure de l'intervalle
      * @return un double positif compris entre 0 et n 
      */
@@ -42,7 +42,7 @@ public class Random{
 	return Math.random() * n;
     }
     
-    /** Pour obtenir des nombres aléatoires signés
+    /** Pour obtenir des nombres alï¿½atoires signï¿½s
      * @param n la borne inferieure et superieure de l'intervalle
      * @return un double compris entre -n et n 
      */
@@ -54,7 +54,7 @@ public class Random{
     /** Pour augmenter d'un delta une valeur
      * @param i la valeur en question
      * @param n le maximum possible pour le delta
-     * @return un int égal à i + delta avec 0 < delta < n
+     * @return un int ï¿½gal ï¿½ i + delta avec 0 < delta < n
      */
     public static int unsignedDelta(int i, int n) {
 	return (int)(i + unsignedRandom(n));
@@ -63,7 +63,7 @@ public class Random{
     /** Pour augmenter ou diminuer d'un delta une valeur
      * @param i la valeur en question
      * @param n le maximum possible pour le delta
-     * @return un int égal à i + delta avec -n < delta < n
+     * @return un int ï¿½gal ï¿½ i + delta avec -n < delta < n
      */
     public static int delta(int i, int n) {
 	return (int) (i + random(n));

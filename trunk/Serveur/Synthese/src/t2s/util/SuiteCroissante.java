@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,9 +20,9 @@
  *
  */
 
-package t2s.util;
+package Synthese.util;
 
-/** Une classe pour générer des suites de nombre aléatoires croissants 
+/** Une classe pour gï¿½nï¿½rer des suites de nombre alï¿½atoires croissants 
  */
 
 public class SuiteCroissante {
@@ -30,8 +30,8 @@ public class SuiteCroissante {
     private static final int PAS = Integer.parseInt(ConfigFile.rechercher("PAS_SUITE")); // pas de variation de la suite
     private int min;                   // valeur min
     private int max;                   // valeur max
-    private int longueur;              // nombre d'éléments de la suite
-    private int etape;                 // le nombre d'étape 
+    private int longueur;              // nombre d'ï¿½lï¿½ments de la suite
+    private int etape;                 // le nombre d'ï¿½tape 
     private int courant;               // la valeur courante
 
     /** Pour construire une suite croissante
@@ -47,7 +47,7 @@ public class SuiteCroissante {
 	etape = 1;
     }
 
-    /** Constructeur par défaut : Utilise les valeurs du fichier de configuraiton
+    /** Constructeur par dï¿½faut : Utilise les valeurs du fichier de configuraiton
      * @param l la longueur de la suite
      */
     public SuiteCroissante(int l) {
@@ -56,7 +56,7 @@ public class SuiteCroissante {
 
     
     /** Pour obtenir la prochaine valeur de la suite 
-     * @return la valeur entière qui va bien !
+     * @return la valeur entiï¿½re qui va bien !
      */
     public int next() {
 	courant = Math.min(max, (int)(courant + Random.unsignedDelta(min,PAS*etape)));

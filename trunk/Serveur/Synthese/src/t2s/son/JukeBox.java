@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,7 +20,7 @@
  *
  */
 
-package t2s.son;
+package Synthese.son;
 
 import java.applet.*;
 import java.net.URL;
@@ -30,10 +30,10 @@ import java.net.URL;
 
 public class JukeBox    {
 
-    private String fileName;  //nom du fichier à lire
+    private String fileName;  //nom du fichier ï¿½ lire
 
-    /** Construit un JuxeBox pour un fichier donné
-     * @param s le chemin d'accès au fichier
+    /** Construit un JuxeBox pour un fichier donnï¿½
+     * @param s le chemin d'accï¿½s au fichier
      */
     public JukeBox(String s) {
 	fileName = s;

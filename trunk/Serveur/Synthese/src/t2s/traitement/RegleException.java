@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,9 +20,9 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
-/** Exception liée a la classe Pretraitement, quand a partir d'un texte, on ne peut plus obtenir de Phrase
+/** Exception liï¿½e a la classe Pretraitement, quand a partir d'un texte, on ne peut plus obtenir de Phrase
  */
 
 public class RegleException extends Exception{
@@ -32,7 +32,7 @@ public class RegleException extends Exception{
     // La ligne ou est apparue l'erreur
     private int line;
 
-    /** Le constructeur d'Exception de Règle
+    /** Le constructeur d'Exception de Rï¿½gle
      * @param m le message de l'exception
      * @param l la ligne ou est apparue l'erreur
      */
@@ -41,8 +41,8 @@ public class RegleException extends Exception{
 	message = m;
 	line = l;
     }
-    /** La méthode d'affichage standart de l'exception
-     * @return une chaine de caractères de la forme "Erreur ligne XX : type de l'erreur"
+    /** La mï¿½thode d'affichage standart de l'exception
+     * @return une chaine de caractï¿½res de la forme "Erreur ligne XX : type de l'erreur"
      */
     public String toString() {
 	return "Erreur Ligne " + line + " : " + message;

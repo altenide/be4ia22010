@@ -20,10 +20,10 @@
  *
  */
 
-package t2s.prosodie;
+package Synthese.prosodie;
 
 import java.util.*;
-import t2s.traitement.*;
+import Synthese.traitement.*;
 import java.io.*;
 
 /** Une Classe repr�sentant les  phonemes d'une phrase.

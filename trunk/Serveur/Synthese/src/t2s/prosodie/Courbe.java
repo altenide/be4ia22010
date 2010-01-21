@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,24 +20,24 @@
  *
  */
 
-package t2s.prosodie;
+package Synthese.prosodie;
 
 import java.util.Vector;
 import java.util.StringTokenizer;
-import t2s.traitement.*;
-import t2s.util.*;
+import Synthese.traitement.*;
+import Synthese.util.*;
 import java.io.*;
 
-/** Une Classe pour décrire une courbe intonative selon le rapport <code>ENST D76003 [1976]</code>.
- * <p> On dispose de  4 niveaux d'intonation, et de 5 courbes prédéfinies : 
+/** Une Classe pour dï¿½crire une courbe intonative selon le rapport <code>ENST D76003 [1976]</code>.
+ * <p> On dispose de  4 niveaux d'intonation, et de 5 courbes prï¿½dï¿½finies : 
  * <ul>
- *      <li>courbe A : du niveau 2 au niveau 3 (début phrase)</li>
+ *      <li>courbe A : du niveau 2 au niveau 3 (dï¿½but phrase)</li>
  *      <li>courbe B : du niveau 2 au niveau 4 convexe (milieu de phrase)</li>
  *      <li>courbe C : du niveau 2 au niveau 4 concave (question)</li>
  *      <li>courbe D : du niveau 2 au niveau 1 (fin de phrase)</li>
  *      <li>courbe E : du niveau 4 au niveau 1 (fin de phrase exclamative)</li>
  * </ul></p>
- * <p><code>Rapport ENST D76003 [1976]</code> : <i>Programme de transcription phonétique en langue française</i>
+ * <p><code>Rapport ENST D76003 [1976]</code> : <i>Programme de transcription phonï¿½tique en langue franï¿½aise</i>
  * <ul>
  *   <li> H. Fervers </li>
  *   <li> J. Leroux  </li>
@@ -49,7 +49,7 @@ public class Courbe {
 
     private Syntagme synt;          // le type de la phrase
     private int frequenceInit;      // valeur de y1
-    private int nbPoint;            // nb de points à traiter
+    private int nbPoint;            // nb de points ï¿½ traiter
     private int hauteurNiveau;      // hauteur entre les 4 niveaux
     private double coeffk;          // coefficient K pour les courbes A et B
     private int xn;                 // le point courant
@@ -59,9 +59,9 @@ public class Courbe {
      */
 
     /** Constructeur complet
-     * @param s le syntagme associé à la courbe
-     * @param f la fréquence initiale de la courbe
-     * @param n le nombre de points utilisé par la courbe
+     * @param s le syntagme associï¿½ ï¿½ la courbe
+     * @param f la frï¿½quence initiale de la courbe
+     * @param n le nombre de points utilisï¿½ par la courbe
      * @param h la hauteur entre les 4 niveaux des courbes
      */
     public Courbe(Syntagme s, int f, int n, int h) {
@@ -79,7 +79,7 @@ public class Courbe {
 	xn = 0;
     }
 
-    /** Constructeur de courbe plus facile d'accès (valeur par défaut)
+    /** Constructeur de courbe plus facile d'accï¿½s (valeur par dï¿½faut)
      * @param s le type de syntagme
      * @param n le nombre de points de la courbe
      */
@@ -88,13 +88,13 @@ public class Courbe {
     }
 
     /** Pour construire une courbe constante
-     * @param s le syntagme associé
+     * @param s le syntagme associï¿½
      */
     public Courbe(Syntagme s) {
 	this(s,Integer.parseInt(ConfigFile.rechercher("FREQUENCE_INIT")),-1,Integer.parseInt(ConfigFile.rechercher("HAUTEUR_PALIER")));
     }
     
-    /** Pour obtenir la prochaine valeur de la courbe (itérateur)
+    /** Pour obtenir la prochaine valeur de la courbe (itï¿½rateur)
      * @return l'entier correspondant
      */
     public int nextValue() {
@@ -117,7 +117,7 @@ public class Courbe {
 	}
     }
 
-    /** Méthode permettant de savoir s'il reste des points à calculer sur la courbe
+    /** Mï¿½thode permettant de savoir s'il reste des points ï¿½ calculer sur la courbe
      * @return true s'il reste des points, false sinon
      */
     public boolean hasMoreValue(){
@@ -126,7 +126,7 @@ public class Courbe {
 
     
     /**
-     * méthodes privées qui calculent la fréquence selon le type de courbe
+     * mï¿½thodes privï¿½es qui calculent la frï¿½quence selon le type de courbe
      */
 
     /** Calcul du point suivant, pour une courbe de type A
@@ -177,7 +177,7 @@ public class Courbe {
     }
 
 
-    /** Une méthode de test éxécutable
+    /** Une mï¿½thode de test ï¿½xï¿½cutable
      */
     public static void main(String[] s) {
 	Courbe c = new Courbe(new Syntagme(Syntagme.MINEUR, Syntagme.PAUSE_COURTE),4);

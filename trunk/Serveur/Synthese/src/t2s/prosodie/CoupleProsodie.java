@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,13 +20,13 @@
  *
  */
 
-package t2s.prosodie;
+package Synthese.prosodie;
 
-/** Classe définissant les couples de prosodie.
- * <p><b>Définition</b> : un <i>Couple de Prosodie</i> est un couple <code>[f,%]</code> </p>
+/** Classe dï¿½finissant les couples de prosodie.
+ * <p><b>Dï¿½finition</b> : un <i>Couple de Prosodie</i> est un couple <code>[f,%]</code> </p>
  * <p>On utilise les conventions de format de <code>MBROLA</code><ul>
- *   <li> <code>f</code> : une valeur de fréquence pour faire varier le pitch du signal synthétisé </li>
- *   <li> <code>%</code> : le pourcentage de temps consacré à cette fréquence</li>
+ *   <li> <code>f</code> : une valeur de frï¿½quence pour faire varier le pitch du signal synthï¿½tisï¿½ </li>
+ *   <li> <code>%</code> : le pourcentage de temps consacrï¿½ ï¿½ cette frï¿½quence</li>
  * </ul></p>
  *<p> <b>Plus d'informations</b> : <i>cf. </i> la documentation de <code>MBROLA</code>.
  */
@@ -36,17 +36,17 @@ public class CoupleProsodie {
     private int pourcentage;
     private int freq;
 
-    /** Constructeur de couple de prosodie par défaut.
-     * <p><b>Remarque</b> : Créé un couple (0,0).</p>
+    /** Constructeur de couple de prosodie par dï¿½faut.
+     * <p><b>Remarque</b> : Crï¿½ï¿½ un couple (0,0).</p>
      */
     public CoupleProsodie() {
 	pourcentage=0;
 	freq=0;
     }
 
-    /** Constructeur de couple de prosodie évolué
-     * @param p le pourcentage associé à ce couple
-     * @param f la fréquence associée à ce couple
+    /** Constructeur de couple de prosodie ï¿½voluï¿½
+     * @param p le pourcentage associï¿½ ï¿½ ce couple
+     * @param f la frï¿½quence associï¿½e ï¿½ ce couple
      */
     public CoupleProsodie( int p, int f) {
 	pourcentage=p;
@@ -60,8 +60,8 @@ public class CoupleProsodie {
 	return pourcentage;
     }
 
-    /** Pour obtenir la fréquence de ce couple
-     * @return la fréquence du couple.
+    /** Pour obtenir la frï¿½quence de ce couple
+     * @return la frï¿½quence du couple.
      */
     public int getFrequence(){
 	return freq;
@@ -74,15 +74,15 @@ public class CoupleProsodie {
 	pourcentage=p;
     }
 
-    /** Pour modifier la fréquence du couple
-     * @param f le nouvelle fréquence
+    /** Pour modifier la frï¿½quence du couple
+     * @param f le nouvelle frï¿½quence
      */
     public void setFrequence(int f){
 	freq = f;
     }
 
-    /** Méthode standart d'affichage
-     * @return une chaine de caractères représentant le couple.
+    /** Mï¿½thode standart d'affichage
+     * @return une chaine de caractï¿½res reprï¿½sentant le couple.
      */
     public String toString(){
 	return getPourcentage()+" "+getFrequence() + " " ;

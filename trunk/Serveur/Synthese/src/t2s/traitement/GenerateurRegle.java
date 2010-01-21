@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,13 +20,13 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
-import t2s.util.ConfigFile;
-/** Un générateur de Règles, écrites au format PERL dans un fichier texte.
+import Synthese.util.ConfigFile;
+/** Un gï¿½nï¿½rateur de Rï¿½gles, ï¿½crites au format PERL dans un fichier texte.
  */
 public class GenerateurRegle {
 
@@ -34,17 +34,17 @@ public class GenerateurRegle {
     private BufferedReader br;
     // une hashtable qui contient les classes lexicales
     private Hashtable ensembles;
-    // le numéro de ligne courante dans le fichier
+    // le numï¿½ro de ligne courante dans le fichier
     private  int noLigne ; 
-    // pour savoir s'il reste encore des règles
+    // pour savoir s'il reste encore des rï¿½gles
     private boolean vide;
 
-    /** Construction standart d'un générateur de règles à partir d'un fichier.
-     * @param path le chemin d'accès au fichier utilisé (encodage <code>ISO-8859-1</code>)
+    /** Construction standart d'un gï¿½nï¿½rateur de rï¿½gles ï¿½ partir d'un fichier.
+     * @param path le chemin d'accï¿½s au fichier utilisï¿½ (encodage <code>ISO-8859-1</code>)
      */
     public GenerateurRegle(String path) {
 	try {
-	    // pour avoir le jeu de caractères ISO
+	    // pour avoir le jeu de caractï¿½res ISO
 	    FileInputStream fos = new FileInputStream(path);
 	    br = new BufferedReader(new InputStreamReader(fos,ConfigFile.rechercher("ENCODAGE_FICHIER") )); 
 	    //br = new BufferedReader(new FileReader(new File(path)));
@@ -65,27 +65,27 @@ public class GenerateurRegle {
 	}
     }
 
-    /** Pour savoir s'il reste encore des règles à lire dans le fichier
-     * @return true si on n'a plus de règles à lire, false sinon.
+    /** Pour savoir s'il reste encore des rï¿½gles ï¿½ lire dans le fichier
+     * @return true si on n'a plus de rï¿½gles ï¿½ lire, false sinon.
      */
     public boolean vide() {
 	return vide;
     }
 
-    /** Femreture en lecture du fichier de règles.
+    /** Femreture en lecture du fichier de rï¿½gles.
      */
     public void close() {
 	try {
 	    br.close();
 	}
 	catch (Exception e) {
-	    System.out.println("SI_VOX WARNING [GenerateurRegle.close] : Erreur lors de la fermeture du fichier de règles !");
+	    System.out.println("SI_VOX WARNING [GenerateurRegle.close] : Erreur lors de la fermeture du fichier de rï¿½gles !");
 	} 
     }
 
     /** Analyse d'une ligne du fichier (chargement dans le tampon et transformation)
-     * @param br le lecteur bufferisé servant à faire la lecture du fichier.
-     * @return une instance de <code>StringTokenizer</code> associé aux caractères <code>'\t','n'</code> et <code>'\r'</code>
+     * @param br le lecteur bufferisï¿½ servant ï¿½ faire la lecture du fichier.
+     * @return une instance de <code>StringTokenizer</code> associï¿½ aux caractï¿½res <code>'\t','n'</code> et <code>'\r'</code>
      */
     public StringTokenizer tokensLine(BufferedReader br) throws AnalyseException {
 	String linein = "";
@@ -104,7 +104,7 @@ public class GenerateurRegle {
     }
 
 
-    /** Pour initialiser les classes de lettres (initialisation du générateur)
+    /** Pour initialiser les classes de lettres (initialisation du gï¿½nï¿½rateur)
      * <p> <b>Remarque</b> : Modifie par effet de bord la table de hachage globale des ensembles de lettres </p>
      */
     public void initEnsembles() throws AnalyseException {
@@ -121,7 +121,7 @@ public class GenerateurRegle {
 	    erreur(1);
     }
 
-    /** Pour créer l'ensemble des classes
+    /** Pour crï¿½er l'ensemble des classes
      */
     private void initClasses() throws AnalyseException {
 	String first = "";
@@ -137,8 +137,8 @@ public class GenerateurRegle {
 	} while (!rules(first));
     }
 
-    /** Pour créer une classe unique
-     * Précondition : 
+    /** Pour crï¿½er une classe unique
+     * Prï¿½condition : 
      *        On arrive ici APRES avoir reconnu le tag de classe dans line
      * @param line le <code>StringTokenizer</code> que l'on veut analyser
      */
@@ -147,7 +147,7 @@ public class GenerateurRegle {
 	String value = "";
 	if (line.hasMoreTokens()) {
 	    name = line.nextToken();
-	    // on vérifie que l'identificateur est en majuscules
+	    // on vï¿½rifie que l'identificateur est en majuscules
 	    if (!majuscules(name)) 
 		erreur(3);
 	    if (ensembles.containsKey(name))
@@ -167,23 +167,23 @@ public class GenerateurRegle {
 	ensembles.put(name,value);
     }
 
-    /** Pour analyser une expression régulière
+    /** Pour analyser une expression rï¿½guliï¿½re
      * Postcondition : 
-     *         On aura levé une exception si : 
-     *              - La chaine ne correspond pas à une expression régulière de syntaxe correcte
-     *              - Il y a des majuscules qui ne correspondent pas à un ident de classe
-     * @return la chaine dans laquelle on a substitué les ident de classe par leurs valeurs
+     *         On aura levï¿½ une exception si : 
+     *              - La chaine ne correspond pas ï¿½ une expression rï¿½guliï¿½re de syntaxe correcte
+     *              - Il y a des majuscules qui ne correspondent pas ï¿½ un ident de classe
+     * @return la chaine dans laquelle on a substituï¿½ les ident de classe par leurs valeurs
      */
 
     private String analyseExpReg(String value) throws AnalyseException {
-	// vérifie la syntaxe de l'expression régulière
+	// vï¿½rifie la syntaxe de l'expression rï¿½guliï¿½re
 	try {
 	    Pattern p = Pattern.compile(value);
 	}
 	catch (PatternSyntaxException pe) {
 	    erreur(7);
 	} 
-	// vérifie que les majuscules correspondent à des identificateurs de classe connus
+	// vï¿½rifie que les majuscules correspondent ï¿½ des identificateurs de classe connus
 	String res = "";
 	int lg = value.length();
 	int i=0;
@@ -216,16 +216,16 @@ public class GenerateurRegle {
     }
 	      
 
-    /** Fabrication d'une nouvelle règle à partir d'une ligne du fichier .
-     * <p><b>Définition</b> : Une règle est de la forme suivante :
+    /** Fabrication d'une nouvelle rï¿½gle ï¿½ partir d'une ligne du fichier .
+     * <p><b>Dï¿½finition</b> : Une rï¿½gle est de la forme suivante :
      * <p> <center> <code> pref [[ <racine> ]] suf -> phoneme </code> </center> </p>
      * <p>
      * <ul>
-     *   <li> <code>pref</code> et <code>suf</code> sont des expressions régulières syntaxiquement correctes </li>
-     *   <li> <code>racine</code> et <code>phoneme</code> sont des chaines de caractères standarts
+     *   <li> <code>pref</code> et <code>suf</code> sont des expressions rï¿½guliï¿½res syntaxiquement correctes </li>
+     *   <li> <code>racine</code> et <code>phoneme</code> sont des chaines de caractï¿½res standarts
      * </ul>
      *</p>
-     * @return une nouvelle Regle construite à partir de ce qu'on vient de lire.
+     * @return une nouvelle Regle construite ï¿½ partir de ce qu'on vient de lire.
      * @throws AnalyseException
      */
     public Regle nouvelleRegle() throws  AnalyseException {
@@ -274,12 +274,12 @@ public class GenerateurRegle {
     }
 
     /** Pour analyser la racine
-     * Précondition : 
+     * Prï¿½condition : 
      *      1. On vient de lire le tag '[['
      * Postcondition :
-     *      1. si la chaine est correcte, line commence après le tag ']]'
+     *      1. si la chaine est correcte, line commence aprï¿½s le tag ']]'
      * @param line le tokenizer de la ligne que l'on analyse.
-     * @return La chaine de caractères qui représente la racine.
+     * @return La chaine de caractï¿½res qui reprï¿½sente la racine.
      */
     private String analyseRacine(StringTokenizer line) throws AnalyseException {
 	if (!line.hasMoreTokens()) 
@@ -296,13 +296,13 @@ public class GenerateurRegle {
 	return racine;
     }
 
-    /** Pour analyser le phonème
-     * Précondition : 
+    /** Pour analyser le phonï¿½me
+     * Prï¿½condition : 
      *       1. on vient de lire le tage de transition '->'
      * Postcondition : 
      *       1. si la chaine est correcte, 'line' est vide
      * @param line le tokenizer de la ligne que l'on analyse.
-     * @return La chaine de caractères qui représente la racine.
+     * @return La chaine de caractï¿½res qui reprï¿½sente la racine.
      */
     private String analysePhoneme(StringTokenizer line) throws AnalyseException {
 	String pho = "";
@@ -317,10 +317,10 @@ public class GenerateurRegle {
 
 
     /** 
-     * Méthodes pour identifier les unités lexicales
+     * Mï¿½thodes pour identifier les unitï¿½s lexicales
      */ 
 
-    /** teste si une chaine est entièrement en majuscule
+    /** teste si une chaine est entiï¿½rement en majuscule
      * @param s la chaine en question
      * @return true si c'est le cas, false sinon
      */
@@ -331,24 +331,24 @@ public class GenerateurRegle {
 	return true;
     }
 
-    /** Teste si une chaine est composée de lettre acceptée comme racine
-     * Définition : 
-     *       accpetée comme faisant partie de la racine = lettre minuscule, ' ou _
-     * @param s la chaine de caractère à analyser
+    /** Teste si une chaine est composï¿½e de lettre acceptï¿½e comme racine
+     * Dï¿½finition : 
+     *       accpetï¿½e comme faisant partie de la racine = lettre minuscule, ' ou _
+     * @param s la chaine de caractï¿½re ï¿½ analyser
      * @return true si c'est bon, false sinon.
      */
     private static boolean minuscules(String s) {
 	for (int i = 0; i < s.length();i++) {
 	    char c = s.charAt(i);
-	    if (c != '\'' && c !='_' && c != '~' && c != 'æ'  )
+	    if (c != '\'' && c !='_' && c != '~' && c != 'ï¿½'  )
 		if (!Character.isLowerCase(c)) 
 		    return false;
 	}
 	return true;
     }
 
-    /** Teste si un caractère est en majuscule
-     * @param c le caractère en question
+    /** Teste si un caractï¿½re est en majuscule
+     * @param c le caractï¿½re en question
      * @return true si c'est bon, false sinon
      */
     private static boolean majuscule(char c) {
@@ -357,15 +357,15 @@ public class GenerateurRegle {
 
 
     /** Teste si une chaine est un commentaire
-     * Définition : 
-     *       commentaire = ligne commençant par #
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       commentaire = ligne commenï¿½ant par #
+     * @param s la chaine ï¿½ tester
      * @return true si c'est un commentaire, false sinon
      */
     private boolean comment(String s) {
 	if (s.length() != 0) {
 	    int i;
-	    for (i=0; i < s.length() && s.charAt(i)==' '; i++) {} // On dégage les espaces en début de chaine
+	    for (i=0; i < s.length() && s.charAt(i)==' '; i++) {} // On dï¿½gage les espaces en dï¿½but de chaine
 	    if (i < s.length()) 
 		return s.charAt(i)=='#';
 	}
@@ -373,9 +373,9 @@ public class GenerateurRegle {
     }
 
     /** Teste si une chaine est le tag de fin de fichier
-     * Définition : 
-     *       tag de fin de fichier = mot clé 'END'
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       tag de fin de fichier = mot clï¿½ 'END'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean fin(String s) {
@@ -383,9 +383,9 @@ public class GenerateurRegle {
     }
 
     /** Teste si une chaine est le tag d'ouverture de racine 
-     * Définition : 
-     *       tag d'ouverture de racine = mot clé  '[['
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       tag d'ouverture de racine = mot clï¿½  '[['
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean ouvrant(String s){
@@ -393,9 +393,9 @@ public class GenerateurRegle {
     }
 
     /** Teste si une chaine est le tag de fermeture de racine
-     * Définition : 
-     *       tag de fermeture de racine = mot clé ']]'
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       tag de fermeture de racine = mot clï¿½ ']]'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean fermant(String s){
@@ -403,19 +403,19 @@ public class GenerateurRegle {
     }
 
     /** Teste si une chaine est le tag de transition
-     * Définition : 
-     *       tag de transition = mot clé '->'
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       tag de transition = mot clï¿½ '->'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean fleche(String s) {
 	return s.equals("->");
     }
 
-    /** Teste si une chaine est le tag de début de définition des classes
-     * Définition : 
-     *       tag de définition des classes = mot clé 'CLASSES'
-     * @param s la chaine à tester
+    /** Teste si une chaine est le tag de dï¿½but de dï¿½finition des classes
+     * Dï¿½finition : 
+     *       tag de dï¿½finition des classes = mot clï¿½ 'CLASSES'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean classes(String s) {
@@ -423,19 +423,19 @@ public class GenerateurRegle {
     }
 
     /** teste si une chaine est le tag de classe
-     * Définition : 
-     *       tag de classe = mot clé 'CLASS'
-     * @param s la chaine à tester
+     * Dï¿½finition : 
+     *       tag de classe = mot clï¿½ 'CLASS'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean classs(String s) {
 	return s.equals("CLASS");
     }
 
-    /** teste si une chaine est le tag de règles
-     * Définition : 
-     *       tag de règles = mot clé 'RULES'
-     * @param s la chaine à tester
+    /** teste si une chaine est le tag de rï¿½gles
+     * Dï¿½finition : 
+     *       tag de rï¿½gles = mot clï¿½ 'RULES'
+     * @param s la chaine ï¿½ tester
      * @return true si c'est le tag en question, false sinon
      */
     private boolean rules(String s) {
@@ -443,8 +443,8 @@ public class GenerateurRegle {
     }
     
 
-    /** Méthode pour transmettre les exceptions selon le type d'erreur
-     * @param i l'entier correspondant au code d'erreur rencontrée
+    /** Mï¿½thode pour transmettre les exceptions selon le type d'erreur
+     * @param i l'entier correspondant au code d'erreur rencontrï¿½e
      */
     private void erreur(int i) throws AnalyseException {
 	switch (i) {
@@ -455,13 +455,13 @@ public class GenerateurRegle {
 	case 3 : 
 	    throw new AnalyseException("Les mots clefs doivent etre en majuscules", noLigne);
 	case 4 : 
-	    throw new AnalyseException("Identificateur déjà utilisé", noLigne);
+	    throw new AnalyseException("Identificateur dï¿½jï¿½ utilisï¿½", noLigne);
 	case 5 : 
 	    throw new AnalyseException("Manque nom de classe", noLigne);
 	case 6 : 
-	    throw new AnalyseException("Manque définition de classe", noLigne);
+	    throw new AnalyseException("Manque dï¿½finition de classe", noLigne);
 	case 7 : 
-	    throw new AnalyseException("Mauvaise syntaxe d'expression régulière : ", noLigne);
+	    throw new AnalyseException("Mauvaise syntaxe d'expression rï¿½guliï¿½re : ", noLigne);
 	case 8 : 
 	    throw new AnalyseException("Majuscules interdites en dehors des identificateurs d'ensembles", noLigne);
 	case 9 : 
@@ -471,9 +471,9 @@ public class GenerateurRegle {
 	case 11 : 
 	    throw new AnalyseException("Tag -> attendu",noLigne);
 	case 12 : 
-	    throw new AnalyseException("Racine de règle attendue",noLigne);
+	    throw new AnalyseException("Racine de rï¿½gle attendue",noLigne);
 	case 13 : 
-	    throw new AnalyseException("La racine de règle doit etre en minuscules",noLigne);
+	    throw new AnalyseException("La racine de rï¿½gle doit etre en minuscules",noLigne);
 	case 14 : 
 	    throw new AnalyseException("Tag ]] attendu",noLigne);
 	}

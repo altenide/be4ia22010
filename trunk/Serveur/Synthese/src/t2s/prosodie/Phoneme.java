@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,21 +20,21 @@
  *
  */
 
-package t2s.prosodie;
+package Synthese.prosodie;
 
-import t2s.traitement.*;
-import t2s.util.*;
+import Synthese.traitement.*;
+import Synthese.util.*;
 import java.util.Vector; /* Confusion entre le t2s.util.Random et le java.util.Random ... no comment ... */
 
 
-/** Classe représentant un Phonème.
- * <p><b>Définition</b> : Un phonème est constitué : </p>
+/** Classe reprï¿½sentant un Phonï¿½me.
+ * <p><b>Dï¿½finition</b> : Un phonï¿½me est constituï¿½ : </p>
  * <p><ul>
- *   <li> d'une chaine de caractère le représentant </li>
+ *   <li> d'une chaine de caractï¿½re le reprï¿½sentant </li>
  *   <li> d'une <i>suite</i> de couple de prosodie </li>
- *   <li> de sa durée </li>
+ *   <li> de sa durï¿½e </li>
  * </ul></p>
- * <p><b>Exemple de Phonèmes</b> : (mot <i>bonjour</i>)</p>
+ * <p><b>Exemple de Phonï¿½mes</b> : (mot <i>bonjour</i>)</p>
  * <p><code>
  * b 187  8 163 16 160 <br>
  * o~ 123  14 148 29 149 44 151 49 148<br>
@@ -43,19 +43,19 @@ import java.util.Vector; /* Confusion entre le t2s.util.Random et le java.util.R
  * R 163  8 109 16 108<br>
  * _ 130 <br>
  * </code></p>
- * <p> Le phonème <code>'b'</code> à une durée de 187. 
- * <ul><li>Durant 8% de sa durée, il est prononcé à la fréquence 163 Hz</li>
- * <li>puis, à partir de 16%, il est prononcé à la fréquence 160 Hz </li></ul>
+ * <p> Le phonï¿½me <code>'b'</code> ï¿½ une durï¿½e de 187. 
+ * <ul><li>Durant 8% de sa durï¿½e, il est prononcï¿½ ï¿½ la frï¿½quence 163 Hz</li>
+ * <li>puis, ï¿½ partir de 16%, il est prononcï¿½ ï¿½ la frï¿½quence 160 Hz </li></ul>
  */
 public class Phoneme {
 
-    private String pho;       //Chaine de caractères représentant le phoneme
+    private String pho;       //Chaine de caractï¿½res reprï¿½sentant le phoneme
     private Vector prosodie;  //tableau contenant la prosodie du phoneme
-    private int longueur;     //durée du phoneme
+    private int longueur;     //durï¿½e du phoneme
 
-    /** Pour créer un phoneme à partir d'une chaine de caractère.
+    /** Pour crï¿½er un phoneme ï¿½ partir d'une chaine de caractï¿½re.
      * <p><b>Remarque</b> : la suite de couple de prosodie est vide </p>
-     * @param pho la chaine de caractère représentant le phonème.
+     * @param pho la chaine de caractï¿½re reprï¿½sentant le phonï¿½me.
      */
     public Phoneme(String pho) {
 	this.pho = pho;
@@ -63,10 +63,10 @@ public class Phoneme {
 	longueur = duree(pho);
     }
 
-    /** Pour créer un phoneme à partir d'une chaine de caractère, en spécifiant sa durée.
+    /** Pour crï¿½er un phoneme ï¿½ partir d'une chaine de caractï¿½re, en spï¿½cifiant sa durï¿½e.
      * <p><b>Remarque</b> : la suite de couple de prosodie est vide </p>
-     * @param pho la chaine de caractère représentant le phonème.
-     * @param l la durée du phonème
+     * @param pho la chaine de caractï¿½re reprï¿½sentant le phonï¿½me.
+     * @param l la durï¿½e du phonï¿½me
      */
     public Phoneme(String pho, int l) {
 	this.pho = pho;
@@ -75,67 +75,67 @@ public class Phoneme {
     }
 
 
-    /** Un constructeur qui est un peu comme le H de Hawaï (... il sert à rien !)
-     * @param pho la chaine de caractère du phonème
-     * @param prosodie le <code>Vector</code> contenant les couples de prosodies a appliquer à ce phonème.
+    /** Un constructeur qui est un peu comme le H de Hawaï¿½ (... il sert ï¿½ rien !)
+     * @param pho la chaine de caractï¿½re du phonï¿½me
+     * @param prosodie le <code>Vector</code> contenant les couples de prosodies a appliquer ï¿½ ce phonï¿½me.
      */
     private Phoneme(String pho, Vector prosodie) {
 	this.pho = pho;
 	this.prosodie = prosodie;
     }
 
-    /** Pour retrouver la chaine de caractère du phonème
-     * @return la chaine de caractères représentant le phonème.
+    /** Pour retrouver la chaine de caractï¿½re du phonï¿½me
+     * @return la chaine de caractï¿½res reprï¿½sentant le phonï¿½me.
      */
     public String getPho() {
 	return pho;
     }
 
-    /** Pour récuperer la suite de couples de prosodies du phonème
+    /** Pour rï¿½cuperer la suite de couples de prosodies du phonï¿½me
      * @return le <code>Vector</code> qui va bien ^_^.
      */
     public Vector getProsodie() {
 	return prosodie;
     }
 
-    /** Pour récuperer la longueur (durée) du phonème
-     * @return la durée du phoneme.
+    /** Pour rï¿½cuperer la longueur (durï¿½e) du phonï¿½me
+     * @return la durï¿½e du phoneme.
      */
     public int getLongueur() {
 	return longueur;
     }
 
-    /** Pour modifier la chaine de caractères du phonème
-     * @param pho la nouvelle chaine de caractère.
+    /** Pour modifier la chaine de caractï¿½res du phonï¿½me
+     * @param pho la nouvelle chaine de caractï¿½re.
      */
     public void setPho(String pho) {
 	this.pho = pho;
     }
 
-    /** Pour modifier la durée du phonème
-     * @param longueur la nouvelle durée
+    /** Pour modifier la durï¿½e du phonï¿½me
+     * @param longueur la nouvelle durï¿½e
      */
     public void setLongueur(int longueur) {
 	this.longueur = longueur;
     }
 
-    /** Pour allonger un Phonème en fonction du type de syntagme
-     * @param s le syntagme dont fait partie le phonème.
+    /** Pour allonger un Phonï¿½me en fonction du type de syntagme
+     * @param s le syntagme dont fait partie le phonï¿½me.
      */
     public void allonge(Syntagme s) {
 	int l = (s.court()) ? 50 : 100;
 	this.longueur = longueur + l;
     }
 
-    /** Pour savoir si le phonème est une pause
+    /** Pour savoir si le phonï¿½me est une pause
      * @return true si c'est le cas, false sinon.
      */
     public boolean estPause() {
 	return pho.equals("_");
     }
 
-    /** Pour savoir s'il s'agit d'une d'une occlusive voisée.
-     * <p><b>Besoin d'aide ?</b> : <i>cf.</i> <a href="http://fr.wikipedia.org/wiki/Occlusive"><code>WikiPédia</code></a></p>
+    /** Pour savoir s'il s'agit d'une d'une occlusive voisï¿½e.
+     * <p><b>Besoin d'aide ?</b> : <i>cf.</i> <a href="http://fr.wikipedia.org/wiki/Occlusive"><code>WikiPï¿½dia</code></a></p>
      * @return true si c'est le cas, false sinon.
      */
     public boolean occlusiveVoisee() {
@@ -144,13 +144,13 @@ public class Phoneme {
     }
 
 
-    /** Pour Calculer automatiquement la durée d'un phonème
-     * @param s une String représentant un phonème
-     * @return int : la durée associée
-     * <p>Fonction qui détermine la durée à appliquer au phoneme s.</p>
+    /** Pour Calculer automatiquement la durï¿½e d'un phonï¿½me
+     * @param s une String reprï¿½sentant un phonï¿½me
+     * @return int : la durï¿½e associï¿½e
+     * <p>Fonction qui dï¿½termine la durï¿½e ï¿½ appliquer au phoneme s.</p>
      */
     private int duree(String s) {
-	// groupes de phonèmes ayant les mêmes durées (classification prise dans le script PERL).
+	// groupes de phonï¿½mes ayant les mï¿½mes durï¿½es (classification prise dans le script PERL).
 	String[][] groupe = {{"R", "l", "H"},                     //       d < 70
 			     {"d", "n", "j", "w"},                //  70 < d < 80
 			     {"b", "v", "Z", "m", "N", "i", "y"}, //  80 < d < 90
@@ -158,7 +158,7 @@ public class Phoneme {
 			     {"p", "O", "E"},                     // 100 < d < 110
 			     {"f", "S", "s", "2"}};               // 110 < d
 
-	//Facteur permettant de faire fluctuer la durée aléatoirement
+	//Facteur permettant de faire fluctuer la durï¿½e alï¿½atoirement
 	//        - 4 <= facteur <= 4 
 	int sign = (Math.random() > 0.5) ? 1 : -1;
 	int facteur = (int) (sign * 4 * Math.random()) ;
@@ -167,27 +167,27 @@ public class Phoneme {
 	if (s.endsWith("~"))  
 	    return 120+facteur;
 
-	// on applique une durée en fonction du groupe
+	// on applique une durï¿½e en fonction du groupe
 	for (int i = 0; i < groupe.length; i++)
 	    for (int j = 0; j < groupe[i].length; j++)
 		if (s.equals(groupe[i][j])) {
 		    return 65 + 10 * i + facteur;
 		}
     
-	//sinon la durée est : 70 - facteur <= d <= 70 + facteur
+	//sinon la durï¿½e est : 70 - facteur <= d <= 70 + facteur
 	return 70 + facteur;
     }
 
-    /** Pour affecter une prosodie (suite de couple de Prosodie) au phonème
-     * @param f la fréquence autour de laquelle on fait varier les phonèmes longs
+    /** Pour affecter une prosodie (suite de couple de Prosodie) au phonï¿½me
+     * @param f la frï¿½quence autour de laquelle on fait varier les phonï¿½mes longs
      */
     protected void setProsodie(int f) {
 	int l = longueur;
-	// nb de variations du pitch entre 1 et 5 si la durée est d'au moins 95
+	// nb de variations du pitch entre 1 et 5 si la durï¿½e est d'au moins 95
 	int nbVariations = (l<95) ? 1: Random.unsignedDelta(1,Integer.parseInt(ConfigFile.rechercher("NB_VARIATIONS_PITCH")));
 	SuiteCroissante pourcentage = new SuiteCroissante(nbVariations);
 	Vector v = new Vector();
-	// les occlusives voisées abaissent la fréquence
+	// les occlusives voisï¿½es abaissent la frï¿½quence
 	if (occlusiveVoisee()) 
 	    f -= 10;
 
@@ -199,8 +199,8 @@ public class Phoneme {
     }
 
 
-    /** Méthode standart d'affichage d'un phonème (conformité au format MBROLA)
-     * @return la représentation du phoneme au format MBROLA
+    /** Mï¿½thode standart d'affichage d'un phonï¿½me (conformitï¿½ au format MBROLA)
+     * @return la reprï¿½sentation du phoneme au format MBROLA
      */
     public String toString() {
 	String s = getPho() + " " + getLongueur() + " ";

@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,17 +20,17 @@
  *
  */
 
-package t2s.util;
+package Synthese.util;
 
 import java.io.*;
 
-/** une classe pour numéroter les fichiers utilisé par le serveur [0->20->0->...]
- * TO DO : Remplacer cette méthode par un referencement des IP
+/** une classe pour numï¿½roter les fichiers utilisï¿½ par le serveur [0->20->0->...]
+ * TO DO : Remplacer cette mï¿½thode par un referencement des IP
  */
 
 public class StaticCounter {
 
-    /** Le compteur en lui même (valeur courante, 0 par defaut)
+    /** Le compteur en lui mï¿½me (valeur courante, 0 par defaut)
      */
     public static Integer COUNT = new Integer(0);
 
@@ -38,7 +38,7 @@ public class StaticCounter {
      */
     public StaticCounter() {}
 
-    /** Pour incrementer de 1 (modulo 20) le numéro présent dans <code>COUNT></code>
+    /** Pour incrementer de 1 (modulo 20) le numï¿½ro prï¿½sent dans <code>COUNT></code>
      */
     public Integer compte() {
 	COUNT = new Integer((COUNT.intValue() + 1) % 20);

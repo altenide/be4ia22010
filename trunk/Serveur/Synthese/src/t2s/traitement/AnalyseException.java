@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,21 +20,21 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
-/** Exception liée a la classe Pretraitement, quand a partir d'un texte, on ne peut plus obtenir de Phrase
+/** Exception liï¿½e a la classe Pretraitement, quand a partir d'un texte, on ne peut plus obtenir de Phrase
  */
 
 public class AnalyseException extends Exception{
     
-    // Le message associé à l'erreur
+    // Le message associï¿½ ï¿½ l'erreur
     private String message;
     // La ligne ou est apparue l'erreur
     private int line;
 
     /** Le constructeur standart d'execption d'analyse
-     * @param m le message associé à l'exception levée
-     * @param l la ligne ou l'on à levé l'exception
+     * @param m le message associï¿½ ï¿½ l'exception levï¿½e
+     * @param l la ligne ou l'on ï¿½ levï¿½ l'exception
      */
     public AnalyseException(String m, int l) {
 	super();
@@ -42,8 +42,8 @@ public class AnalyseException extends Exception{
 	line = l;
     }
 
-    /** Méthode standart d'affichage
-     * @return une chaine de caractères de la forme Erreur Ligne XX : type de l'erreur
+    /** Mï¿½thode standart d'affichage
+     * @return une chaine de caractï¿½res de la forme Erreur Ligne XX : type de l'erreur
      */
     public String toString() {
 	return "Erreur Ligne " + line + " : " + message;

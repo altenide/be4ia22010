@@ -3,12 +3,12 @@
  *
  * Author :
  *   ESSI2 school project (2004) : Affouard, Lemonnier, Fournols ,Lizzul
- *   Tutor                (2004) : Hélène Collavizza   [ helen@essi.fr    ] 
+ *   Tutor                (2004) : Hï¿½lï¿½ne Collavizza   [ helen@essi.fr    ] 
  *                                 Jean-Paul Stromboni [ strombon@essi.fr ]
  *
  * Contributor :
  *   (2004) : Louis Parisot [ parisot@essi.fr ]
- *   (2005) : Sébastien Mosser  [ mosser@essi.fr ]
+ *   (2005) : Sï¿½bastien Mosser  [ mosser@essi.fr ]
  *
  * Institute : 
  *    Polytechnich school, University of Nice - Sophia Antipolis (FRANCE)
@@ -20,11 +20,11 @@
  *
  */
 
-package t2s.traitement;
+package Synthese.traitement;
 
 import java.util.*;
 
-/** Pour représenter une phrase (chaine de caractères) et sa prosodie (ponctuation).
+/** Pour reprï¿½senter une phrase (chaine de caractï¿½res) et sa prosodie (ponctuation).
  */
 public class Phrase {
 
@@ -33,20 +33,20 @@ public class Phrase {
     public final static int POINT = 0;
     /** Tag de prosodie 'virgule' */
     public final static int VIRGULE = 1;
-    /** Tag de prosodie 'intérogation' */
+    /** Tag de prosodie 'intï¿½rogation' */
     public final static int INTERROGATION = 2;
-    /** Tag de prosodie par défaut */
+    /** Tag de prosodie par dï¿½faut */
     public final static int DEFAUT = 3;
     /** Tag de prosodie 'exclamation' */
     public final static int EXCLAMATION = 4;
 
 
     private int prosodie; // le code de la prosodie de la phrase (. ? , !)
-    private String phrase; // la chaine de caratères correspondante
+    private String phrase; // la chaine de caratï¿½res correspondante
 
     /** Constructeur de phrase standart.
-     * @param phrase la chaine de caractère correspondante
-     * @param prosodie le code associé à la prosodie de cette phrase.
+     * @param phrase la chaine de caractï¿½re correspondante
+     * @param prosodie le code associï¿½ ï¿½ la prosodie de cette phrase.
      */
     public Phrase(String phrase, int prosodie){
 	this.phrase = phrase;
@@ -54,28 +54,28 @@ public class Phrase {
     }
 
 
-    /** Pour récuperer le texte de cette phrase.
-     * @return la chaine de caractères de la phrase.
+    /** Pour rï¿½cuperer le texte de cette phrase.
+     * @return la chaine de caractï¿½res de la phrase.
      */
     public String getPhrase(){
 	return phrase;
     }
 
-    /** Pour affecter un type de prosodie à la phrase
+    /** Pour affecter un type de prosodie ï¿½ la phrase
      * @param p la nouvelle prosodie.
      */
     public void setProsodie(int p){
 	prosodie = p;
     }
 
-    /** Pour récuperer la prosodie associée à la phrase
+    /** Pour rï¿½cuperer la prosodie associï¿½e ï¿½ la phrase
      * @return l'entier ad'hoc.
      */
     public int getProsodie(){
 	return prosodie;
     }
 
-    /** Méthode d'affichage standart d'une instance de phrase.
+    /** Mï¿½thode d'affichage standart d'une instance de phrase.
      * @return la phrase sous forme de String
      */
     public String toString() {
