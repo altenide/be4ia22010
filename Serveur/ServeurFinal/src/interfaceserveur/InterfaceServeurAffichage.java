@@ -343,8 +343,8 @@ public class InterfaceServeurAffichage extends FrameView {
     private void listeMissionsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeMissionsValueChanged
         // TODO add your handling code here:
         boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
-        System.out.println(acces_mission.find(0).getNom());
-        System.out.println(acces_mission.find(1).getNom());
+       // System.out.println(acces_mission.find(0).getNom());
+       // System.out.println(acces_mission.find(1).getNom());
     }//GEN-LAST:event_listeMissionsValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

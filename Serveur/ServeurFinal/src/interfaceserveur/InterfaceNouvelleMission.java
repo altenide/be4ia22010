@@ -459,10 +459,17 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
         boolean missionExistante = false;
         // TODO add your handling code here:
         if (champNomNouvelleMission.getText().isEmpty()) {
-            messageEntrerNomMission.setText("Veuillez entrer un nom de mission!");
+            messageEntrerNomMission.setText("Veuillez entrer un Id!");
             //pour faire apparaitre ou clignoter le message d'erreur
             clignoterMessage(messageEntrerNomMission);
         } else {
+
+            /*if (Integer.parseInt(champNomNouvelleMission.getText()) )
+            {
+
+            }*/
+
+
             // condition si la mission existe déjà
             for (int i = 0; i < listeMissionModel.getSize(); i++) {
                 if (listeMissionModel.getElementAt(i).equals(champNomNouvelleMission.getText())) {
@@ -472,7 +479,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
             if (missionExistante == true) //si l'employé est déjà dans la liste, on le l'ajoute pas.
             {
                 clignoterMessage(messageEntrerNomMission);
-                messageEntrerNomMission.setText("Nom déjà existant!");
+                messageEntrerNomMission.setText("Id déjà existant!");
                 messageEntrerNomMission.setVisible(true);
             } else //ajout de la mission
             {
@@ -483,8 +490,8 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
                 // A FAIRE ajout dans la base de données
 
                 Mission m1 = new Mission();
-                m1.setNom(champNomNouvelleMission.getText());
-                for (int i=0; i < listeOrdreInterface.getSize();i++)
+                m1.setIdMission(Integer.parseInt(champNomNouvelleMission.getText()));
+              /*  for (int i=0; i < listeOrdreInterface.getSize();i++)
                 {
                     OrdreInterface InterfaceOrdreAux = (OrdreInterface) listeOrdreInterface.getElementAt(i);
                     Ordre aux = new Ordre(i,m1.getIdMission(),InterfaceOrdreAux.getTexte(),false);
@@ -495,17 +502,10 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
                  //  public Reponse(int idReponse, String reponse, int ordreActuel, int ordreSuivant);
                 OrdreInterface ordre = (OrdreInterface) listeOrdreInterface.getElementAt(ListeOrdres.getSelectedIndex());
 
-                 /*
-                    m1.addOrdre(aux);
-                    public Ordre(int idOrdre, int idMission, String contenu, boolean dernierOrdre);
-
-
-                m1.addOrdre(null)
+                 /**/
+                 //   m1.addOrdre(aux);
 
                 accesMission.create(m1);
-
-                }
-                */
 
 
                 //Vidage des champs
