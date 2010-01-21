@@ -28,13 +28,13 @@ import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 public class generatorOrdre {
 
     public void genererOrdreFromUser(String user) {
-        BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
+        //BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         DAOMission acces_mission;
         try {
             DAOUtilisateur acces_utilisateur = (DAOUtilisateur) DAOFactory.getDAOUtilisateur();
             acces_mission = (DAOMission) DAOFactory.getDAOMission();
 
-            Mission mi = acces_mission.findListFromUser(user).get(0);
+            Mission mi = acces_mission.findListFromUser(user).firstElement();
             OrdrePackage.eINSTANCE.eClass();
             // Retrieve the default factory singleton
             OrdreFactory factory = OrdreFactory.eINSTANCE;
@@ -60,7 +60,7 @@ public class generatorOrdre {
 
             /////////////////////////////////////////////////////////////////////////////////
             for (Ordre or : ord) {
-                ordre = O.AddOrdre(mission, factory, or.getContenu(), EtatType.NON_ATTEINT, false, or.getFilename(), or.getIdMission());
+                ordre = O.AddOrdre(mission, factory, or.getContenu(), EtatType.NON_ATTEINT, false, or.getFilename(), or.getIdOrdre());
                 Synthese S = new Synthese(or);
                 for (Reponse r : or.getReponsesPossibles()) {
                     O.AddReponseTo(factory, ordre, r.getReponse(), r.getOrdreSuivant(), r.getIdReponse());

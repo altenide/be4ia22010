@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
- *
- * @author Administrateur
+ * Classe permettant de lancer un serveur TCP
+ * @author Aurelien
  */
 public class TCPServeur extends Thread{
 private ServerSocket ss;
@@ -23,6 +23,10 @@ private ServerSocket ss;
         }
     }
 
+     /**
+     * Methode definissant le comportement du thread.
+     * Attente sur la socket ouverrte puis redirection du service vers un thread TCPThread
+     */
     public void run(){
          try{
              System.out.println("Serveur TCP en attente sur le port 4242");

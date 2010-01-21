@@ -13,13 +13,18 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- *
- * @author Administrateur
+ * Classe permettant d'envoyer un fichier
+ * @author Aurélien
  */
 public class EnvoiFichier {
 
     private Socket soc;
 
+    /**
+     * Constructeur de la classe.
+     * @param host Le nom du serveur sur lequel il faut se connecter
+     * @param port Le port utilisé pour le transfert de fichier
+     */
     public EnvoiFichier(String host, int port){
         try{
             soc = new Socket(host, port);
@@ -30,6 +35,10 @@ public class EnvoiFichier {
         }
     }
 
+    /**
+     * Methode permettant d'envoyer un fichier
+     * @param fichier le chemin du fichier à envoyer
+     */
     public void sendFile(String fichier){
         try{
             System.out.println("Debut du transfert du fichier "+fichier);

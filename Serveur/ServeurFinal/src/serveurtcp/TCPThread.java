@@ -14,21 +14,29 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
+import GestionOrdreXml.generatorOrdre;
+
 /**
- *
- * @author Administrateur
+ * Classe permettant de gerer la communication avec un client
+ * @author Aurelien
  */
 public class TCPThread extends Thread {
 
     private Socket soc;
     private int num, portFichier;
     private String echo;
+    private generatorOrdre gOrdre;
+
 
     public TCPThread(Socket soc) {
         this.soc = soc;
         portFichier = 4343;
+        gOrdre = new generatorOrdre();
     }
 
+    /**
+     * Methode definissant le comportement du thread: Demande de login, Demande de recuperation de mission
+     */
     public void run() {
         try {
             byte[] octets = new byte[1024];
@@ -83,10 +91,17 @@ public class TCPThread extends Thread {
                 if (infos[0].equals("demandeMission")) {
                     String[] listeFichiers = null;
 
-                    System.out.println("demandeMission pour " + infos[1].trim());
+                    String login = infos[1].trim();
+
+                    System.out.println("demandeMission pour " + login);
 
                     //TODO : interroger la bdd de missions
-                    String nomDuFichier = "missionTest.xml";//missionAEnvoyer(listeFichiers);
+                    //String nomDuFichier = "missionTest.xml";
+                    //missionAEnvoyer(listeFichiers);
+
+                    gOrdre.genererOrdreFromUser(login);
+
+                    String nomDuFichier = "m.ordre";
 
                     //envoi du nomDuFichier xml contenant la mission
                     EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
