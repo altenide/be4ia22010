@@ -21,10 +21,10 @@
  */
 package Synthese.son;
 
-import java.io.*;
 import Synthese.prosodie.*;
 import Synthese.traitement.*;
 import Synthese.util.*;
+import java.io.*;
 
 /** Classe de lecture d'un texte
  */
