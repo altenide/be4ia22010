@@ -25,6 +25,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
     private int blocage = 0;
     private LecteurTexte testVocal;
     private DAOMission accesMission;
+    private DefaultListModel listeOrdresModel;
 
     public InterfaceNouvelleMission(java.awt.Frame parent, javax.swing.JList liste, DAOMission acces_mission) {
         super(parent);
@@ -34,7 +35,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
         comboListeOrdreModel3 = new DefaultComboBoxModel();
         comboListeOrdreModel4 = new DefaultComboBoxModel();
         testVocal = new LecteurTexte("aucun texte");
-
+        listeOrdresModel = new DefaultListModel();
         listeOrdreInterface = new DefaultListModel();
         initComponents();
         listeMissions = liste;
@@ -523,6 +524,9 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
 
                 //Vidage des champs
                 champNomNouvelleMission.setText(null);
+                listeOrdreInterface.removeAllElements();
+                ListeOrdres.removeAll();
+                listeOrdresModel.removeAllElements();
                 //A Faire : autre champs à vider.
 
                 FermerFenetre();
