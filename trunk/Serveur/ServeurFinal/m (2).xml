@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
+  <mission etat="Disponible" idOrdreCoutant="1" destinataire="Robert" publie="true" date="3910-02-06T23:00:00Z" idMission="21378"/>
+</ordre:DocumentRoot>
