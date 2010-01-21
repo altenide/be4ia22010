@@ -3,8 +3,8 @@ package Synthese;
 /* Synthèse vocale
 Pour la paramétrer, modifier le fichier donnees/si_vox.conf */
 import Synthese.son.LecteurTexte;
-import gestionBdd.Mission;
-import gestionBdd.Ordre;
+import gestionbdd.Mission;
+import gestionbdd.Ordre;
 
 public class Synthese {
 
