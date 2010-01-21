@@ -34,7 +34,7 @@ public class DAOReponse extends DAO<Reponse> {
             /* Utilisateur (ID, reponse, ordre_actuel, ordre_suivant)*/
             String sCreation = "CREATE TABLE REPONSE ( ID bigint not null,"
                                                    + "reponse varchar(50) NOT NULL ,"
-                                                   + "idmission int not null"
+                                                   + "idmission int not null,"
                                                    + "ordre_actuel int NOT NULL,"
                                                    +" ordre_suivant int NOT NULL, "
                                                    +" PRIMARY KEY(ID,id,mission,ordre_actuel))";
