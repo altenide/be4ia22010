@@ -81,7 +81,7 @@ public class LecteurTexte {
         return s;
     }
 
-    /** Constructeur all�g� utilisant des valeurs par d�faut
+    /** Constructeur allégé utilisant des valeurs par d�faut
      * @param s le texte � lire
      * @param isFile Lit-on depuis un fichier ?
      */
