@@ -101,7 +101,7 @@ public class InterfaceServeurAffichage extends FrameView {
         InterfaceServeurApp.getApplication().show(aboutBox);
     }
     @Action
-    public void montrerFenetreEmployes() {
+    public void montrerFenetreEmployes() throws SQLException {
         if (fenetreListeEmployes == null) {
             JFrame mainFrame = InterfaceServeurApp.getApplication().getMainFrame();
             fenetreListeEmployes = new InterfaceEmployes(mainFrame, listeMissions, acces_mission);
