@@ -337,25 +337,25 @@ public class InterfaceServeurAffichage extends FrameView {
                                         .addComponent(labelEtat))
                                     .addComponent(labelOrdreDefaut)
                                     .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(labelOrdre1Defaut)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelOrdre1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
-                                        .addComponent(labelOrdre2Defaut)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelOrdre2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(mainPanelLayout.createSequentialGroup()
                                         .addComponent(labelOrdre3Defaut)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelOrdre3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(labelOrdre3, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
                                     .addGroup(mainPanelLayout.createSequentialGroup()
                                         .addComponent(labelOrdre4Defaut)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelOrdre4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(123, 123, 123)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))
+                                        .addComponent(labelOrdre4, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+                                    .addComponent(jLabel1)
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addComponent(labelOrdre2Defaut)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelOrdre2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addComponent(labelOrdre1Defaut)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelOrdre1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)))
+                        .addGap(45, 45, 45))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(boutonAffecter, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
@@ -510,27 +510,32 @@ public class InterfaceServeurAffichage extends FrameView {
 
     private void listeMissionsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeMissionsValueChanged
         // TODO add your handling code here:
-        boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
-        int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
+            boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
+            int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
 
-        Mission mission = acces_mission.find(id);
-        labelEmploye.setText(mission.getUtilisateur());
-        labelID.setText(String.valueOf(mission.getIdMission()));
-        labelEtat.setText(String.valueOf(mission.getEtat()));
+            Mission mission = acces_mission.find(id);
+            labelEmploye.setText(mission.getUtilisateur());
+            labelID.setText(String.valueOf(mission.getIdMission()));
+            labelEtat.setText(String.valueOf(mission.getEtat()));
+
+            try {
+                labelOrdre1.setText(mission.getListOrdres().get(0).getContenu());
+                labelOrdre2.setText(mission.getListOrdres().get(1).getContenu());
+                labelOrdre3.setText(mission.getListOrdres().get(2).getContenu());
+                labelOrdre4.setText(mission.getListOrdres().get(3).getContenu());
+            }
+            catch (Exception e) {}
+
+
         
-        labelOrdre1.setText(mission.getListOrdres().get(0).getContenu());
-        labelOrdre2.setText(mission.getListOrdres().get(1).getContenu());
-        labelOrdre3.setText(mission.getListOrdres().get(2).getContenu());
-        labelOrdre4.setText(mission.getListOrdres().get(3).getContenu());
-
         //System.out.println("test nom mission : "+acces_mission.findListAll().get(0).getIdMission());
     }//GEN-LAST:event_listeMissionsValueChanged
 
     private void focusLabel (JLabel label,int numeroLabel)
     {
-        System.out.println("je suis la");
         int id = Integer.parseInt((String) listeMissionModel.getElementAt(listeMissions.getSelectedIndex()));
         Mission mission = acces_mission.find(id);
+        //labelListes des Réponses de l'ordre ? :
         if (mission.getIdOrdreCourant() % 4 == 0)
         {
             label.setForeground(Color.GREEN);
@@ -543,8 +548,6 @@ public class InterfaceServeurAffichage extends FrameView {
 
     private void labelOrdre1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_labelOrdre1FocusGained
         // TODO add your handling code here:
-        System.out.println("je suis ici");
-        focusLabel(labelOrdre1, 1);
     }//GEN-LAST:event_labelOrdre1FocusGained
 
     private void labelOrdre1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOrdre1MouseClicked

@@ -43,32 +43,32 @@
                                       </Group>
                                       <Component id="labelOrdreDefaut" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="labelOrdre1Defaut" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelOrdre1" min="-2" pref="31" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="labelOrdre2Defaut" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelOrdre2" min="-2" pref="31" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="labelOrdre3Defaut" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelOrdre3" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="labelOrdre3" pref="385" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="labelOrdre4Defaut" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="labelOrdre4" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="labelOrdre4" pref="385" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="1">
+                                          <Component id="labelOrdre2Defaut" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="labelOrdre2" pref="385" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelOrdre1Defaut" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="labelOrdre1" pref="385" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="boutonAffecter" min="-2" pref="113" max="-2" attributes="0"/>
