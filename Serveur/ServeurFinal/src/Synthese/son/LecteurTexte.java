@@ -19,6 +19,7 @@
  * You can redistribute it and/or modify it under the terms of the MBROLA
  * Licenses  { http://tcts.fpms.ac.be/synthesis/mbrola.html }.
  *
+ * Corrigé et modifié par Jean-Christophe Frachet
  */
 package Synthese.son;
 
@@ -90,7 +91,8 @@ public class LecteurTexte {
         this(s, PATH_REGLE, PHO_WAV, SynthetiseurMbrola.VOIX1, isFile);
     }
 
-    /** Construteur allégé permettant de choisir le nom du fichier
+    /** AJOUT
+     * Construteur allégé permettant de choisir le nom du fichier
      * @param s le texte à lire
      * @param pathFile le chemin du fichier (sans l'extension)
      */
