@@ -516,6 +516,7 @@ public class InterfaceNouvelleMission extends javax.swing.JDialog implements Int
                     m1.addOrdre(aux);
                 }
 
+                m1.getListOrdres().get(listeOrdreInterface.getSize()-1).setDernierOrdre(true);
                 accesMission.create(m1);
 
 
