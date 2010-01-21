@@ -4,6 +4,7 @@
  */
 package serveurtcp;
 
+import gestionbdd.*;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -60,7 +61,8 @@ public class TCPThread extends Thread {
                     String mdp = infos[3].trim();
 
                     //TODO: verification dans la base de données utilisateurs
-                    if(login.equals("toto") && mdp.equals("aze")){
+                    Utilisateur utili = ((DAOUtilisateur)DAOFactory.getDAOUtilisateur()).find(login);
+                    if(mdp.equals(utili.getPassword())){
                         boolean flag = true;
                         String msgToSend = "repLogin;:!"+flag+";:!"+login;
                         outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
@@ -69,7 +71,7 @@ public class TCPThread extends Thread {
                     }
                     else{
                         boolean flag = false;
-                        String msgToSend = "repLogin;:!"+flag;
+                        String msgToSend = "repLogin;:!"+flag+";:!"+login;
                         outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
                         outFichier.flush();
                         System.out.println("Msg envoyé en reponse a la demande d'identification: " + msgToSend);
@@ -77,20 +79,23 @@ public class TCPThread extends Thread {
                 }
                 
                 // traitement pour recupérérer une mission attribuée à une personne
-                if (infos[0].equals("demandeMission")){
+                 if (infos[0].equals("demandeMission")){
+                    String[] listeFichiers = null;
+
                     System.out.println("demandeMission pour "+infos[1].trim());
 
                     //TODO : interroger la bdd de missions
+                    String nomDuFichier = "";//missionAEnvoyer(listeFichiers);
 
-                    //envoi du fichier xml contenant la mission
+                    //envoi du nomDuFichier xml contenant la mission
                     EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
-                    e.sendFile("./missionTest.xml");
-
+                    e.sendFile("./"+nomDuFichier);
+                    /*
                     String listeFichiers[] = new String[4];
                     listeFichiers[0] = "audioOrdreId0";
                     listeFichiers[1] = "audioOrdreId0";
                     listeFichiers[2] = "audioOrdreId0";
-                    listeFichiers[3] = "audioOrdreId0";
+                    listeFichiers[3] = "audioOrdreId0";*/
 
                     envoyerFichiersAudio(listeFichiers);
                 }
