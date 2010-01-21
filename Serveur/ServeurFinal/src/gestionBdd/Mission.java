@@ -40,6 +40,7 @@ public class Mission {
         this.idOrdreCourant = 0;
         this.utilisateur = utilisateur;
         this.publie = false;
+        this.listOrdres = new Vector<Ordre>();
 
     }
 
