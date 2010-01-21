@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package GestionOrdreXml;
 
 import Ordre.ordre.*;
@@ -17,60 +21,26 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.internal.XMLCalendar;
 
-public class Main {
+/**
+ *
+ * @author forgefeu81
+ */
+public class generatorOrdre {
 
-    public static final int ORDRE_DE_FIN = -2;
-
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    public void genererOrdreFromUser(String user) {
         BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         DAOMission acces_mission;
         try {
             DAOUtilisateur acces_utilisateur = (DAOUtilisateur) DAOFactory.getDAOUtilisateur();
             acces_mission = (DAOMission) DAOFactory.getDAOMission();
 
-            acces_utilisateur.create(new Utilisateur("Robert", "azerty", 5));
-            Mission m1 = new Mission("Robert");
-
-            /* Création des ordres */
-            Ordre o1 = new Ordre(1, 1, "Aller faire les courses", false);
-            Ordre o2 = new Ordre(2, 1, "Aller faire le ménage", false);
-
-            o1.addReponse(new Reponse(0, "Courses faites", 1, 2));
-            o1.addReponse(new Reponse(1, "Repeter", 1, 1));
-            o1.addReponse(new Reponse(2, "Impossible", 1, 0));
-            o1.setFilename("o1");
-
-            o2.addReponse(new Reponse(0, "Menage fait", 2, 2));
-            o2.addReponse(new Reponse(1, "Repeter", 2, 1));
-            o2.addReponse(new Reponse(2, "Impossible", 2, 0));
-            o2.setFilename("o2");
-
-            /* Configuration de la mission */
-            m1.addOrdre(o1);
-            m1.addOrdre(o2);
-            m1.setEtat(Mission.etat_mission.EN_COURS);
-            m1.setIdMission(1);
-            m1.setIdOrdreCourant(1);
-            m1.setPublie(true);
-
-            /* Ajout de la mission dans la BDD */
-            acces_mission.create(m1);
-
-
-
-
-            // Initialize the model
-            Mission mi = acces_mission.findListFromUser("Robert").get(0);
+            Mission mi = acces_mission.findListFromUser(user).get(0);
             OrdrePackage.eINSTANCE.eClass();
             // Retrieve the default factory singleton
             OrdreFactory factory = OrdreFactory.eINSTANCE;
 
             Outil O = new Outil();
-            
+
             DocumentRoot document = factory.createDocumentRoot();
             MissionType mission = factory.createMissionType();
             document.setMission(mission);
@@ -87,11 +57,11 @@ public class Main {
             int idReponse = 0;
             Vector<Ordre> ord = mi.getListOrdres();
             System.out.println("Nombre ordre recu:" + ord.size());
-            
+
             /////////////////////////////////////////////////////////////////////////////////
-            Synthese S = new Synthese(mi);
             for (Ordre or : ord) {
                 ordre = O.AddOrdre(mission, factory, or.getContenu(), EtatType.NON_ATTEINT, false, or.getFilename(), or.getIdMission());
+                Synthese S = new Synthese(or);
                 for (Reponse r : or.getReponsesPossibles()) {
                     O.AddReponseTo(factory, ordre, r.getReponse(), r.getOrdreSuivant(), r.getIdReponse());
                 }
@@ -108,7 +78,7 @@ public class Main {
             ResourceSet resSet = new ResourceSetImpl();
 
             // Create a resource
-            Resource resource = resSet.createResource(URI.createURI("m.ordre"));
+            Resource resource = (Resource) resSet.createResource(URI.createURI("m.ordre"));
             // Get the first model element and cast it to the right type, in my
             // example everything is hierarchical included in this first node
             resource.getContents().add(document);
@@ -126,7 +96,5 @@ public class Main {
         }
     }
 }
-
-
 
 

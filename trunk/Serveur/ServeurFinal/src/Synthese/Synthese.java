@@ -117,7 +117,7 @@ public class Synthese {
      * @return la chaine complete devant être synthétisée
      */
     private String ordreAudio(Ordre ordre) {
-        String reponsesPossibles = new String();
+        String reponsesPossibles = new String(". Choix possibles");
         for (int i = 0; i < ordre.getReponsesPossibles().size(); i++) {
             reponsesPossibles += " . " + ordre.getReponsesPossibles().get(i).getReponse();
         }
