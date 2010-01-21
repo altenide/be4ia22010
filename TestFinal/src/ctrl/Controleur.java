@@ -52,6 +52,11 @@ public class Controleur {
 		return ordresuivant;
 		
 	}
+	
+	public String GetFichierAudio ( int id){
+		return xml.getFichierAudio(id)+".wav";
+	}
+	
 
         public int GetIdOrdreCourant (){
             return xml.getIdOrdreCourant();
