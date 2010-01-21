@@ -26,13 +26,7 @@ public class TCPThread extends Thread {
 
     public TCPThread(Socket soc) {
         this.soc = soc;
-
         portFichier = 4343;
-        //EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
-        //e.sendFile("./toto.txt");
-        //e.sendFile("./build.xml");
-        //e.sendFile("./bjr.wav");
-        //e.sendFile("./phrase.wav");
     }
 
     public void run() {
@@ -45,51 +39,58 @@ public class TCPThread extends Thread {
             while (true) {
 
                 // remise a 0 du buffer
-                for(int i = 0; i<octets.length; i++){
-                    octets[i]=0;
+                for (int i = 0; i < octets.length; i++) {
+                    octets[i] = 0;
                 }
 
                 num = in.read(octets, 0, 1024);
-                
+
                 String msg = new String(octets).trim();
                 //System.out.println("Reçu: " +msg);
 
                 String infos[] = msg.split(";:!");
 
-                if (infos[0].equals("login")){
+                if (infos[0].equals("login")) {
                     String login = infos[1].trim();
                     String mdp = infos[3].trim();
 
                     //TODO: verification dans la base de données utilisateurs
-                    Utilisateur utili = ((DAOUtilisateur)DAOFactory.getDAOUtilisateur()).find(login);
-                    if(mdp.equals(utili.getPassword())){
-                        boolean flag = true;
-                        String msgToSend = "repLogin;:!"+flag+";:!"+login;
-                        outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
-                        outFichier.flush();
-                        System.out.println("Msg envoyé en reponse a la demande d'identification: " + msgToSend);
-                    }
-                    else{
+                    Utilisateur utili = ((DAOUtilisateur) DAOFactory.getDAOUtilisateur()).find(login);
+                    if (utili != null) {
+                        if (mdp.equals(utili.getPassword())) {
+                            boolean flag = true;
+                            String msgToSend = "repLogin;:!" + flag + ";:!" + login;
+                            outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
+                            outFichier.flush();
+                            System.out.println("Msg envoyé en reponse a la demande d'identification: " + msgToSend);
+                        } else {
+                            boolean flag = false;
+                            String msgToSend = "repLogin;:!" + flag + ";:!" + login;
+                            outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
+                            outFichier.flush();
+                            System.out.println("Msg envoyé en reponse a la demande d'identification: " + msgToSend);
+                        }
+                    } else {
                         boolean flag = false;
-                        String msgToSend = "repLogin;:!"+flag+";:!"+login;
+                        String msgToSend = "repLogin;:!" + flag + ";:!" + login;
                         outFichier.write(msgToSend.getBytes(), 0, msgToSend.getBytes().length);
                         outFichier.flush();
                         System.out.println("Msg envoyé en reponse a la demande d'identification: " + msgToSend);
                     }
                 }
-                
+
                 // traitement pour recupérérer une mission attribuée à une personne
-                 if (infos[0].equals("demandeMission")){
+                if (infos[0].equals("demandeMission")) {
                     String[] listeFichiers = null;
 
-                    System.out.println("demandeMission pour "+infos[1].trim());
+                    System.out.println("demandeMission pour " + infos[1].trim());
 
                     //TODO : interroger la bdd de missions
-                    String nomDuFichier = "";//missionAEnvoyer(listeFichiers);
+                    String nomDuFichier = "missionTest.xml";//missionAEnvoyer(listeFichiers);
 
                     //envoi du nomDuFichier xml contenant la mission
                     EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
-                    e.sendFile("./"+nomDuFichier);
+                    e.sendFile("./" + nomDuFichier);
                     /*
                     String listeFichiers[] = new String[4];
                     listeFichiers[0] = "audioOrdreId0";
@@ -108,18 +109,17 @@ public class TCPThread extends Thread {
         }
     }
 
-    public void envoyerFichiersAudio(String []cheminsFichiers){
-        
+    public void envoyerFichiersAudio(String[] cheminsFichiers) {
     }
 
-    public void sendFile(String fichier){
-        try{
+    public void sendFile(String fichier) {
+        try {
             System.out.println("Debut du transfert");
             File f = new File(fichier);
-            BufferedInputStream inFichier = new BufferedInputStream(new FileInputStream(fichier));            
+            BufferedInputStream inFichier = new BufferedInputStream(new FileInputStream(fichier));
             OutputStream outFichier = new BufferedOutputStream(soc.getOutputStream());
-          
-            outFichier.write((f.getName()+";:!").getBytes(), 0, f.getName().getBytes().length+3);
+
+            outFichier.write((f.getName() + ";:!").getBytes(), 0, f.getName().getBytes().length + 3);
             outFichier.flush();
 
             byte[] octets = new byte[1024];
@@ -130,9 +130,8 @@ public class TCPThread extends Thread {
             }
 
             System.out.println("Transfert termine");
-            soc.close();         
-        }
-        catch (Exception e){
+            soc.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
