@@ -44,6 +44,17 @@ public class Mission {
 
     }
 
+        public Mission() {
+
+        this.idMission = 0;
+        this.etat = etat_mission.EN_ATTENTE;
+        this.idOrdreCourant = 0;
+        this.utilisateur = "Anonyme";
+        this.publie = false;
+        this.listOrdres = new Vector<Ordre>();
+
+    }
+
     /*
      * Getters
      */
