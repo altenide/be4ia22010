@@ -19,12 +19,14 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 	Choice ReponceChoice;
 	Button ValiderButton;
 	String reponseSelectionne;
+	String Dossier;
 
 	Button connexionButton;
 
 	private Controleur ctrl; 
 
-	public IHM(){
+	public IHM(String Dossier){
+		this.Dossier=Dossier;
 		initComponents();
 	}
 
@@ -128,6 +130,7 @@ public class IHM extends Frame implements ActionListener,ItemListener{
 				if ( v != null){
 					AddReponses(v, ReponceChoice);
 				}
+				ctrl.lireAudio(Dossier+ctrl.GetFichierAudio(ctrl.GetIdOrdreCourant()));
 			}
 			else {
 				lblInfo.setText("Veuillez choisir une reponse");
