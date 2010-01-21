@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Collections;
 import java.util.Map;
+import gestionbdd.*;
+import java.util.Vector;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -20,8 +22,46 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		 BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
+         DAOMission acces_mission ;
+                 try
+        {
+            DAOUtilisateur acces_utilisateur =(DAOUtilisateur) DAOFactory.getDAOUtilisateur();
+            acces_mission = (DAOMission) DAOFactory.getDAOMission();
+
+            acces_utilisateur.create(new Utilisateur("Robert", "azerty",5));
+            Mission m1 = new Mission("Robert");
+
+            /* Création des ordres */
+            Ordre o1 = new Ordre(1,1,"Aller faire les courses",false);
+            Ordre o2 = new Ordre(2,1,"Aller faire le ménage",false);
+
+            o1.addReponse(new Reponse(0,"Courses faites",1,2));
+            o1.addReponse(new Reponse(1,"Repeter",1,1));
+            o1.addReponse(new Reponse(2,"Impossible",1,0));
+            o1.setFilename("o1.wav");
+
+            o2.addReponse(new Reponse(0,"Menage fait",2,2));
+            o2.addReponse(new Reponse(1,"Repeter",2,1));
+            o2.addReponse(new Reponse(2,"Impossible",2,0));
+            o2.setFilename("o2.wav");
+
+            /* Configuration de la mission */
+            m1.addOrdre(o1);
+            m1.addOrdre(o2);
+            m1.setEtat(Mission.etat_mission.EN_COURS);
+            m1.setIdMission(0);
+            m1.setIdOrdreCourant(1);
+            m1.setPublie(true);
+
+            /* Ajout de la mission dans la BDD */
+            acces_mission.create(m1);
+
+
+
+
 		// Initialize the model
+                Mission mi =acces_mission.findListFromUser("Robert").get(0);
 		OrdrePackage.eINSTANCE.eClass();
 		// Retrieve the default factory singleton
 		OrdreFactory factory = OrdreFactory.eINSTANCE;
@@ -34,66 +74,25 @@ public class Main {
 		Date d = new Date(2010, 01, 07);
 		XMLCalendar calendar = new XMLCalendar(d, (short)1);
 		mission.setDate(calendar);
-		mission.setDestinataire("Edith Guilbaud");
+		mission.setDestinataire(mi.getUtilisateur());
 		mission.setEtat(EtatType1.DISPONIBLE);
 		mission.setIdMission(21378);
-		mission.setIdOrdreCoutant(0);
+		mission.setIdOrdreCoutant(mi.getIdOrdreCourant());
 		mission.setPublie(true);
 		OrdreType ordre;
 		int idOrdre =0;
 		int idReponse =0;
+                Vector<Ordre> ord = mi.getListOrdres();
+                System.out.println("Nombre ordre recu"+ord.size());
 		/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Aller tout droit", EtatType.NON_ATTEINT, false, "audioOrdreid0", idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"Oui", 1, idReponse++);
-		O.AddReponseTo(factory, ordre,"Non", 1, idReponse++);
-		O.AddReponseTo(factory, ordre,"Y a un mur", 1, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-		/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Aller a droite.Combien y a t il de fenetres?", EtatType.NON_ATTEINT, false, "audioOrdreid1", idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"1", 3, idReponse++);
-		O.AddReponseTo(factory, ordre,"2", 4, idReponse++);
-		O.AddReponseTo(factory, ordre,"0", 5, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-		
-/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Aller tout gauche.Combien y a t il de fenetres?", EtatType.NON_ATTEINT, false, "audioOrdreid"+Integer.toString(idOrdre), idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"1", 3, idReponse++);
-		O.AddReponseTo(factory, ordre,"2", 4, idReponse++);
-		O.AddReponseTo(factory, ordre,"0", 5, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-		/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Detruire 1 fenetre", EtatType.NON_ATTEINT, false, "audioOrdreid"+Integer.toString(idOrdre), idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"Aye", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Meme pas mal", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-/////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Detruire 2 fenetre", EtatType.NON_ATTEINT, false, "audioOrdreid"+Integer.toString(idOrdre), idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"Aye", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Meme pas mal", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-/////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////////
-		ordre =O.AddOrdre(mission, factory, "Taper contre le mur", EtatType.NON_ATTEINT, false, "audioOrdreid"+Integer.toString(idOrdre), idOrdre);
-		idOrdre++;
-		O.AddReponseTo(factory, ordre,"Aye", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Meme pas mal", ORDRE_DE_FIN, idReponse++);
-		O.AddReponseTo(factory, ordre,"Fin", ORDRE_DE_FIN, idReponse++);
-		idReponse=0;
-/////////////////////////////////////////////////////////////////////////////////s
-		ordre =O.AddOrdre(mission, factory, "FinMission", EtatType.NON_ATTEINT, false, "audioFinOrdre"+Integer.toString(ORDRE_DE_FIN), ORDRE_DE_FIN);
-		/////////////////////////////////////////////////////////////////////////////////
-
+		for ( Ordre or : ord)
+                {
+                ordre =O.AddOrdre(mission, factory,or.getContenu(), EtatType.NON_ATTEINT, false, or.getFilename(),or.getIdMission());
+                for (Reponse r : or.getReponsesPossibles())
+                {
+		O.AddReponseTo(factory, ordre,r.getReponse(), r.getOrdreSuivant(),r.getIdReponse());
+                }
+                }
 		// As of here we preparing to save the model content
 
 		// Register the XMI resource factory for the .website extension
@@ -122,10 +121,13 @@ public class Main {
 
 	}
 
-	
-
-
+        catch(Exception Ex)
+        {
+            Ex.printStackTrace();
+        }
+        }
 }
+
 
 
 

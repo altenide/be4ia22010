@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
+  <mission etat="Disponible" idOrdreCoutant="0" destinataire="Edith Guilbaud" publie="true" date="3910-02-06T23:00:00Z" idMission="21378">
+    <ordre contenu="Aller tout droit" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid0" idOrdre="0">
+      <reponsePossible reponse="Oui" ordreSuivant="1" idReponse="0"/>
+      <reponsePossible reponse="Non" ordreSuivant="1" idReponse="1"/>
+      <reponsePossible reponse="Y a un mur" ordreSuivant="1" idReponse="2"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="3"/>
+    </ordre>
+    <ordre contenu="Aller a droite.Combien y a t il de fenetres?" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid1" idOrdre="1">
+      <reponsePossible reponse="1" ordreSuivant="3" idReponse="0"/>
+      <reponsePossible reponse="2" ordreSuivant="4" idReponse="1"/>
+      <reponsePossible reponse="0" ordreSuivant="5" idReponse="2"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="3"/>
+    </ordre>
+    <ordre contenu="Aller tout gauche.Combien y a t il de fenetres?" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid2" idOrdre="2">
+      <reponsePossible reponse="1" ordreSuivant="3" idReponse="0"/>
+      <reponsePossible reponse="2" ordreSuivant="4" idReponse="1"/>
+      <reponsePossible reponse="0" ordreSuivant="5" idReponse="2"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="3"/>
+    </ordre>
+    <ordre contenu="Detruire 1 fenetre" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid3" idOrdre="3">
+      <reponsePossible reponse="Aye" ordreSuivant="-2" idReponse="0"/>
+      <reponsePossible reponse="Meme pas mal" ordreSuivant="-2" idReponse="1"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="2"/>
+    </ordre>
+    <ordre contenu="Detruire 2 fenetre" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid4" idOrdre="4">
+      <reponsePossible reponse="Aye" ordreSuivant="-2" idReponse="0"/>
+      <reponsePossible reponse="Meme pas mal" ordreSuivant="-2" idReponse="1"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="2"/>
+    </ordre>
+    <ordre contenu="Taper contre le mur" etat="NonAtteint" ordrefinal="false" fichierAudio="audioOrdreid5" idOrdre="5">
+      <reponsePossible reponse="Aye" ordreSuivant="-2" idReponse="0"/>
+      <reponsePossible reponse="Meme pas mal" ordreSuivant="-2" idReponse="1"/>
+      <reponsePossible reponse="Fin" ordreSuivant="-2" idReponse="2"/>
+    </ordre>
+    <ordre contenu="FinMission" etat="NonAtteint" ordrefinal="false" fichierAudio="audioFinOrdre-2" idOrdre="-2"/>
+  </mission>
+</ordre:DocumentRoot>
