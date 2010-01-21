@@ -396,8 +396,6 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
     private void LierEmployeAMission(String nomUti , String idMission) {
         int id = Integer.parseInt(idMission);
             Mission mission = dao.find(id);
-            System.out.println("id" + id);
-            System.out.println("idmission mis" + id);
             mission.setUtilisateur(nomUti);
             dao.update(mission);
     }

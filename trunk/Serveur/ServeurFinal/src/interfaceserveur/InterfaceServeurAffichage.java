@@ -31,6 +31,7 @@ public class InterfaceServeurAffichage extends FrameView {
         super(app);
         BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
         acces_mission = (DAOMission) DAOFactory.getDAOMission();
+        //acces_mission.findListAll()[0];
         initComponents();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
