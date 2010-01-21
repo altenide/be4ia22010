@@ -88,7 +88,7 @@
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listeMissionsValueChanged"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel listeMissionModel = new DefaultListModel();"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel listeMissionModel = new DefaultListModel();&#xa;for (int i=0; i &lt; acces_mission.findListAll().size();i++)&#xa;{&#xa;          listeMissionModel.addElement(Integer.toString(acces_mission.findListAll().get(i).getIdMission()));  &#xa;}"/>
               </AuxValues>
             </Component>
           </SubComponents>

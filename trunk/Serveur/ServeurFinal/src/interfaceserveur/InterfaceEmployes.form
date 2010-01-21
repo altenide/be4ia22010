@@ -178,7 +178,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel listeEmployesModel = new DefaultListModel();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel listeEmployesModel = new DefaultListModel();&#xa;for (int i=0; i &lt; utilisateurDAO.findList().size();i++)&#xa;{&#xa;          listeEmployesModel.addElement(utilisateurDAO.findList().get(i).getLogin());  &#xa;}"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="InterfaceEmployer_listeEmployes"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
           </AuxValues>
