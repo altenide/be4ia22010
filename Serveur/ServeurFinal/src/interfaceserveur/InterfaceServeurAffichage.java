@@ -4,6 +4,9 @@
 
 package interfaceserveur;
 
+import gestionbdd.*;
+import java.sql.SQLException;
+
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -22,8 +25,12 @@ import javax.swing.JFrame;
  */
 public class InterfaceServeurAffichage extends FrameView {
 
-    public InterfaceServeurAffichage(SingleFrameApplication app) {
+    private DAOMission acces_mission;
+
+    public InterfaceServeurAffichage(SingleFrameApplication app) throws SQLException {
         super(app);
+        BDDConnexion.getInstance().Connect("jdbc:derby://localhost:1527/", "pouet", "pouet", "pouet");
+        acces_mission = (DAOMission) DAOFactory.getDAOMission();
         initComponents();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
@@ -104,7 +111,7 @@ public class InterfaceServeurAffichage extends FrameView {
     public void montrerFenetreNouvelleMission() {
         if (fenetreAjouterNouvelleMission == null) {
             JFrame mainFrame = InterfaceServeurApp.getApplication().getMainFrame();
-            fenetreAjouterNouvelleMission = new InterfaceNouvelleMission(mainFrame, listeMissions);
+            fenetreAjouterNouvelleMission = new InterfaceNouvelleMission(mainFrame, listeMissions, acces_mission);
             fenetreAjouterNouvelleMission.setLocationRelativeTo(mainFrame);
         }
         InterfaceServeurApp.getApplication().show(fenetreAjouterNouvelleMission);
@@ -336,6 +343,8 @@ public class InterfaceServeurAffichage extends FrameView {
     private void listeMissionsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeMissionsValueChanged
         // TODO add your handling code here:
         boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
+        System.out.println(acces_mission.find(0).getNom());
+        System.out.println(acces_mission.find(1).getNom());
     }//GEN-LAST:event_listeMissionsValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

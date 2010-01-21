@@ -4,6 +4,9 @@
 
 package interfaceserveur;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 import serveurtcp.TCPServeur;
@@ -17,7 +20,11 @@ public class InterfaceServeurApp extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new InterfaceServeurAffichage(this));
+        try {
+            show(new InterfaceServeurAffichage(this));
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceServeurApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -43,5 +50,6 @@ public class InterfaceServeurApp extends SingleFrameApplication {
         TCPServeur serv = new TCPServeur(4242);
         serv.start();
         launch(InterfaceServeurApp.class, args);
+
     }
 }
