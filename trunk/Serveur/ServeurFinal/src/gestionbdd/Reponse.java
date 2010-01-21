@@ -15,6 +15,10 @@ public class Reponse {
     /* Contenu de la réponse */
     private String reponse;
 
+    /* ID de la mission */
+    private int idmission;
+
+
     /* Ordre actuel */
     private int ordreActuel;
 
@@ -32,9 +36,10 @@ public class Reponse {
      * @param ordreSuivant
      * Identifiant de l'ordre suivant
      */
-    public Reponse(int idReponse, String reponse, int ordreActuel, int ordreSuivant) {
+    public Reponse(int idReponse, String reponse,int idmission, int ordreActuel, int ordreSuivant) {
         this.idReponse = idReponse;
         this.reponse = reponse;
+        this.idmission = idmission;
         this.ordreActuel = ordreActuel;
         this.ordreSuivant = ordreSuivant;
     }
@@ -58,6 +63,10 @@ public class Reponse {
      */
     public int getOrdreActuel() {
         return ordreActuel;
+    }
+
+    public int getIdmission() {
+        return idmission;
     }
 
     /**
@@ -87,6 +96,10 @@ public class Reponse {
      */
     public void setIdReponse(int idReponse) {
         this.idReponse = idReponse;
+    }
+
+    public void setIdmission(int idmission) {
+        this.idmission = idmission;
     }
 
     /**
