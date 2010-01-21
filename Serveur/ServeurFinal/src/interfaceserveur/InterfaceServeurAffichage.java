@@ -101,7 +101,7 @@ public class InterfaceServeurAffichage extends FrameView {
     public void montrerFenetreEmployes() {
         if (fenetreListeEmployes == null) {
             JFrame mainFrame = InterfaceServeurApp.getApplication().getMainFrame();
-            fenetreListeEmployes = new InterfaceEmployes(mainFrame, listeMissions);
+            fenetreListeEmployes = new InterfaceEmployes(mainFrame, listeMissions, acces_mission);
             fenetreListeEmployes.setLocationRelativeTo(mainFrame);
         }
         InterfaceServeurApp.getApplication().show(fenetreListeEmployes);
@@ -343,8 +343,7 @@ public class InterfaceServeurAffichage extends FrameView {
     private void listeMissionsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listeMissionsValueChanged
         // TODO add your handling code here:
         boutonAffecter.setVisible(true); //Rajouter condition pour activer et l'enlever
-       // System.out.println(acces_mission.find(0).getNom());
-       // System.out.println(acces_mission.find(1).getNom());
+        //System.out.println("test nom mission : "+acces_mission.findListAll().get(0).getIdMission());
     }//GEN-LAST:event_listeMissionsValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

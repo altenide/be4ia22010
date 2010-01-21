@@ -14,9 +14,11 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
 
     private DefaultListModel listeMissionModel;
     private javax.swing.JList listeMissions;
+    private DAOMission dao;
 
-    public InterfaceEmployes(java.awt.Frame parent, javax.swing.JList liste) {
+    public InterfaceEmployes(java.awt.Frame parent, javax.swing.JList liste, DAOMission dao) {
         super(parent);
+        this.dao = dao;
         initComponents();
         listeMissions = liste;
         listeMissionModel = (DefaultListModel) listeMissions.getModel();
@@ -292,7 +294,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
                 messageVeuillezRemplirChamps.setVisible(false); // on enlève le message d'erreur au cas où il serait affiché.
 
                 listeEmployesModel.addElement(champLogin.getText());  //ajout dans la liste
-                //AjouterEmployeBDD(champLogin.getText(), champMotdePasseCrypte.getPassword());  //ajout dans BDD
+                AjouterEmployeBDD(champLogin.getText(), champMotdePasseCrypte.getPassword());  //ajout dans BDD
 
 
                 //Vidage des champs
@@ -316,7 +318,7 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
         //On retire l'employé sélectionné de la liste,
         //si la liste est vide (exception), on ne fait rien.
         try {
-            //RetirerEmployeBDD((String) listeEmployesModel.getElementAt(index)); //Retrait dans la base de données
+            RetirerEmployeBDD((String) listeEmployesModel.getElementAt(index)); //Retrait dans la base de données
             listeEmployesModel.removeElementAt(index); //retrait dans la liste
         } catch (Exception e) {
         }
@@ -393,14 +395,10 @@ public class InterfaceEmployes extends javax.swing.JDialog implements InterfaceB
 
     private void LierEmployeAMission(String nomUti , String idMission) {
         int id = Integer.parseInt(idMission);
-        try {
-            DAOMission dao = (DAOMission)DAOFactory.getDAOMission();
             Mission mission = dao.find(id);
+            System.out.println("id" + id);
+            System.out.println("idmission mis" + id);
             mission.setUtilisateur(nomUti);
             dao.update(mission);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(InterfaceEmployes.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
