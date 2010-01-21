@@ -31,12 +31,7 @@ public class DAOMission extends DAO<Mission> {
             System.out.println("table \"Mission\" does not exist and is going to be created");
 
             /* MISSION (ID, idmission, etat, dernierMISSION contenu, filename)*/
-            String sCreation = "CREATE TABLE MISSION ( ID int not null,"
-                    + " etat varchar(16) NOT NULL,"
-                    + " idOrdreCourant int NOT NULL,"
-                    + " utilisateur varchar(256) NOT NULL,"
-                    + " publie varchar(8) NOT NULL,"
-                    + " PRIMARY KEY(ID))";
+            String sCreation = "CREATE TABLE MISSION ( ID int not null," + " etat varchar(16) NOT NULL," + " idOrdreCourant int NOT NULL," + " utilisateur varchar(256) NOT NULL," + " publie varchar(8) NOT NULL," + " PRIMARY KEY(ID))";
 
 
             Statement statement = conn.createStatement();
@@ -57,12 +52,7 @@ public class DAOMission extends DAO<Mission> {
             etat = new String("TERMINEE");
         }
 
-        String sInsertion = "INSERT INTO MISSION (ID ,etat ,idOrdreCourant ,utilisateur ,publie) VALUES ("
-                + obj.getIdMission() + ","
-                + "'" + etat + "',"
-                + obj.getIdOrdreCourant() + ","
-                + "'" + obj.getUtilisateur() + "',"
-                + "'" + Boolean.toString(obj.isPublie()) + "')";
+        String sInsertion = "INSERT INTO MISSION (ID ,etat ,idOrdreCourant ,utilisateur ,publie) VALUES (" + obj.getIdMission() + "," + "'" + etat + "'," + obj.getIdOrdreCourant() + "," + "'" + obj.getUtilisateur() + "'," + "'" + Boolean.toString(obj.isPublie()) + "')";
         try {
             acces_ordres = (DAOOrdre) DAOFactory.getDAOOrdre();
             Statement statement = connect.createStatement();
@@ -82,23 +72,20 @@ public class DAOMission extends DAO<Mission> {
     }
 
     public boolean delete(Mission obj) {
-        String sDeletion = "DELETE FROM MISSION WHERE ID="+obj.getIdMission();
+        String sDeletion = "DELETE FROM MISSION WHERE ID=" + obj.getIdMission();
         DAOOrdre acces_ordres;
 
-        try{
+        try {
             acces_ordres = (DAOOrdre) DAOFactory.getDAOOrdre();
             Statement statement = connect.createStatement();
             statement.execute(sDeletion);
-        }
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return false;
         }
 
         /* On supprime toutes les réponses associées à l'ordre */
-        for(int i=0; i<obj.getListOrdres().size(); i++)
-        {
+        for (int i = 0; i < obj.getListOrdres().size(); i++) {
             acces_ordres.delete(obj.getListOrdres().get(i));
         }
 
@@ -110,7 +97,7 @@ public class DAOMission extends DAO<Mission> {
         Mission temp_mission = null;
         DAOOrdre acces_ordres;
 
-        String sSelect = "SELECT * FROM MISSION WHERE ID="+ id;
+        String sSelect = "SELECT * FROM MISSION WHERE ID=" + id;
         ResultSet rs = null;
         try {
             acces_ordres = (DAOOrdre) DAOFactory.getDAOOrdre();
@@ -150,7 +137,7 @@ public class DAOMission extends DAO<Mission> {
                 temp_mission.setIdMission(rs.getInt("ID"));
                 temp_mission.setIdOrdreCourant(rs.getInt("idOrdreCourant"));
                 temp_mission.setListOrdres(acces_ordres.findList(temp_mission.getIdMission()));
-                
+
                 list.add(temp_mission);
             }
         } catch (Exception ex) {
@@ -189,6 +176,38 @@ public class DAOMission extends DAO<Mission> {
     }
 
     public boolean update(Mission obj) {
-        return false;
+        String etat;
+        if (obj.getEtat() == Mission.etat_mission.EN_COURS) {
+            etat = new String("EN_COURS");
+        } else if (obj.getEtat() == Mission.etat_mission.EN_ATTENTE) {
+            etat = new String("EN_ATTENTE");
+        } else {
+            etat = new String("TERMINEE");
+        }
+
+        String sUpdate = "UPDATE MISSION SET " +
+                "idOrdreCourant=" + obj.getIdOrdreCourant() + "," +
+                "utilisateur='" + obj.getUtilisateur() + "'," +
+                "etat=" + etat + "," +
+                "publie='" + Boolean.toString(obj.isPublie()) + "'" +
+                "WHERE ID=" + obj.getIdMission();
+        DAOOrdre acces_ordres;
+
+        try {
+            acces_ordres = (DAOOrdre) DAOFactory.getDAOOrdre();
+            Statement statement = this.connect.createStatement();
+            statement.execute(sUpdate);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+
+        /* On met à jour toutes les ordre associés à l'ordre */
+        for (int i = 0; i < obj.getListOrdres().size(); i++) {
+            acces_ordres.update(obj.getListOrdres().get(i));
+        }
+
+        System.out.println("Mission update done!");
+        return true;
     }
 }
