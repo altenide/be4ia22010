@@ -188,7 +188,7 @@ public class DAOMission extends DAO<Mission> {
         String sUpdate = "UPDATE MISSION SET " +
                 "idOrdreCourant=" + obj.getIdOrdreCourant() + "," +
                 "utilisateur='" + obj.getUtilisateur() + "'," +
-                "etat=" + etat + "," +
+                "etat='" + etat + "'," +
                 "publie='" + Boolean.toString(obj.isPublie()) + "'" +
                 "WHERE ID=" + obj.getIdMission();
         DAOOrdre acces_ordres;
