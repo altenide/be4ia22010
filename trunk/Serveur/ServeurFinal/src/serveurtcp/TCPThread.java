@@ -15,6 +15,7 @@ import java.net.Socket;
 import java.net.SocketException;
 
 import GestionOrdreXml.generatorOrdre;
+import Synthese.Synthese;
 
 /**
  * Classe permettant de gerer la communication avec un client
@@ -104,6 +105,8 @@ public class TCPThread extends Thread {
 
                     String nomDuFichier = "m.ordre";
 
+                    envoyerFichiersAudio();
+
                     //envoi du nomDuFichier xml contenant la mission
                     EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
                     e.sendFile("./" + nomDuFichier);
@@ -115,7 +118,7 @@ public class TCPThread extends Thread {
                     listeFichiers[2] = "audioOrdreId0";
                     listeFichiers[3] = "audioOrdreId0";*/
 
-                    envoyerFichiersAudio(listeFichiers);
+                    
                 }
             }
 
@@ -126,12 +129,30 @@ public class TCPThread extends Thread {
         }
     }
 
-    public void envoyerFichiersAudio(String[] cheminsFichiers) {
+    public void envoyerFichiersAudio() {
+
+       String audioFolderPath = Synthese.getFolderPath();
+
+       try{
+
+           File f = new File(audioFolderPath);
+           File listeFile[] = f.listFiles();
+           
+      
+           for(int i=0; i<listeFile.length;i++){
+               EnvoiFichier e = new EnvoiFichier(soc.getInetAddress().getHostName(), portFichier);
+               e.sendFile(listeFile[i].getAbsolutePath());
+           }
+
+       }catch (Exception ex){
+           ex.printStackTrace();
+       }
+
     }
 
     public void sendFile(String fichier) {
         try {
-            System.out.println("Debut du transfert");
+            System.out.println("Debut du transfert du fichier: "+fichier);
             File f = new File(fichier);
             BufferedInputStream inFichier = new BufferedInputStream(new FileInputStream(fichier));
             OutputStream outFichier = new BufferedOutputStream(soc.getOutputStream());
