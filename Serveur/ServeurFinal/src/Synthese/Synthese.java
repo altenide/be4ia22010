@@ -125,9 +125,12 @@ public class Synthese {
      * @return la chaine complete devant être synthétisée
      */
     private String ordreAudio(Ordre ordre) {
-        String reponsesPossibles = new String(". Choix possibles");
-        for (int i = 0; i < ordre.getReponsesPossibles().size(); i++) {
-            reponsesPossibles += " . " + ordre.getReponsesPossibles().get(i).getReponse();
+        String reponsesPossibles = new String();
+        if (ordre.getReponsesPossibles().size() != 0) {
+            reponsesPossibles += ". Choix possibles";
+            for (int i = 0; i < ordre.getReponsesPossibles().size(); i++) {
+                reponsesPossibles += " . " + ordre.getReponsesPossibles().get(i).getReponse();
+            }
         }
         reponsesPossibles += " .";
 
@@ -166,5 +169,9 @@ public class Synthese {
      */
     public void newOrdre(Ordre ordre) {
         lt.setTexte(ordreAudio(ordre));
+    }
+
+    public static String getFolderPath() {
+        return path;
     }
 }
