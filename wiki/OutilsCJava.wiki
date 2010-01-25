@@ -1,4 +1,4 @@
-#Quelques outils permettant de compiler un code C/C++... pour JVM
+#summary Quelques outils permettant de compiler un code C/C++... pour JVM
 
 Suite à une documentation sur Java, je suis tombé sur [http://www.robert-tolksdorf.de/vmlanguages.html ce site] et j'en ai extrait tous les outils qui permettent d'exécuter un code C/C++ etc sous une JVM. Non testés, c'est pour l'avoir sous la main au cas où.
 
