@@ -18,7 +18,7 @@ public class Synthese {
 
     private String pathName;
     private LecteurTexte lt;
-    
+
     // dossier où sont enregistrés les fichiers son (par rapport à la racine du projet)
     private static String path = new String("donnees/pho_wav/");
 
@@ -27,14 +27,7 @@ public class Synthese {
      * @param ordre
      */
     public Synthese(Ordre ordre) {
-
-        // Chemin des fichiers créés (sans extension) relativement à la racine du projet
-        this.pathName = path + ordre.getFilename();
-
-        // Nouveau lecteur de texte
-        this.lt = new LecteurTexte(ordreAudio(ordre), pathName);
-
-        this.synt();
+        this(ordre, false);
     }
 
     /** Constructeur qui synthétise un son
@@ -62,26 +55,7 @@ public class Synthese {
      * @param mission la mission dont on veut synthétiser les ordres
      */
     public Synthese(Mission mission) {
-
-        if (mission.getListOrdres().size() != 0) {
-
-            this.pathName = path + mission.getListOrdres().get(0).getFilename();
-            this.lt = new LecteurTexte(ordreAudio(mission.getListOrdres().get(0)), pathName);
-
-            this.synt();
-
-            int i = 1;
-
-            while (i < mission.getListOrdres().size()) {
-
-                this.pathName = path + mission.getListOrdres().get(i).getFilename();
-                this.lt = new LecteurTexte(ordreAudio(mission.getListOrdres().get(i)), pathName);
-
-                this.synt();
-
-                i++;
-            }
-        }
+        this(mission, false);
     }
 
     /** Constructeur qui synthétise tous les ordres d'une mission
