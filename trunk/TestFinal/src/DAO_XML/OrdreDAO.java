@@ -17,9 +17,21 @@ import org.xmlpull.v1.XmlSerializer;
  */
 public class OrdreDAO {
 
+    /**
+     * parser utilise
+     */
     private XmlPullParser parser;
-     private String path = "", fichier="";
+    /**
+     * chemin et nom du fichier XML manipule
+     */
+    private String path = "", fichier = "";
 
+    /**
+     * Constructeur (utilise uniquement par XMLDAOFactory et MissionDAO)
+     * @param parser
+     * @param path
+     * @param file
+     */
     protected OrdreDAO(XmlPullParser parser, String path, String file) {
         this.parser = parser;
         this.path = path;
@@ -29,7 +41,7 @@ public class OrdreDAO {
     /**
      * Extrait le premier ordre trouve par le parseur
      * @param reponses true si on veut egalement extraire les reponses correspondantes
-     * @return l'ordre
+     * @return l'ordre extrait
      */
     public Ordre extractOrdre(boolean reponses) throws XmlPullParserException, IOException {
 
@@ -39,8 +51,6 @@ public class OrdreDAO {
         boolean ordreFinal;
 
         eventType = parser.getEventType();
-
-
 
         if (eventType == parser.START_TAG) {
             name = parser.getName();
@@ -79,7 +89,7 @@ public class OrdreDAO {
                 eventType = parser.next();
                 eventType = parser.next();
 
-                
+
                 if (parser.getEventType() == parser.START_TAG && parser.getName().equals("reponsePossible")) {
                     name = parser.getName();
                     ordre.initReponses();
@@ -112,9 +122,7 @@ public class OrdreDAO {
                         name = parser.getName();
                     }
                 }
-            }
-            else {
-                
+            } else {
             }
         } //Si on ne voulait pas les reponses
         else {
@@ -125,7 +133,8 @@ public class OrdreDAO {
             //si la balise est une balise de fin, on recupere son nom
             if (eventType == parser.END_TAG) {
                 name = parser.getName();
-            };
+            }
+            ;
             while (eventType != parser.END_TAG || !name.equals("ordre")) {    //On cherche la 1ere balise de fin d'ordre
                 eventType = parser.next();
 
@@ -141,12 +150,12 @@ public class OrdreDAO {
     }
 
     /**
-     * Place le parseur au début du doc XML 
+     * Place le parseur au début du fichier XML
      * necessaire avant tout appel exterieur a une methode extract
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path+fichier));
+            parser.setInput(new FileReader(path + fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
@@ -154,6 +163,11 @@ public class OrdreDAO {
         }
     }
 
+    /**
+     * Met a jour la valeur de l'etat de l'ordre voulu dans le fichier XML
+     * @param idOrdre identifiant de l'ordre dont on veut changer l'etat
+     * @param etat nouvelle valeur de l'etat a inscrire dans le fichier
+     */
     public void miseAJourEtat(int idOrdre, String etat) {
         try {
             String name = " ";
@@ -261,7 +275,7 @@ public class OrdreDAO {
                 ////////////////////////////////////////////////////////
                 int type = mission.getType(count);
                 mission.removeChild(count);
-                mission.addChild(count,type,ordre);
+                mission.addChild(count, type, ordre);
 
 
                 /////////////////////////////////
@@ -271,7 +285,7 @@ public class OrdreDAO {
                 factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
                 factory.setNamespaceAware(true);
                 XmlSerializer serializer = factory.newSerializer();
-                FileOutputStream file = new FileOutputStream(path+fichier);
+                FileOutputStream file = new FileOutputStream(path + fichier);
                 serializer.setOutput(new PrintWriter(file));
 
 

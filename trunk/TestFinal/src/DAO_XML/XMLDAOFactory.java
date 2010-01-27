@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO_XML;
 
 import java.io.FileNotFoundException;
@@ -10,10 +6,9 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-
 /**
- *
- * @author Edith
+ * Factory des classes DAO de manipulation du document XML
+ * @author Edith Guilbaud
  */
 public class XMLDAOFactory {
 
@@ -21,23 +16,23 @@ public class XMLDAOFactory {
     private MissionDAO missionDAO;
     private OrdreDAO ordreDAO;
     private ReponsePossibleDAO reponsePossibleDAO;
-    private String path= "", fichier="";//"My Documents/GrpA2/";
+    private String path = "", fichier = "";
 
     public XMLDAOFactory(String path, String file) {
 
         //créé un parseur et l'affecte à l'attribut
         try {
-        	
-        	fichier = file;
-        	this.path = path;
-        	
+
+            fichier = file;
+            this.path = path;
+
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
             factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
             factory.setNamespaceAware(true);
 
             parser = factory.newPullParser();
 
-            parser.setInput(new FileReader(path+fichier));
+            parser.setInput(new FileReader(path + fichier));
             //U:/NetBeansProjects/BE_POO/src/fichier/XMLDatabase.xml
             //"C:/Documents and Settings/Edith/Mes documents/NetBeansProjects/BE_BDD_Client/src/fichier/XMLDatabase.xml"
 
@@ -59,24 +54,29 @@ public class XMLDAOFactory {
     }
 
     public MissionDAO getMissionDAO() {
-    return missionDAO;
+        return missionDAO;
     }
 
     public OrdreDAO getOrdreDAO() {
-    return ordreDAO;
+        return ordreDAO;
     }
+
     public ReponsePossibleDAO getReponsePossibleDAO() {
         return reponsePossibleDAO;
-    }   
+    }
 
     public void setPath(String path) {
-		this.path = path;
-	}
+        this.path = path;
+    }
 
-	//Place le parseur au début du doc XML - necessaire avant tout appel exterieur a une methode extract
+
+    /**
+     * Place le parseur au début du fichier XML
+     * necessaire avant tout appel exterieur a une methode extract
+     */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path+fichier));
+            parser.setInput(new FileReader(path + fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {

@@ -13,7 +13,6 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		int portTCP = 4242, portFichier = 4343;
 		String pathAudio = "/Flash Disk/Audio/";//\Flash Disk\Audio
