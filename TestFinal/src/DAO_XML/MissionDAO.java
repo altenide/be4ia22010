@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO_XML;
 
 import java.io.FileNotFoundException;
@@ -13,20 +9,41 @@ import org.kxml2.kdom.*;
 import org.xmlpull.v1.*;
 
 /**
- *
- * @author Edith
+ * Classe de manipulation de la mission dans le fichier XML
+ * @author Edith Guilbaud
  */
 public class MissionDAO {
 
+    /**
+     * parser utilise
+     */
     private XmlPullParser parser;
-    private String path = "", fichier="";
+    /**
+     * chemin et nom du fichier XML manipule
+     */
+    private String path = "", fichier = "";
 
+    /**
+     * Constructeur (utilise uniquement par XMLDAOFactory)
+     * @param parser
+     * @param path
+     * @param fichier
+     */
     protected MissionDAO(XmlPullParser parser, String path, String fichier) {
         this.parser = parser;
         this.path = path;
         this.fichier = fichier;
     }
 
+    /**
+     * Extrait la mission presente dans le fichier XML
+     * @param ordres indique si on veut extraire les ordres avec (true si oui, false si non)
+     * @param reponses indique si, en plus des ordres, on veut egalement les reponses possibles (true si oui, false si non, ne peut valoir true si ordres=false)
+     * @return la mission extraite
+     * @throws XmlPullParserException
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public Mission extractMission(boolean ordres, boolean reponses) throws XmlPullParserException, FileNotFoundException, IOException {
 
         Mission mission;
@@ -53,22 +70,6 @@ public class MissionDAO {
             }
         }
 
-        /*//SECTION DE TEST /////////////////
-
-        if (eventType == parser.END_TAG) {
-        System.out.println("end tag0");
-        System.out.println("nom tag0:" + name);
-        }
-        if (eventType == parser.START_TAG) {
-        System.out.println("start tag0");
-        System.out.println("nom tag0:" + name);
-        }
-        if (eventType == parser.TEXT) {
-        System.out.println("text0");
-        }
-        String val = parser.getAttributeValue(0);
-        System.out.println("attribut prochain tag :" + val);
-        ////////////////////////////////*/
 
         //On récupère les éléments de la mission
         etat = parser.getAttributeValue(0); //etat de la mission
@@ -103,7 +104,7 @@ public class MissionDAO {
                     //on passe au tag suivant
                     eventType = parser.next();
                     eventType = parser.next();
-                } //mais si l'ordre etait vide (pas de reponses ds fichier), un de + !
+                } //mais si l'ordre etait vide (pas de reponses dans le fichier), un de + !
                 else {
                     eventType = parser.next();
                     eventType = parser.next();
@@ -133,7 +134,10 @@ public class MissionDAO {
         return mission;
     }
 
-    //Place le parseur au début du doc XML
+    /**
+     * Place le parseur au début du fichier XML
+     * necessaire avant tout appel exterieur a une methode extract
+     */
     public void goToStartDocument() {
         try {
             parser.setInput(new FileReader(path + fichier));
@@ -144,6 +148,10 @@ public class MissionDAO {
         }
     }
 
+    /**
+     * Met a jour la valeur de l'ordre courant de la mission dans le fichier XML
+     * @param id nouvelle valeur que doit prendre l'identifiant de l'ordre courant dans le fichier
+     */
     public void MiseAJourOrdreCourant(int id) {
         String name = "";
 
@@ -181,10 +189,11 @@ public class MissionDAO {
 
             //On reecrit le nouveau fichier
             XmlSerializer serializer = factory.newSerializer();
-            FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
+            FileOutputStream file = new FileOutputStream(path + "XMLDatabase.xml");
             serializer.setOutput(new PrintWriter(file));
 
 
+            // Creation manuelle de l'en-tête :
             //<?xml version="1.0" encoding="ASCII"?>
             //<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
             serializer.startDocument("ASCII", null);
@@ -210,19 +219,18 @@ public class MissionDAO {
 
     }
 
+    /**
+     * Met a jour la valeur de l'etat de la mission dans le fichier XML
+     * @param etat nouvelle valeur que doit prendre l'etat de la mission dans le fichier
+     */
     public void MiseAJourEtat(String etat) {
         String name = "";
-
-
 
         try {
 
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
             factory.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
             factory.setNamespaceAware(true);
-
-
-
 
             Node node = new Node();
 
@@ -253,10 +261,10 @@ public class MissionDAO {
 
             //On reecrit le nouveau fichier
             XmlSerializer serializer = factory.newSerializer();
-            FileOutputStream file = new FileOutputStream(path+"XMLDatabase.xml");
+            FileOutputStream file = new FileOutputStream(path + "XMLDatabase.xml");
             serializer.setOutput(new PrintWriter(file));
 
-
+            // Creation manuelle de l'en-tête :
             //<?xml version="1.0" encoding="ASCII"?>
             //<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
 

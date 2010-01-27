@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO_XML;
 
 import java.io.FileNotFoundException;
@@ -11,20 +7,38 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /**
- *
- * @author Edith
+ * Classe de manipulation des reponses possibles dans le fichier XML
+ * @author Edith Guilbaud
  */
 public class ReponsePossibleDAO {
 
+    /**
+     * parser utilise
+     */
     private XmlPullParser parser;
-    private String path = "", fichier="";
+    /**
+     * chemin et nom du fichier XML manipule
+     */
+    private String path = "", fichier = "";
 
+    /**
+     * Constructeur (utilise uniquement par XMLDAOFactory et OrdreDAO)
+     * @param parser
+     * @param path
+     * @param fichier
+     */
     protected ReponsePossibleDAO(XmlPullParser parser, String path, String fichier) {
         this.parser = parser;
         this.path = path;
         this.fichier = fichier;
     }
 
+    /**
+     * Extrait la premiere reponse possible d'un ordre
+     * @return la reponse extraite
+     * @throws XmlPullParserException
+     * @throws IOException
+     */
     public ReponsePossible extractReponse() throws XmlPullParserException, IOException {
 
         ReponsePossible reponse;
@@ -66,12 +80,12 @@ public class ReponsePossibleDAO {
     }
 
     /**
-     * Place le parseur au début du doc XML
+     * Place le parseur au début du fichier XML
      * necessaire avant tout appel exterieur a une methode extract
      */
     public void goToStartDocument() {
         try {
-            parser.setInput(new FileReader(path+fichier));
+            parser.setInput(new FileReader(path + fichier));
         } catch (XmlPullParserException ex) {
             ex.printStackTrace();
         } catch (FileNotFoundException ex) {
