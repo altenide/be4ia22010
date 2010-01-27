@@ -9,11 +9,17 @@ import java.sql.*;
 import java.util.Vector;
 
 /**
- *
+ * DAO pour accéder aux objets de type Ordre
  * @author nfloquet
  */
 public class DAOOrdre extends DAO<Ordre> {
 
+    /**
+     * Constructeur de la classe
+     * @param conn
+     * Instance de connexion à la base de données
+     * @throws SQLException
+     */
     public DAOOrdre(Connection conn) throws SQLException {
         super(conn);
         boolean res = false;
@@ -105,6 +111,12 @@ public class DAOOrdre extends DAO<Ordre> {
         return null;
     }
 
+    /**
+     * Retourne la liste des Ordres identifiés par une mission
+     * @param idmission
+     * Id de la mission identifiant les ordres
+     * @return
+     */
     public Vector<Ordre> findList(int idmission){
         Vector<Ordre> list = new Vector<Ordre>();
         Ordre temp_ordre = null;

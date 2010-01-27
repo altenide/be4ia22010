@@ -9,11 +9,17 @@ import java.sql.*;
 import java.util.Vector;
 
 /**
- *
+ * DAO pour accéder aux objets de type Reponse
  * @author nfloquet
  */
 public class DAOUtilisateur extends DAO<Utilisateur> {
 
+    /**
+     * Constructeur de la classe
+     * @param conn
+     * Instance de connexion à la base de données
+     * @throws SQLException
+     */
     public DAOUtilisateur(Connection conn) throws SQLException {
         super(conn);
         boolean res = false;
@@ -75,6 +81,13 @@ public class DAOUtilisateur extends DAO<Utilisateur> {
     }
 
 
+    /**
+     * Retourne un utilisateur en fonction de son login
+     * @param login
+     * Login de l'utilisateur recherché
+     * @return
+     * Utilisateur identifié
+     */
     public Utilisateur find(String login) {
         String sSelect = "SELECT * FROM UTILISATEUR WHERE login='"+login+"'";
         ResultSet rs = null;
@@ -133,7 +146,12 @@ public class DAOUtilisateur extends DAO<Utilisateur> {
         return user;
     }
 
-        public Vector<Utilisateur> findList(){
+    /**
+     * Retourne la liste de tous les utilisateurss
+     * @return
+     * Liste de tous les utilisateurs
+     */
+    public Vector<Utilisateur> findList(){
         Vector<Utilisateur> list = new Vector<Utilisateur>();
 
         String sSelect = "SELECT * FROM UTILISATEUR";
