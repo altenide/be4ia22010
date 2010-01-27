@@ -8,11 +8,17 @@ import java.sql.*;
 import java.util.Vector;
 
 /**
- *
+ * DAO pour accéder aux objets de type Mission
  * @author nfloquet
  */
 public class DAOMission extends DAO<Mission> {
 
+    /**
+     * Constructeur de la classe
+     * @param conn
+     * Instance de connexion à la base de données
+     * @throws SQLException
+     */
     public DAOMission(Connection conn) throws SQLException {
         super(conn);
         boolean res = false;
@@ -117,6 +123,13 @@ public class DAOMission extends DAO<Mission> {
         return temp_mission;
     }
 
+    /**
+     * Retourne une liste de Missions identifiées par leur utilisateur
+     * @param user
+     * Utilisateur identifiant la mission
+     * @return
+     * Missions identifiées par leur utilisateur
+     */
     public Vector<Mission> findListFromUser(String user) {
 
         Vector<Mission> list = new Vector<Mission>();
@@ -146,6 +159,11 @@ public class DAOMission extends DAO<Mission> {
         return list;
     }
 
+    /**
+     * Retourne la liste de toutes les missions
+     * @return
+     * Liste de toutes les missions
+     */
     public Vector<Mission> findListAll() {
 
         Vector<Mission> list = new Vector<Mission>();

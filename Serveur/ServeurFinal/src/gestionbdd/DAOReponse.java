@@ -9,11 +9,16 @@ import java.sql.*;
 import java.util.Vector;
 
 /**
- *
+ * DAO pour accéder aux objets de type Reponse
  * @author nfloquet
  */
 public class DAOReponse extends DAO<Reponse> {
 
+    /**
+     * Constructeur de la classe
+     * @param conn
+     * Instance de connexion à la base de données
+     */
     public DAOReponse(Connection conn){
         super(conn);
         boolean res = false;
@@ -89,6 +94,12 @@ public class DAOReponse extends DAO<Reponse> {
         return null;
     }
 
+    /**
+     * Retourne une liste de réponses identifiées par un Ordre
+     * @param idOrdre
+     * Id de l'ordre identifiant les réponses
+     * @return
+     */
     public Vector<Reponse> findList(int idOrdre){
         Vector<Reponse> list = new Vector<Reponse>();
 
