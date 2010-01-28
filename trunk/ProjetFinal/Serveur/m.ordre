@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ordre:DocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ordre="http://www.example.org/Ordre">
+  <mission etat="Disponible" idOrdreCoutant="0" destinataire="Toto" publie="true" date="3910-02-06T23:00:00Z" idMission="15">
+    <ordre contenu="Commande de monsieur dupont" etat="NonAtteint" ordrefinal="false" fichierAudio="O1" idOrdre="0">
+      <reponsePossible reponse="premier" ordreSuivant="0" idReponse="0"/>
+      <reponsePossible reponse="deuxieme" ordreSuivant="1" idReponse="1"/>
+      <reponsePossible reponse="troisieme" ordreSuivant="2" idReponse="2"/>
+      <reponsePossible reponse="fin" ordreSuivant="-2" idReponse="3"/>
+      <reponsePossible reponse="demarrer" ordreSuivant="1" idReponse="0"/>
+    </ordre>
+    <ordre contenu="ajouter trois paquets de pate lustucru" etat="NonAtteint" ordrefinal="false" fichierAudio="O2" idOrdre="1">
+      <reponsePossible reponse="premier" ordreSuivant="0" idReponse="0"/>
+      <reponsePossible reponse="deuxieme" ordreSuivant="1" idReponse="1"/>
+      <reponsePossible reponse="troisieme" ordreSuivant="2" idReponse="2"/>
+      <reponsePossible reponse="fin" ordreSuivant="-2" idReponse="3"/>
+      <reponsePossible reponse="valider" ordreSuivant="2" idReponse="0"/>
+      <reponsePossible reponse="manque de produit" ordreSuivant="3" idReponse="1"/>
+    </ordre>
+    <ordre contenu="mettre deux paquet de six yaourt yoplait" etat="NonAtteint" ordrefinal="false" fichierAudio="O3" idOrdre="2">
+      <reponsePossible reponse="premier" ordreSuivant="0" idReponse="0"/>
+      <reponsePossible reponse="fin" ordreSuivant="-2" idReponse="1"/>
+      <reponsePossible reponse="valider" ordreSuivant="4" idReponse="0"/>
+      <reponsePossible reponse="plus de yoplait" ordreSuivant="5" idReponse="1"/>
+    </ordre>
+    <ordre contenu="mettre trois paquets de pate carrefour" etat="NonAtteint" ordrefinal="false" fichierAudio="O4" idOrdre="3">
+      <reponsePossible reponse="valider" ordreSuivant="2" idReponse="0"/>
+      <reponsePossible reponse="manque de produit" ordreSuivant="5" idReponse="1"/>
+    </ordre>
+    <ordre contenu="mission reussi" etat="NonAtteint" ordrefinal="false" fichierAudio="O5" idOrdre="4">
+      <reponsePossible reponse="ok" ordreSuivant="-2" idReponse="0"/>
+    </ordre>
+    <ordre contenu="echec mission" etat="NonAtteint" ordrefinal="false" fichierAudio="O6" idOrdre="5">
+      <reponsePossible reponse="ok" ordreSuivant="-2" idReponse="0"/>
+    </ordre>
+    <ordre contenu="fin" etat="NonAtteint" ordrefinal="false" fichierAudio="O7" idOrdre="-2"/>
+  </mission>
+</ordre:DocumentRoot>
